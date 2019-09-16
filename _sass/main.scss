@@ -1,0 +1,69 @@
+@import "normalize";
+
+$primary-color: #dc5b5d;
+$background-color: #f2f4f5;
+
+$screen-view: 1180px;
+
+body {
+  font-family: sans-serif;
+}
+
+.header-wrapper {
+  padding: 10px 0;
+  max-width: $screen-view;
+  margin: 0 auto;
+
+  .logo {
+    float: left;
+    width: 180px;
+    margin-top: 5px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .nav {
+    float: right;
+    list-style: none;
+
+
+    li {
+      display: inline-block;
+      padding: 5px 10px;
+      font-weight: 900;
+
+      a {
+        text-decoration: none;
+        color: #000;
+
+        &:hover,
+        &.active {
+          color: $primary-color
+        }
+      }
+    }
+  }
+
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+.page-content {
+  background: $background-color;
+  border: 1px solid transparent;
+
+  .wrapper {
+    width: $screen-view;
+    margin: 10px auto;
+  }
+
+}
+
+.footer {
+  display: none;
+}
