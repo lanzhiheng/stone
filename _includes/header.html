@@ -1,12 +1,23 @@
 <header>
   <section class="header-wrapper">
-    <a class="logo" href="/">
-      <img src="https://d1qmdf3vop2l07.cloudfront.net/enigmatic-tuba.cloudvent.net/compressed/_min_/e1c0aeb11d9e1291bf874e919ec7fee9.png" alt="logo" />
-    </a>
-    <ul class="nav">
-      <li><a href="/">Home</a></li>
-      <li><a href="/">Blog</a></li>
-      <li><a href="/">About</a></li>
-    </ul>
+    <div class="header-image" style="background-image: url(https://d1qmdf3vop2l07.cloudfront.net/jovial-peafowl.cloudvent.net/compressed/_min_/e6eb556b281414c049ea5b715f74fdd7.jpg);"></div>
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <div class="author-title">{{ site.title }}</div>
+      <div class="author-desc">{{ site.desc }}</div>
+      <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Blog</a></li>
+        <li><a href="/">About</a></li>
+        <li><a href="/">Contact</a></li>
+      </ul>
+
+      <ul class="social">
+        <li><a taget="_blank" href="https://github.com/lanzhiheng"><i class="fab fa-github"></i></a></li>
+        <li><a taget="_blank" href="https://twitter.com/lanzhiheng"><i class="fab fa-twitter"></i></a></li>
+      </ul>
+
+      <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>p
+    </div>
   </section>
 </header>

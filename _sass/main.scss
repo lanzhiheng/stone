@@ -2,6 +2,7 @@
 
 $primary-color: #dc5b5d;
 $background-color: #f2f4f5;
+$assist-color: #cccccc;
 
 $screen-view: 1180px;
 
@@ -11,8 +12,58 @@ body {
 
 .header-wrapper {
   padding: 10px 0;
+  position: fixed;
+  width: 30%;
+  top: 0;
+  left: 0;
+  bottom: 0;
   max-width: $screen-view;
   margin: 0 auto;
+
+  .author {
+    &-title {
+      color: #fff;
+      font-size: 45px;
+      font-weight: 900;
+      font-family: serif;
+    }
+
+    &-desc {
+      margin: 0.5em 0;
+      line-height: 1;
+      letter-spacing: 1px;
+      color: #ccc;
+      font-size: 18px;
+    }
+  }
+
+  .header-content {
+    position: absolute;
+    bottom: 0;
+    padding: 60px 60px 52px;
+  }
+
+  .header-image {
+    position: fixed;
+    top: 0;
+    width: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .header-overlay {
+    background: linear-gradient(to bottom,rgba(22,27,33,0) 0,rgba(22,27,33,.01) 1%,rgba(22,27,33,.7) 70%,rgba(22,27,33,.7) 100%);
+    position: absolute;
+    background: #000;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
 
   .logo {
     float: left;
@@ -25,18 +76,16 @@ body {
   }
 
   .nav {
-    float: right;
     list-style: none;
-
+    padding: 0;
+    font-size: 18px;
+    margin-top: 30px;
 
     li {
-      display: inline-block;
-      padding: 5px 10px;
-      font-weight: 900;
-
+      margin: 10px 0;
       a {
         text-decoration: none;
-        color: #000;
+        color: #ccc;
 
         &:hover,
         &.active {
@@ -51,10 +100,17 @@ body {
     content: '';
     clear: both;
   }
+
+  .social {
+    padding: 0;
+    list-style: none;
+  }
 }
 
 .page-content {
   background: $background-color;
+  width: 100%;
+  padding-left: 30%;
   border: 1px solid transparent;
 
   .wrapper {

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    <script src="https://kit.fontawesome.com/98c677551f.js" crossorigin="anonymous"></script>
   </head>
   <body>
     {%- include header.html -%}
@@ -12,7 +13,6 @@
       <div class="wrapper">
         {{ content }}
       </div>
-    </main>
-    {%- include footer.html -%}
+      </main>
   </body>
 </html>
