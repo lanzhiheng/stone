@@ -5,10 +5,13 @@
       <div class="author-title">{{ site.title }}</div>
       <div class="author-desc">{{ site.desc }}</div>
       <ul class="nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/">Blog</a></li>
-        <li><a href="/">About</a></li>
-        <li><a href="/">Contact</a></li>
+        {%- for node in site.docs -%}
+        {%- if page.url == node.url -%}
+        <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a></li>
+        {%- else -%}
+        <li><a href="{{node.url}}">{{node.title}}</a></li>
+        {%- endif -%}
+        {%- endfor -%}
       </ul>
 
       <ul class="social">
