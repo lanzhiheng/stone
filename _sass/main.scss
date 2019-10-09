@@ -2,9 +2,11 @@
 
 $primary-color: #dc5b5d;
 $background-color: #f2f4f5;
-$assist-color: #cccccc;
-
+$assist-color: #ABB7B7;
+$content-color: #6C7A89;
 $screen-view: 1180px;
+
+$title-font-family: serif;
 
 body {
   font-family: sans-serif;
@@ -25,7 +27,7 @@ body {
       color: #fff;
       font-size: 45px;
       font-weight: 900;
-      font-family: serif;
+      font-family: $title-font-family;
     }
 
     &-desc {
@@ -103,12 +105,12 @@ body {
 
   .social {
     padding: 0;
+    height: 50px;
     list-style: none;
   }
 }
 
 .page-content {
-  background: $background-color;
   width: 100%;
   padding-left: 30%;
   border: 1px solid transparent;
@@ -122,4 +124,60 @@ body {
 
 .footer {
   display: none;
+}
+
+
+// The list of post
+
+.post-list {
+  list-style: none;
+
+  .post-wrapper {
+    ~ .post-wrapper {
+      margin-top: 50px;
+    }
+  }
+
+  .post-title {
+    font-size: 40px;
+    margin: 0.3em 0;
+    font-family: $title-font-family;
+  }
+
+  .post-meta {
+    color: $assist-color;
+  }
+
+  .post-desc {
+    margin-top: 20px;
+    max-width: 60%;
+
+    .post-excerpts {
+      color: $content-color;
+      font-size: 16px;
+    }
+
+    .cover {
+      max-width: 100%;
+    }
+
+    .post-excerpts {
+      margin: 10px 0;
+    }
+  }
+
+  .read-more {
+    display: inline-block;
+    text-decoration: none;
+    padding: 6px 9px;
+    border-radius: 4px;
+    background: $primary-color;
+    font-size: 16px;
+    color: #fff;
+
+    &:hover,
+    &:active {
+      background: darken($primary-color, 10%);
+    }
+  }
 }

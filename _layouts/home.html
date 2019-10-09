@@ -3,30 +3,32 @@ layout: default
 ---
 
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-
-  {{ content }}
-
-  {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+  {% if site.posts.size > 0 %}
     <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
+      {% for post in site.posts %}
+      <li class="post-wrapper">
+        <h3 class="post-title">
+          {{ post.title | escape }}
         </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-  {%- endif -%}
+        <span class="post-meta">{{ post.date | date_to_long_string }}</span>
+        <div class="post-desc">
+          {% if post.cover %}
+          <img class="cover" src="{{ post.cover }}">
+          {% else %}
+          <img class="cover" src="https://via.placeholder.com/1600x900">
+          {% endif %}
 
+          {% if site.show_excerpts %}
+          <p class="post-excerpts">{{ post.excerpt | strip_html }}</p>
+          {% endif %}
+        </div>
+
+
+        <div class="btn-wrapper">
+          <a class="read-more" href="{{ post.url | relative_url }}">Read More</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 </div>
