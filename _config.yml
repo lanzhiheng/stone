@@ -4,8 +4,21 @@ title: "Step By Step" # the name of your site, e.g. ACME Corp.
 desc: "A fullstack developer, love programming and live."
 show_excerpts: true
 
+docs:
+- title: Lastest
+  url: /
+
+- title: Project
+  url: /project
+
+- title: About
+  url: /about
+
+- title: Contact
+  url: /contact
+
 plugins:
-   - jekyll-paginate-v2
+  - jekyll-paginate-v2
 
 ############################################################
 # Site configuration for the Jekyll 3 Pagination Gem
@@ -39,7 +52,7 @@ pagination:
   sort_field: 'date'
 
   # Optional, sorts the posts in reverse order (omit to default decending or sort_reverse: true)
-  sort_reverse: true
+  sort_reverse: false
 
   # Optional, the default category to use, omit or just leave this as 'posts' to get a backwards-compatible behavior (all posts)
   category: 'posts'
@@ -66,17 +79,3 @@ pagination:
   indexpage: 'index'
 
 ############################################################
-
-
-docs:
-- title: Lastest
-  url: /
-
-- title: Project
-  url: /project
-
-- title: About
-  url: /about
-
-- title: Contact
-  url: /contact

@@ -2,12 +2,13 @@
 layout: default
 pagination:
   enabled: true
+  permalink: '/page/:num/'
 ---
 
 <div class="home">
   {% if site.posts.size > 0 %}
     <ul class="post-list">
-      {% for post in site.posts limit: 5 %}
+      {% for post in paginator.posts %}
       <li class="post-wrapper">
         <h3 class="post-title">
           {{ post.title | escape }}
@@ -34,22 +35,31 @@ pagination:
     </ul>
   {% endif %}
 
+
+
   <!-- Pagination links -->
-  <div class="pagination">
+  {% if paginator.total_pages > 1 %}
+  {% capture index_page_name %}{{ site.pagination.indexpage }}.{{ site.pagination.extension }}{% endcapture %}
+  <ul class="pager">
     {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path }}" class="previous">
-        Previous
-      </a>
-    {% else %}
-      <span class="previous">Previous</span>
+    <li class="previous">
+      <a href="{{ paginator.previous_page_path | remove_first: index_page_name }}">&larr; </a>
+    </li>
     {% endif %}
-    <span class="page_number ">
-      Page: {{ paginator.page }} of {{ paginator.total_pages }}
-    </span>
+
+    {% if paginator.page_trail %}
+    {% for trail in paginator.page_trail %}
+    <li class="num {% if page.url == trail.path %} selected {% endif %}" >
+      <a href="{{ trail.path | remove_first: index_page_name }}" title="{{trail.title}}">{{ trail.num }}</a>
+    </li>
+    {% endfor %}
+    {% endif %}
+
     {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path }}" class="next">Next</a>
-    {% else %}
-      <span class="next ">Next</span>
+    <li class="next">
+      <a href="{{ paginator.next_page_path | remove_first: index_page_name }}"> &rarr;</a>
+    </li>
     {% endif %}
-  </div>
+  </ul>
+  {% endif %}
 </div>

@@ -182,3 +182,60 @@ body {
     }
   }
 }
+
+
+.pager {
+  list-style: none;
+
+  li {
+    float: left;
+
+    a {
+      text-decoration: none;
+      display: inline-block;
+      color: #dc5b5d;
+    }
+
+    &.previous,
+    &.next {
+      margin-top: 3px;
+    }
+
+    &.previous {
+      margin-right: 5px;
+    }
+
+    &.next {
+      margin-left: 5px;
+    }
+
+     &.num {
+      a {
+        padding: 2px 5px;
+        border-radius: 2px;
+        border: 1px solid #dc5b5d;
+      }
+
+      ~ .num {
+        margin-left: 5px;
+      }
+
+      &.selected {
+        a {
+          background: #dc5b5d;
+          color: #fff ;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+
+
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both
+  }
+}
