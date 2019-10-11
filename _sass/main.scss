@@ -111,13 +111,12 @@ body {
 }
 
 .page-content {
-  width: 100%;
+  max-width: 100%;
   padding-left: 30%;
   border: 1px solid transparent;
 
   .wrapper {
-    width: $screen-view;
-    margin: 10px auto;
+    padding: 10px 60px;
   }
 
 }
@@ -130,6 +129,7 @@ body {
 // The list of post
 
 .post-list {
+  padding: 0;
   list-style: none;
 
   .post-wrapper {
@@ -150,7 +150,6 @@ body {
 
   .post-desc {
     margin-top: 20px;
-    max-width: 60%;
 
     .post-excerpts {
       color: $content-color;
@@ -186,6 +185,7 @@ body {
 
 .pager {
   list-style: none;
+  padding: 0;
 
   li {
     float: left;
@@ -237,5 +237,42 @@ body {
     content: '';
     display: block;
     clear: both
+  }
+}
+
+.post {
+  .post-meta {
+    color: $assist-color
+  }
+
+  .post-content {
+    line-height: 1.4;
+
+    > p,
+    > strong {
+      letter-spacing: 1px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    blockquote {
+      margin: 0;
+      font-size: 1.2em;
+      border-left: 5px solid $primary-color;
+      padding: 5px 0 5px 10px;
+      font-style: italic;
+      background: $background-color;
+      color: darken($background-color, 50%);
+
+      p {
+        margin: 0;
+      }
+    }
   }
 }
