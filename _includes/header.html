@@ -6,11 +6,19 @@
       <div class="author-desc">{{ site.desc }}</div>
       <ul class="nav">
         {%- for node in site.docs -%}
-        {%- if page.url == node.url -%}
-        <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a></li>
-        {%- else -%}
-        <li><a href="{{node.url}}">{{node.title}}</a></li>
-        {%- endif -%}
+          {%- if node.parent -%}
+            {%- if page.url contains node.url -%}
+              <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a></li>
+            {%- else -%}
+              <li><a href="{{node.url}}">{{node.title}}</a></li>
+            {%- endif -%}
+          {%- else -%}
+            {%- if page.url == node.url -%}
+              <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a></li>
+            {%- else -%}
+              <li><a href="{{node.url}}">{{node.title}}</a></li>
+            {%- endif -%}
+          {%- endif %}
         {%- endfor -%}
       </ul>
 

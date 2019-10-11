@@ -1,64 +1,34 @@
 ---
 layout: default
-pagination:
-  enabled: true
 ---
 
 <div class="home">
   {% if site.posts.size > 0 %}
     <ul class="post-list">
-      {% for post in paginator.posts %}
-      <li class="post-wrapper">
-        <h3 class="post-title">
-          {{ post.title | escape }}
-        </h3>
-        <span class="post-meta">{{ post.date | date_to_long_string }}</span>
-        <div class="post-desc">
-          {% if post.cover %}
-          <img class="cover" src="{{ post.cover }}">
-          {% else %}
-          <img class="cover" src="https://via.placeholder.com/1600x900">
-          {% endif %}
+      {% for post in site.posts limit: 10 %}
+        <li class="post-wrapper">
+          <h3 class="post-title">
+            {{ post.title | escape }}
+          </h3>
+          <span class="post-meta">{{ post.date | date_to_long_string }}</span>
+          <div class="post-desc">
+            {% if post.cover %}
+              <img class="cover" src="{{ post.cover }}">
+            {% else %}
+              <img class="cover" src="https://via.placeholder.com/1600x900">
+            {% endif %}
 
-          {% if site.show_excerpts %}
-          <p class="post-excerpts">{{ post.excerpt | strip_html }}</p>
-          {% endif %}
-        </div>
+            {% if site.show_excerpts %}
+              <p class="post-excerpts">{{ post.excerpt | strip_html }}</p>
+            {% endif %}
+          </div>
 
 
-        <div class="btn-wrapper">
-          <a class="read-more" href="{{ post.url | relative_url }}">Read More</a>
-        </div>
-      </li>
+          <div class="btn-wrapper">
+            <a class="read-more" href="{{ post.url | relative_url }}">Read More</a>
+          </div>
+        </li>
       {% endfor %}
     </ul>
-  {% endif %}
-
-
-
-  <!-- Pagination links -->
-  {% if paginator.total_pages > 1 %}
-  {% capture index_page_name %}{{ site.pagination.indexpage }}.{{ site.pagination.extension }}{% endcapture %}
-  <ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-      <a href="{{ paginator.previous_page_path | remove_first: index_page_name }}">&larr; </a>
-    </li>
-    {% endif %}
-
-    {% if paginator.page_trail %}
-    {% for trail in paginator.page_trail %}
-    <li class="num {% if page.url == trail.path %} selected {% endif %}" >
-      <a href="{{ trail.path | remove_first: index_page_name }}" title="{{trail.title}}">{{ trail.num }}</a>
-    </li>
-    {% endfor %}
-    {% endif %}
-
-    {% if paginator.next_page %}
-    <li class="next">
-      <a href="{{ paginator.next_page_path | remove_first: index_page_name }}"> &rarr;</a>
-    </li>
-    {% endif %}
-  </ul>
   {% endif %}
 </div>

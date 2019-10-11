@@ -132,6 +132,7 @@ body {
   padding: 0;
   list-style: none;
 
+  // Home page with cover
   .post-wrapper {
     ~ .post-wrapper {
       margin-top: 50px;
@@ -180,6 +181,24 @@ body {
       background: darken($primary-color, 10%);
     }
   }
+
+  // Blog page without cover
+  .inline-post-wrapper {
+    margin: 5px 0;
+
+    .title-wrapper {
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        letter-spacing: 1px;
+
+        &:hover,
+        &:active {
+          color: darken($primary-color, 20%);
+        }
+      }
+    }
+  }
 }
 
 
@@ -193,7 +212,7 @@ body {
     a {
       text-decoration: none;
       display: inline-block;
-      color: #dc5b5d;
+      color: $primary-color;
     }
 
     &.previous,
@@ -213,7 +232,7 @@ body {
       a {
         padding: 2px 5px;
         border-radius: 2px;
-        border: 1px solid #dc5b5d;
+        border: 1px solid $primary-color;
       }
 
       ~ .num {
@@ -222,7 +241,7 @@ body {
 
       &.selected {
         a {
-          background: #dc5b5d;
+          background: $primary-color;
           color: #fff ;
           cursor: not-allowed;
         }
