@@ -25,6 +25,16 @@ a {
   color: #ccc;
 }
 
+.copy {
+  color: #ccc;
+  font-size: 14px;
+
+  a {
+    font-weight: normal;
+    color: $primary-color;
+  }
+}
+
 .header-wrapper {
   padding: 10px 0;
   position: fixed;
@@ -125,17 +135,6 @@ a {
     clear: both;
   }
 
-  .copy {
-    color: #ccc;
-    font-weight: 100;
-    font-size: 14px;
-
-    a {
-      font-weight: normal;
-      color: $primary-color;
-    }
-  }
-
   .social {
     padding: 0;
     list-style: none;
@@ -193,6 +192,10 @@ a {
       width: 100%;
       position: relative;
       padding: 1px 15px 30px;
+
+      .author-title {
+        text-align: center;
+      }
     }
 
     .header-content {
@@ -212,7 +215,18 @@ a {
 }
 
 .footer {
-  // display: none;
+  display: none;
+  padding: 30px 0;
+  text-align: center;
+  background: #000;
+
+  .copy {
+    margin: 0 auto;
+  }
+
+  @media(max-width: 768px) {
+    display: block;
+  }
 }
 
 
