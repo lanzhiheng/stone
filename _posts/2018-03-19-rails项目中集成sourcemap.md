@@ -1,6 +1,7 @@
 ---
 layout: post
 title: rails项目中集成sourcemap
+slug: rails-xiang-mu-zhong-ji-cheng-sourcemap
 ---
 写这篇文章主要为了总结近期Rollbar在Rails项目中的使用情况，其中包括Rollbar与Heroku的合作关系，Rollbar跟Source Map如何搭配使用。当我们的线上压缩过的代码发生异常的时候，我们也能准确定位到是哪一行发生的异常。有助于我们构建更加健壮的应用程序并且提高我们的维护效率。
 

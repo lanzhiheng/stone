@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Redux源码分析--bindActionCreators篇
+slug: Redux-yuan-ma-fen-xi-bindActionCreators-pian
 ---
 这是Redux源码分析系列的第四篇文章，当这篇文章结束之后Redux源码分析系列也该告一段落了。这篇文章主要想谈谈`bindActionCreators`这个函数的实现原理，为了更好的理解这个函数我会恰当地引入一些应用代码。
 

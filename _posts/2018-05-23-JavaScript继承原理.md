@@ -1,6 +1,7 @@
 ---
 layout: post
 title: JavaScript继承原理
+slug: JavaScript-ji-cheng-yuan-li
 ---
 近期，公司的业务处于上升期，对人才的需求似乎比以往任何时候都多。作为公司的前端，有幸窥探到了公司的前端面试题目，其中有一题大概是这样的（别激动，题目已经改了）
 
