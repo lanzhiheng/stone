@@ -2,44 +2,13 @@
 layout: default
 pagination:
   enabled: true
+  collection: posts
 ---
 
 <div class="blog">
   {% if site.posts.size > 0 %}
-    <ul class="post-list">
-      {% for post in paginator.posts  %}
-        <li class="inline-post-wrapper">
-          <div class="title-wrapper">
-            <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a> » <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
+    {%- include post-list.html -%}
   {% endif %}
 
-  <!-- Pagination links -->
-  {% if paginator.total_pages > 1 %}
-    {% capture index_page_name %}{{ site.pagination.indexpage }}.{{ site.pagination.extension }}{% endcapture %}
-    <ul class="pager">
-      {% if paginator.previous_page %}
-        <li class="previous">
-          <a href="{{ paginator.previous_page_path | remove_first: index_page_name }}">&larr; </a>
-        </li>
-      {% endif %}
-
-      {% if paginator.page_trail %}
-        {% for trail in paginator.page_trail %}
-          <li class="num {% if page.url == trail.path %} selected {% endif %}" >
-            <a href="{{ trail.path | remove_first: index_page_name }}" title="{{trail.title}}">{{ trail.num }}</a>
-          </li>
-        {% endfor %}
-      {% endif %}
-
-      {% if paginator.next_page %}
-        <li class="next">
-          <a href="{{ paginator.next_page_path | remove_first: index_page_name }}"> &rarr;</a>
-        </li>
-      {% endif %}
-    </ul>
-  {% endif %}
+  {%- include paginator.html -%}
 </div>

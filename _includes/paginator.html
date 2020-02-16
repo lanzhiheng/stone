@@ -1,0 +1,26 @@
+<!-- Pagination links -->
+
+{% if paginator.total_pages > 1 %}
+  {% capture index_page_name %}{{ site.pagination.indexpage }}.{{ site.pagination.extension }}{% endcapture %}
+  <ul class="pager">
+    {% if paginator.previous_page %}
+      <li class="previous">
+        <a href="{{ paginator.previous_page_path | remove_first: index_page_name }}">&larr; </a>
+      </li>
+    {% endif %}
+
+    {% if paginator.page_trail %}
+      {% for trail in paginator.page_trail %}
+        <li class="num {% if page.url == trail.path %} selected {% endif %}" >
+          <a href="{{ trail.path | remove_first: index_page_name }}" title="{{trail.title}}">{{ trail.num }}</a>
+        </li>
+      {% endfor %}
+    {% endif %}
+
+    {% if paginator.next_page %}
+      <li class="next">
+        <a href="{{ paginator.next_page_path | remove_first: index_page_name }}"> &rarr;</a>
+      </li>
+    {% endif %}
+  </ul>
+{% endif %}

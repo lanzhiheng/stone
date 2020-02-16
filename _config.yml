@@ -35,6 +35,15 @@ social:
 plugins:
   - jekyll-paginate-v2
 
+collections:
+  translations:
+    output: true
+    permalink: /translations/:year/:month/:day/:slug/
+
+autopages:
+  collections:
+    enabled: true
+
 ############################################################
 # Site configuration for the Jekyll 3 Pagination Gem
 # The values here represent the defaults if nothing is set
@@ -47,7 +56,7 @@ pagination:
   debug: true
 
   # The default document collection to paginate if nothing is specified ('posts' is default)
-  collection: 'posts'
+  # collection: 'posts'
 
   # How many objects per paginated page, used to be `paginate` (default: 0, means all)
   per_page: 20
