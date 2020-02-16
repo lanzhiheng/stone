@@ -1,7 +1,7 @@
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "Step By Step" # the name of your site, e.g. ACME Corp.
-desc: "A fullstack developer, love programming and live."
+desc: "A fullstack developer, love programming, life and Mayday."
 show_excerpts: true
 
 permalink: /blog/:year/:month/:day/:slug/
@@ -14,14 +14,23 @@ docs:
   url: /blog
   parent: true
 
-- title: Project
-  url: /project
+- title: Translation
+  url: /translation
+  parent: true
 
 - title: About
   url: /about
 
 - title: Contact
   url: /contact
+
+social:
+- class: fab fa-github
+  url: https://github.com/lanzhiheng
+- class: fab fa-weibo
+  url: https://www.weibo.com/u/2174832927
+- class: fab fa-twitter
+  url: https://twitter.com/lanzhiheng
 
 plugins:
   - jekyll-paginate-v2

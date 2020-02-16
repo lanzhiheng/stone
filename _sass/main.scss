@@ -8,8 +8,21 @@ $screen-view: 1180px;
 
 $title-font-family: serif;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #ccc;
 }
 
 .header-wrapper {
@@ -25,17 +38,17 @@ body {
   .author {
     &-title {
       color: #fff;
-      font-size: 45px;
+      font-size: 43px;
       font-weight: 900;
       font-family: $title-font-family;
     }
 
     &-desc {
       margin: 0.5em 0;
-      line-height: 1;
+      line-height: 1.2;
       letter-spacing: 1px;
       color: #ccc;
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
@@ -43,6 +56,14 @@ body {
     position: absolute;
     bottom: 0;
     padding: 60px 60px 52px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 30px auto;
+    overflow: hidden;
   }
 
   .header-image {
@@ -61,6 +82,7 @@ body {
     background: linear-gradient(to bottom,rgba(22,27,33,0) 0,rgba(22,27,33,.01) 1%,rgba(22,27,33,.7) 70%,rgba(22,27,33,.7) 100%);
     position: absolute;
     background: #000;
+    z-index: -1;
     top: 0;
     left: 0;
     bottom: 0;
@@ -103,10 +125,35 @@ body {
     clear: both;
   }
 
+  .copy {
+    color: #ccc;
+    font-weight: 100;
+    font-size: 14px;
+
+    a {
+      font-weight: normal;
+      color: $primary-color;
+    }
+  }
+
   .social {
     padding: 0;
-    height: 50px;
     list-style: none;
+
+    a {
+      text-decoration: none;
+      font-size: 28px;
+      color: #d0cece;
+
+      + a {
+        margin-left: 10px;
+      }
+
+      &:hover,
+      &:active {
+        color: $primary-color;
+      }
+    }
   }
 }
 
@@ -118,11 +165,54 @@ body {
   .wrapper {
     padding: 10px 60px;
   }
+}
 
+.page-wrapper {
+  @media (max-width: 1200px) {
+    .header-wrapper {
+      width: 40%;
+    }
+
+    .page-content {
+      padding-left: 40%;
+    }
+  }
+
+  @media (max-width: 998px) {
+    .header-wrapper {
+      width: 45%;
+    }
+
+    .page-content {
+      padding-left: 45%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-wrapper {
+      width: 100%;
+      position: relative;
+      padding: 1px 15px 30px;
+    }
+
+    .header-content {
+      position: static;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .page-content {
+      padding: 0;
+
+      .wrapper {
+        padding: 10px 15px;
+      }
+    }
+  }
 }
 
 .footer {
-  display: none;
+  // display: none;
 }
 
 
@@ -191,7 +281,7 @@ body {
         color: $primary-color;
         text-decoration: none;
         letter-spacing: 1px;
-        font-weight: 100
+        font-weight: 100;
 
         &:hover,
         &:active {
