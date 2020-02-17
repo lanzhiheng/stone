@@ -45,6 +45,11 @@ a {
   max-width: $screen-view;
   margin: 0 auto;
 
+  background: url('/assets/img/sixsix.jpeg');
+  background-size: 130% auto;
+  background-position: -20px 0;
+  background-repeat: no-repeat;
+
   .author {
     &-title {
       color: #fff;
@@ -89,9 +94,8 @@ a {
   }
 
   .header-overlay {
-    background: linear-gradient(to bottom,rgba(22,27,33,0) 0,rgba(22,27,33,.01) 1%,rgba(22,27,33,.7) 70%,rgba(22,27,33,.7) 100%);
+    background: linear-gradient(to bottom,rgba(22,27,33,0) 0,rgba(22,27,33,.3) 1%,rgba(22,27,33,.8) 70%,rgba(22,27,33,.9) 100%);
     position: absolute;
-    background: #000;
     z-index: -1;
     top: 0;
     left: 0;
