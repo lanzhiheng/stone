@@ -3,4 +3,67 @@ layout: default
 permalink: /contact
 ---
 
-<p>暂时不能联系我</p>
+<div class="contact-form">
+  <h1>联系方式</h1>
+  <form id="ajaxForm" action="https://getform.io/f/72667064-8826-42a0-9adb-b8bda2ceaaa8" method="POST">
+    <div class="field">
+      <label for="name">姓名:</label>
+      <input type="text" name="name" placeholder="怎么称呼您？" />
+    </div>
+    <div class="field">
+      <label for="email">邮箱:</label>
+      <input type="text" name="email" placeholder="如何联系您？" />
+    </div>
+    <div class="field">
+      <label for="content">内容:</label>
+      <textarea type="text" name="content" rows="6" placeholder="有什么要跟我说？"></textarea>
+    </div>
+    <button class="btn" type="submit">发送</button>
+  </form>
+</div>
+
+<script>
+  $(function() {
+    $('#ajaxForm').submit(function(e) {
+      e.preventDefault()
+      var $form = $(this)
+      var url = $form.attr("action");
+
+      var $btn = $('.btn')
+      $btn.addClass('disabled')
+      var cached = $btn.html()
+      $btn.html('发送中...')
+
+      var messages = []
+
+      $form.find('.field').each(function() {
+        var $this = $(this)
+        var $input = $this.find('input, textarea')
+        var value = $input.val()
+        if (!value) {
+          var message = $this.find('label').text().slice(0, -1) + '不能为空。'
+          messages.push(message)
+        }
+      })
+
+      if (messages.length) alert(messages[0])
+
+      $.ajax({
+        method: "POST",
+        url: url,
+        contentType: "multipart/form-data",
+        dataType: "json",
+        data: new FormData(this),
+        processData: false,
+        contentType: false,
+        headers: {
+          "Accept": "application/json"
+        }
+      }).done(function() {
+        $btn.removeClass('disabled')
+        $btn.html(cached)
+        $form.find('input, textarea').val('') // clean up all data
+      })
+    })
+  })
+</script>
