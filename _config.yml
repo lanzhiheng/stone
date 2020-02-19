@@ -31,6 +31,8 @@ social:
   url: https://www.weibo.com/u/2174832927
 - class: fab fa-twitter
   url: https://twitter.com/lanzhiheng
+- class: far fa-envelope
+  url: mailto:lanzhihengrj@gmail.com
 
 excerpt_separator: <!--more-->
 plugins:

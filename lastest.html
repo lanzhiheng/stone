@@ -8,9 +8,7 @@ permalink: /
     <ul class="post-list">
       {% for post in site.posts limit: 10 %}
         <li class="post-wrapper">
-          <h3 class="post-title">
-            {{ post.title | escape }}
-          </h3>
+          <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
           <span class="post-meta">{{ post.date | date_to_long_string }}</span>
           <div class="post-desc">
             {% if post.cover %}
@@ -21,7 +19,6 @@ permalink: /
               <p class="post-excerpts">{{ post.excerpt | strip_html }}</p>
             {% endif %}
           </div>
-
 
           <div class="btn-wrapper">
             <a class="read-more" href="{{ post.url | relative_url }}">Read More</a>

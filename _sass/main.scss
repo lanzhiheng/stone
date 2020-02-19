@@ -243,13 +243,16 @@ a {
   // Home page with cover
   .post-wrapper {
     ~ .post-wrapper {
-      margin-top: 50px;
+      margin-top: 40px;
     }
   }
 
   .post-title {
-    font-size: 38px;
-    margin: 0.3em 0;
+    font-size: 34px;
+    margin: 0.2em 0;
+    color: #000;
+    display: block;
+    text-decoration: none;
   }
 
   .post-meta {
@@ -257,7 +260,7 @@ a {
   }
 
   .post-desc {
-    margin-top: 20px;
+    margin-top: 10px;
 
     .post-excerpts {
       color: $content-color;
@@ -277,8 +280,7 @@ a {
   .read-more {
     display: inline-block;
     text-decoration: none;
-    padding: 6px 9px;
-    border-radius: 4px;
+    padding: 8px 10px;
     background: $primary-color;
     font-size: 16px;
     color: #fff;
