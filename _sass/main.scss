@@ -250,9 +250,14 @@ a {
   .post-title {
     font-size: 34px;
     margin: 0.2em 0;
-    color: #000;
+    color: #333;
     display: block;
     text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: #000;
+    }
   }
 
   .post-meta {
@@ -369,6 +374,11 @@ a {
 }
 
 .post {
+  .post-title {
+    font-size: 34px;
+    margin: 0.3em 0;
+  }
+
   .post-meta {
     color: $assist-color
   }
