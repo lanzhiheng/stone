@@ -19,10 +19,10 @@ docs:
   parent: true
 
 - title: About
-  url: /about
+  url: /about/
 
 - title: Contact
-  url: /contact
+  url: /contact/
 
 social:
 - class: fab fa-github
