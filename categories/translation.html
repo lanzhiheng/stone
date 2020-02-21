@@ -1,12 +1,13 @@
 ---
 layout: default
+permalink: /translation/
 pagination:
   enabled: true
-  collection: posts
+  category: translation
 ---
 
-<div class="blog">
-  {% if site.posts.size > 0 %}
+<div class="translation">
+  {% if site.translations.size > 0 %}
     {%- include post-list.html -%}
   {% endif %}
 

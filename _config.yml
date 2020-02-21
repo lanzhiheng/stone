@@ -4,8 +4,6 @@ title: "Step By Step" # the name of your site, e.g. ACME Corp.
 desc: "A fullstack developer, love programming, life and Mayday."
 show_excerpts: true
 
-permalink: /blog/:year/:month/:day/:slug/
-
 docs:
 - title: Lastest
   url: /
