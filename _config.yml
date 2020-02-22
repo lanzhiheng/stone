@@ -8,7 +8,7 @@ comments: true
 disqus:
   shortname: 'lanzhiheng'
 
-permalink: /:categories/:year/:month/:day/:title
+permalink: /:categories/:title
 
 docs:
 - title: Lastest
