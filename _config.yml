@@ -4,6 +4,10 @@ title: "Step By Step" # the name of your site, e.g. ACME Corp.
 desc: "A fullstack developer, love programming, life and Mayday."
 show_excerpts: true
 
+comments: true
+disqus:
+  shortname: 'lanzhiheng'
+
 permalink: /:categories/:year/:month/:day/:title
 
 docs:
