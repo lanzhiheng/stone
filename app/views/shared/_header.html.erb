@@ -2,36 +2,12 @@
   <div class="header-overlay"></div>
   <div class="header-content">
     <div class="avatar">
-      <img src="{{ "/assets/img/avatar.png" }}">
+      <%= image_tag('avatar.png') %>
     </div>
-    <div class="author-title">{{ site.title }}</div>
-    <div class="author-desc">{{ site.desc }}</div>
-    <ul class="nav">
-      {%- for node in site.docs -%}
-      {%- if node.parent -%}
-      {%- if page.url contains node.url -%}
-      <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a></li>
-      {%- else -%}
-      <li><a href="{{node.url}}">{{node.title}}</a></li>
-      {%- endif -%}
-      {%- else -%}
-      {%- if page.url == node.url -%}
-      <li class="active"><a href="{{node.url}}" class="active">{{node.title}}</a></li>
-      {%- else -%}
-      <li><a href="{{node.url}}">{{node.title}}</a></li>
-      {%- endif -%}
-      {%- endif %}
-      {%- endfor -%}
-    </ul>
-
-    <ul class="social">
-      {%- for node in site.social -%}
-      <a target="_blank" href="{{node.url}}">
-        <i class="{{node.class}}"></i>
-      </a>
-      {%- endfor -%}
-    </ul>
-
-    <div class="copy">Copyright © {{ site.time | date: "%Y" }} Lan. Powered by <a href="https://jekyllrb.com/">Rails</a>.</div>
+    <div class="author-title">Step By Step</div>
+    <div class="author-desc">A fullstack developer, love programming, life and Mayday.</div>
+    <%= navbar %>
+    <%= social %>
+    <div class="copy">Copyright © <%= Time.now.strftime("%Y") %> Lan. Powered by <a href="https://rubyonrails.org/">Rails</a>.</div>
   </div>
 </header>
