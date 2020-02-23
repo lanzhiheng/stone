@@ -10,6 +10,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="page-wrapper">
+      <%= render 'shared/header' %>
+      <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+          {{ content }}
+        </div>
+      </main>
+    </div>
+    <footer class="footer">
+      <div class="copy">Copyright © {{ site.time | date: "%Y" }} Lan. Powered by <a href="https://rubyonrails.org/">Rails</a>.</div>
+    </footer>
   </body>
 </html>
