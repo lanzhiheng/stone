@@ -1,16 +1,11 @@
 {
   "name": "stone",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "private": true,
   "dependencies": {
-    "jquery": "^3.4.1",
-    "normalize.css": "^8.0.1"
-  }
+    "@rails/ujs": "^6.0.0",
+    "turbolinks": "^5.2.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/actioncable": "^6.0.0"
+  },
+  "version": "0.1.0"
 }
