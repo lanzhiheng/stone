@@ -22,7 +22,7 @@ img {
 
 a {
   text-decoration: none;
-  color: #ccc;
+  color: $primary-color;
 }
 
 .copy {
@@ -460,5 +460,33 @@ a {
       background: lighten($primary-color, 10%);
       cursor: not-allowed;
     }
+  }
+}
+
+.about {
+  max-width: 600px;
+  .banner {
+    height: 266px;
+    overflow: hidden;
+
+    img {
+      margin-top: -105px;
+    }
+  }
+
+  .title {
+    font-size: 30px;
+    margin: 0;
+    color: $primary-color;
+  }
+
+  p {
+    margin: 10px 0;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+  }
+
+  .english, .chinese {
+    margin-top: 30px;
   }
 }
