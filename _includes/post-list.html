@@ -1,9 +1,0 @@
-<ul class="post-list">
-  {% for post in paginator.posts  %}
-  <li class="inline-post-wrapper">
-    <div class="title-wrapper">
-      <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a> » <span class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
-    </div>
-  </li>
-  {% endfor %}
-</ul>

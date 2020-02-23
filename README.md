@@ -1,10 +1,24 @@
-# Be Strong Like Stone
+# README
 
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## 1. Building in production environment
+Things you may want to cover:
 
-We can use `JEKYLL_ENV` environment variable to specify the environment of the system. the default value of it is **development**.
+* Ruby version
 
-```
-JEKYLL_ENV=production bundle exec jekyll build
-```
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
