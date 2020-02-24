@@ -4,14 +4,14 @@
     <title>Stone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= render 'application/favicon' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class="page-wrapper">
-      <%= render 'shared/header' %>
+      <%= render 'application/header' %>
       <main class="page-content" aria-label="Content">
         <div class="wrapper">
           <%= yield %>

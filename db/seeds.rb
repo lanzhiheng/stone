@@ -5,4 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Category.create([{ id: 1, key: 'blogs', name: 'Blog' }, { id: 2, key: 'translations', name: 'Translation' }])
+
+[{ id: 1, key: 'blogs', name: 'Blog' }, { id: 2, key: 'translations', name: 'Translation' }].each do |item|
+  begin
+    Category.create(item)
+  rescue ActiveRecord::RecordNotUnique => e
+    puts 'already exists.'
+  end
+end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
