@@ -214,6 +214,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (2.3.0)
     regexp_parser (1.6.0)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -294,6 +295,7 @@ DEPENDENCIES
   pundit
   rails (~> 6.0.2, >= 6.0.2.1)
   rails_real_favicon
+  redcarpet (~> 2.3.0)
   sass-rails (>= 6)
   selenium-webdriver
   spring

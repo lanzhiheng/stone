@@ -20,4 +20,10 @@ class PostTest < ActiveSupport::TestCase
     article = Post.new(title: 'title1', body: 'hello', category: categories.first)
     assert article.save
   end
+
+  test "can render the markdown with content attribute" do
+    article = Post.new(title: 'title1', body: '**Markdown**', category: categories.first)
+    article.save
+    assert_equal article.content.strip, '<p><strong>Markdown</strong></p>'
+  end
 end
