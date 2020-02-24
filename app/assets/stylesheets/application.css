@@ -16,5 +16,7 @@
  *= require global
  *= require main
  *= require posts
+ *= require contact
+ *= require about
  *= require_self
  */
