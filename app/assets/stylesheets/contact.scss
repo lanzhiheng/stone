@@ -7,8 +7,10 @@
 .contact-form {
   max-width: 400px;
   margin: 30px auto;
+  color: #333;
 
   h1 {
+    font-weight: normal;
     text-align: center;
   }
 
@@ -26,6 +28,10 @@
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
+
+      &::placeholder {
+        color: #ddd;
+      }
     }
   }
 
