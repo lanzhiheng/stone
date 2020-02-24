@@ -1,9 +1,14 @@
 <ul class="post-list">
-  <% @posts.each do |post| %>
-  <li class="inline-post-wrapper">
-    <div class="title-wrapper">
-      <%= link_to post.title, post_path(post.category.key, post.slug) %> » <span class="post-meta"><%= post.created_at.strftime('%Y-%m-%d') %>
-    </div>
-  </li>
+  <% unless @posts.size.zero? %>
+    <% @posts.each do |post| %>
+    <li class="inline-post-wrapper">
+      <div class="title-wrapper">
+        <%= link_to post.title, post_path(post.category.key, post.slug) %> » <span class="post-meta"><%= post.created_at.strftime('%Y-%m-%d') %>
+      </div>
+    </li>
+    <% end %>
+    <%= will_paginate @posts, previous_label: '&larr;', next_label: '&rarr;', class: 'pager' %>
+  <% else %>
+    <p>暂无结果</p>
   <% end %>
 </ul>

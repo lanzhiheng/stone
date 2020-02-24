@@ -46,6 +46,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     test_post_list(2)
   end
 
+  test "posts list with pagination" do
+    (1..11).each do |i|
+      Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: categories.first)
+    end
+    get posts_url(categories.first.key)
+    assert_select '.pager'
+    assert_select '.inline-post-wrapper', 10
+    assert_select '.previous_page', '←'
+    assert_select '.next_page', '→'
+  end
+
   test "post detail page contain title" do
     post = posts.first
 
