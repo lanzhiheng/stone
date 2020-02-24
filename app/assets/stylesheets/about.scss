@@ -1,0 +1,34 @@
+// Place all the styles related to the about controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "variables";
+
+.about {
+  max-width: 600px;
+  .banner {
+    height: 266px;
+    overflow: hidden;
+
+    img {
+      margin-top: -105px;
+    }
+  }
+
+  .title {
+    font-size: 30px;
+    margin: 0;
+    color: $primary-color;
+  }
+
+  p {
+    margin: 10px 0;
+    line-height: 20px;
+    letter-spacing: 0.8px;
+    color: #6C7A89;
+  }
+
+  .english, .chinese {
+    margin-top: 30px;
+  }
+}

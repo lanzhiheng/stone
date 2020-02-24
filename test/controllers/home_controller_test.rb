@@ -21,4 +21,9 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  test "should get index with lastest navbar active" do
+    get root_url
+    assert_select('.nav > li > a.active', 'Lastest')
+  end
 end

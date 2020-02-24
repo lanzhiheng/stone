@@ -28,11 +28,13 @@ module ApplicationHelper
       },
       {
         title: 'Blog',
-        url: '/blog'
+        url: '/blogs',
+        prefix: true
       },
       {
         title: 'Translation',
-        url: '/translation'
+        url: '/translation',
+        prefix: true
       },
       {
         title: 'About',
@@ -49,7 +51,10 @@ module ApplicationHelper
     content_tag(:ul, class: 'nav') do
       nav.map do |item|
         content_tag(:li) do
-          link_to(item[:title], item[:url])
+          attrs = {}
+          class_name = current_class(item[:url], item[:prefix])
+          attrs[:class] = class_name if class_name.present?
+          link_to(item[:title], item[:url], attrs)
         end
       end.join.html_safe
     end
@@ -61,6 +66,14 @@ module ApplicationHelper
         inner = content_tag(:i, '', class: item[:class]).html_safe
         link_to(inner, item[:url], target: '_blank')
       end.join.html_safe
+    end
+  end
+
+  def current_class(path, prefix=false)
+    if prefix
+      request.path.index(path)&.zero? ? 'active' : ''
+    else
+      request.path == path ? 'active' : ''
     end
   end
 end

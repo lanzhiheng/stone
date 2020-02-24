@@ -1,0 +1,53 @@
+// Place all the styles related to the contact controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "variables";
+
+.contact-form {
+  max-width: 400px;
+  margin: 30px auto;
+
+  h1 {
+    text-align: center;
+  }
+
+  .field {
+    margin-top: 15px;
+
+    label {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  }
+
+  .btn {
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+    padding: 15px;
+    background: $primary-color;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+
+    &:hover,
+    &:active {
+      background: darken($primary-color, 10%);
+    }
+
+    &.disabled {
+      background: lighten($primary-color, 10%);
+      cursor: not-allowed;
+    }
+  }
+}
