@@ -1,0 +1,127 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "variables";
+
+.post {
+  .post-title {
+    font-size: 34px;
+    margin: 0.3em 0;
+  }
+
+  .post-meta {
+    color: $assist-color;
+  }
+
+  .post-content {
+    line-height: 1.4;
+
+    > p,
+    > strong {
+      letter-spacing: 1px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    blockquote {
+      margin: 0;
+      font-size: 1.2em;
+      border-left: 5px solid $primary-color;
+      padding: 5px 0 5px 10px;
+      font-style: italic;
+      background: $background-color;
+      color: darken($background-color, 50%);
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// The list of post
+.post-list {
+  padding: 0;
+  list-style: none;
+
+  // Home page with cover
+  .post-wrapper {
+    ~ .post-wrapper {
+      margin-top: 40px;
+    }
+  }
+
+  .post-title {
+    font-size: 34px;
+    margin: 0.2em 0;
+    color: #333;
+    display: block;
+    text-decoration: none;
+
+    &:hover,
+    &:active {
+      color: #000;
+    }
+  }
+
+  .post-meta {
+    color: $assist-color;
+  }
+
+  .post-desc {
+    margin-top: 10px;
+
+    .post-excerpts {
+      color: $content-color;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .cover {
+      max-width: 100%;
+    }
+
+    .post-excerpts {
+      margin: 10px 0;
+    }
+  }
+
+  .read-more {
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 10px;
+    background: $primary-color;
+    font-size: 16px;
+    color: #fff;
+
+    &:hover,
+    &:active {
+      background: darken($primary-color, 10%);
+    }
+  }
+
+  // Blog page without cover
+  .inline-post-wrapper {
+    margin: 5px 0;
+
+    .title-wrapper {
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        letter-spacing: 1px;
+
+        &:hover,
+        &:active {
+          color: darken($primary-color, 20%);
+        }
+      }
+    }
+  }
+}
