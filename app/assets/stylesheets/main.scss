@@ -46,6 +46,12 @@
     position: absolute;
     bottom: 0;
     padding: 60px 60px 52px;
+
+    @media(max-width: 768px) {
+      .copy {
+        display: none;
+      }
+    }
   }
 
   .avatar {

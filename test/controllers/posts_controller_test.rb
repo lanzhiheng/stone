@@ -7,7 +7,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get translation detail with navbar active" do
-    get post_url('translations', posts.first.id)
+    get post_url('translations', posts.first.slug)
     assert_select('.nav > li > a.active', 'Translation')
   end
 
@@ -17,13 +17,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get blog detail with navbar active" do
-    get post_url('blogs', posts.first.id)
+    get post_url('blogs', posts.first.slug)
     assert_select('.nav > li > a.active', 'Blog')
   end
 
   test "should not access pages without `blogs` or `translations`" do
     assert_raises(ActionController::UrlGenerationError) do
-      get post_url('books', posts.first.id)
+      get post_url('books', posts.first.slug)
     end
 
     assert_raises(ActionController::UrlGenerationError) do
@@ -49,7 +49,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "post detail page contain title" do
     post = posts.first
 
-    get post_url(post.category.key, post.id)
+    get post_url(post.category.key, post.slug)
     assert_select 'article.post' do
       assert_select 'header.post-header' do
         assert_select 'h1.post-title', post.title
