@@ -1,2 +1,16 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="home">
+  <% if lastest_posts.size %>
+    <ul class="post-list">
+      <% lastest_posts.each do |post| %>
+      <li class="post-wrapper">
+        <%= link_to post.title, post_url(post), class: 'post-title' %>
+        <span class="post-meta"><%= post.created_at.strftime('%A, %Y-%m-%d') %></span>
+        <p class="post-excerpts"><%= post.excerpt %></p>
+        <div class="btn-wrapper">
+          <%= link_to 'Read More', post_url(post), class: 'read-more' %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

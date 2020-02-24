@@ -1,27 +1,4 @@
-$primary-color: #dc5b5d;
-$background-color: #f2f4f5;
-$assist-color: #ABB7B7;
-$content-color: #6C7A89;
-$screen-view: 1180px;
-
-$title-font-family: serif;
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-}
-
-img {
-  max-width: 100%;
-}
-
-a {
-  text-decoration: none;
-  color: $primary-color;
-}
+@import "variables";
 
 .copy {
   color: #ccc;
@@ -231,89 +208,6 @@ a {
   }
 }
 
-
-// The list of post
-
-.post-list {
-  padding: 0;
-  list-style: none;
-
-  // Home page with cover
-  .post-wrapper {
-    ~ .post-wrapper {
-      margin-top: 40px;
-    }
-  }
-
-  .post-title {
-    font-size: 34px;
-    margin: 0.2em 0;
-    color: #333;
-    display: block;
-    text-decoration: none;
-
-    &:hover,
-    &:active {
-      color: #000;
-    }
-  }
-
-  .post-meta {
-    color: $assist-color;
-  }
-
-  .post-desc {
-    margin-top: 10px;
-
-    .post-excerpts {
-      color: $content-color;
-      font-size: 16px;
-      line-height: 1.4;
-    }
-
-    .cover {
-      max-width: 100%;
-    }
-
-    .post-excerpts {
-      margin: 10px 0;
-    }
-  }
-
-  .read-more {
-    display: inline-block;
-    text-decoration: none;
-    padding: 8px 10px;
-    background: $primary-color;
-    font-size: 16px;
-    color: #fff;
-
-    &:hover,
-    &:active {
-      background: darken($primary-color, 10%);
-    }
-  }
-
-  // Blog page without cover
-  .inline-post-wrapper {
-    margin: 5px 0;
-
-    .title-wrapper {
-      a {
-        color: $primary-color;
-        text-decoration: none;
-        letter-spacing: 1px;
-
-        &:hover,
-        &:active {
-          color: darken($primary-color, 20%);
-        }
-      }
-    }
-  }
-}
-
-
 .pager {
   list-style: none;
   padding: 0;
@@ -371,47 +265,6 @@ a {
   }
 }
 
-.post {
-  .post-title {
-    font-size: 34px;
-    margin: 0.3em 0;
-  }
-
-  .post-meta {
-    color: $assist-color
-  }
-
-  .post-content {
-    line-height: 1.4;
-
-    > p,
-    > strong {
-      letter-spacing: 1px;
-    }
-
-    p {
-      margin: 10px 0;
-    }
-
-    img {
-      max-width: 100%;
-    }
-
-    blockquote {
-      margin: 0;
-      font-size: 1.2em;
-      border-left: 5px solid $primary-color;
-      padding: 5px 0 5px 10px;
-      font-style: italic;
-      background: $background-color;
-      color: darken($background-color, 50%);
-
-      p {
-        margin: 0;
-      }
-    }
-  }
-}
 
 .contact-form {
   max-width: 400px;
