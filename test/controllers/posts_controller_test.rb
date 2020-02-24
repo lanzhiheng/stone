@@ -1,31 +1,55 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  test "should get translation list with navbar active" do
+    get posts_url('translations')
+    assert_select('.nav > li > a.active', 'Translation')
+  end
+
+  test "should get translation detail with navbar active" do
+    get post_url('translations', posts.first.id)
+    assert_select('.nav > li > a.active', 'Translation')
+  end
+
   test "should get blog list with navbar active" do
-    get blogs_url
+    get posts_url('blogs')
     assert_select('.nav > li > a.active', 'Blog')
   end
 
   test "should get blog detail with navbar active" do
-    get blog_url(posts.first)
+    get post_url('blogs', posts.first.id)
     assert_select('.nav > li > a.active', 'Blog')
   end
 
-  test "post index page contain title" do
-    post = posts.first
+  test "should not access pages without `blogs` or `translations`" do
+    assert_raises(ActionController::UrlGenerationError) do
+      get post_url('books', posts.first.id)
+    end
 
-    get blogs_url
-    assert_select 'ul.post-list' do
-      assert_select 'li.inline-post-wrapper', posts.size
-      assert_select 'span.post-meta', posts.size
+    assert_raises(ActionController::UrlGenerationError) do
+      get posts_url('books')
     end
   end
 
+  test "posts translation page contain title" do
+    def test_post_list(num)
+      assert_select 'ul.post-list' do
+        assert_select 'li.inline-post-wrapper', num
+        assert_select 'span.post-meta', num
+      end
+    end
+
+    get posts_url('translations')
+    test_post_list(1)
+
+    get posts_url('blogs')
+    test_post_list(2)
+  end
 
   test "post detail page contain title" do
     post = posts.first
 
-    get blog_url(post)
+    get post_url(post.category.key, post.id)
     assert_select 'article.post' do
       assert_select 'header.post-header' do
         assert_select 'h1.post-title', post.title

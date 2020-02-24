@@ -10,10 +10,10 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_select 'div.home' do
       assert_select 'ul.post-list' do
-        assert_select "li.post-wrapper", 2 do
-          assert_select "a.post-title", 2
-          assert_select "span.post-meta", 2
-          assert_select "p.post-excerpts", 2
+        assert_select "li.post-wrapper", posts.size do
+          assert_select "a.post-title", posts.size
+          assert_select "span.post-meta", posts.size
+          assert_select "p.post-excerpts", posts.size
           assert_select "div.btn-wrapper" do
             assert_select "a.read-more"
           end

@@ -33,7 +33,7 @@ module ApplicationHelper
       },
       {
         title: 'Translation',
-        url: '/translation',
+        url: '/translations',
         prefix: true
       },
       {

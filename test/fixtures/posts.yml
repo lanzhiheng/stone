@@ -6,10 +6,20 @@ one:
   excerpt: Excerpt of First Post
   slug: slug-of-first-post
   created_at: "2020-02-24 00:36:58"
+  category_id: 1
 
 two:
   title: Second Post
   excerpt: Excerpt of Second Post
   body: Content of First Post
-  slug: slug-of-last-post
+  slug: slug-of-second-post
   created_at: "2020-02-25 00:36:58"
+  category_id: 1
+
+three:
+  title: Third Post
+  excerpt: Excerpt of Third Post
+  body: Content of Third Post
+  slug: slug-of-third-post
+  created_at: "2020-02-26 00:36:58"
+  category_id: 2

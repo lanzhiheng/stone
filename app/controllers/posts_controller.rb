@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    category = Category.find_by(key: params[:category])
+
+    @posts = Post.where(category: category.id)
   end
 end

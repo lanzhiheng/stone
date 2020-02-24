@@ -2,10 +2,9 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
   attr_accessor :request
-  @request = {}
 
   test "should return navbar link" do
-    assert_dom_equal %{<ul class="nav"><li><a href="/">Lastest</a></li><li><a href="/blogs">Blog</a></li><li><a href="/translation">Translation</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul>}, navbar
+    assert_dom_equal %{<ul class="nav"><li><a href="/">Lastest</a></li><li><a href="/blogs">Blog</a></li><li><a href="/translations">Translation</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li></ul>}, navbar
   end
 
   test "should return social link" do
