@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'activeadmin'
+gem 'redcarpet', '~> 2.3.0'
 
 # Plus integrations with:
 gem 'devise'
