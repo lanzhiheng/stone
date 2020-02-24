@@ -5,6 +5,6 @@ class PostsController < ApplicationController
 
   def index
     category = Category.find_by(key: params[:category])
-    @posts = Post.where(category: category.id)
+    @posts = Post.where(category: category.id).page(params[:page]).order('created_at DESC')
   end
 end
