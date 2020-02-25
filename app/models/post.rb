@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :slug, use: :slugged
+
   belongs_to :category
   validates :title, presence: true
   validates :body, presence: true
