@@ -72,4 +72,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       assert_select 'div.post-content', post.body
     end
   end
+
+  test "post detail page with comment" do
+    post = posts.first
+    get post_url(post.category.key, post.slug)
+    assert_select '#disqus_thread'
+  end
 end
