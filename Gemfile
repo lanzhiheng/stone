@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'activeadmin'
 gem 'redcarpet', '~> 2.3.0'
+gem 'friendly_id', '~> 5.2.4'
 
 # Plus integrations with:
 gem 'devise'
