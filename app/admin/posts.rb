@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-  permit_params :title, :body, :slug, :excerpt, :category_id, :created_at
+  permit_params :title, :body, :slug, :excerpt, :category_id, :created_at, :tag_list
 
   index do
     selectable_column
@@ -21,7 +21,9 @@ ActiveAdmin.register Post do
       f.input :excerpt
       f.input :created_at, :as => :datetime_select
       f.input :category_id, :as => :select, :collection => Category.pluck(:name, :id)
+      f.input :tag_list
     end
+
     f.actions
   end
 

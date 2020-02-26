@@ -42,4 +42,10 @@ class PostTest < ActiveSupport::TestCase
     article.save
     assert_equal article.content.strip, '<p><strong>Markdown</strong></p>'
   end
+
+  test "the taggable post" do
+    article = Post.new(title: 'tagTitle', body: 'tagBody', category: categories.first, slug: 'tag-slug', tag_list: 'Ruby, JavaScript, Life')
+    assert article.save
+    assert_equal article.tags.size, 3
+  end
 end
