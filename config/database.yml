@@ -81,11 +81,9 @@ test:
 staging:
   <<: *default
   database: staging_production
-  username: stone
   password:
 
 production:
   <<: *default
-  database: stone_production
-  username: stone
+  database: stone_development
   password: <%= ENV['STONE_DATABASE_PASSWORD'] %>
