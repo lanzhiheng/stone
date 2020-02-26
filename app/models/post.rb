@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   self.per_page = 10
 
   def self.markdown
-    renderer = Redcarpet::Render::HTML.new(escape_html: true)
+    renderer = Redcarpet::Render::HTML.new(escape_html: true, with_toc_data: true)
     Redcarpet::Markdown.new(renderer, extensions = {})
   end
 

@@ -4,7 +4,8 @@
       <% lastest_posts.each do |post| %>
       <li class="post-wrapper">
         <%= link_to post.title, post_url(post.category.key, post.slug), class: 'post-title' %>
-        <span class="post-meta"><%= post.created_at.strftime('%A, %Y-%m-%d') %></span>
+        <p class="post-meta">
+          <time><%= post.created_at.strftime('%A, %Y-%m-%d') %></time></p>
         <p class="post-excerpts"><%= post.excerpt %></p>
         <div class="btn-wrapper">
           <%= link_to 'Read More', post_url(post.category.key, post.slug), class: 'read-more' %>

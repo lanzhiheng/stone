@@ -4,14 +4,15 @@
 
 @import "variables";
 
+.post-meta {
+  color: $assist-color;
+  margin: 0.8em 0;
+}
+
 .post {
   .post-title {
     font-size: 34px;
-    margin: 0.3em 0;
-  }
-
-  .post-meta {
-    color: $assist-color;
+    margin: 0.2em 0 0.3em;
   }
 
   ol, ul {
@@ -29,7 +30,18 @@
     line-height: 1.4;
 
     h1, h2, h3, h4, h5, h6 {
-      margin: 10px 0;
+      margin: 0.8em 0 0.2em;
+      position: relative;
+      padding-left: 16px;
+
+      &:after {
+        color: $primary-color;
+        content: '\f12d';
+        font-family: 'Font Awesome 5 Free';
+        position: absolute;
+        left: 0;
+        font-size: 12px;
+      }
     }
 
     h2 {
@@ -63,7 +75,9 @@
     }
 
     img {
-      max-width: 100%;
+      width: 100%;
+      display: block;
+      margin: 20px auto;
     }
 
     blockquote {
@@ -85,6 +99,7 @@
 
 // The list of post
 .post-list {
+  margin: 0;
   padding: 0;
   list-style: none;
 
@@ -97,7 +112,8 @@
 
   .post-title {
     font-size: 34px;
-    margin: 0.2em 0;
+    font-weight: bold;
+    margin: 0.2em 0 0.3em;
     color: #333;
     display: block;
     text-decoration: none;
@@ -108,13 +124,9 @@
     }
   }
 
-  .post-meta {
-    color: $assist-color;
-  }
-
   .post-excerpts {
     color: $content-color;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.4;
     margin: 10px 0;
   }

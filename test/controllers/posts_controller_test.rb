@@ -64,7 +64,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'article.post' do
       assert_select 'header.post-header' do
         assert_select 'h1.post-title', post.title
-        assert_select 'p.post-meta' do
+        assert_select '.post-meta' do
           assert_select 'time.dt-published', post.created_at.strftime('%A, %Y-%m-%d')
         end
       end
