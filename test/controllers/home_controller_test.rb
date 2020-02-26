@@ -12,7 +12,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
       assert_select 'ul.post-list' do
         assert_select "li.post-wrapper", posts.size do
           assert_select "a.post-title", posts.size
-          assert_select "span.post-meta", posts.size
+          assert_select "p.post-meta", posts.size
           assert_select "p.post-excerpts", posts.size
           assert_select "div.btn-wrapper" do
             assert_select "a.read-more"

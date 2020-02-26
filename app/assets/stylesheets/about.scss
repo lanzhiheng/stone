@@ -18,7 +18,18 @@
   .title {
     font-size: 30px;
     margin: 0;
-    color: $primary-color;
+    position: relative;
+    padding-left: 16px;
+
+    &:after {
+      color: $primary-color;
+      content: '\f007';
+      font-family: 'Font Awesome 5 Free';
+      position: absolute;
+      top: 4px;
+      left: 0;
+      font-size: 12px;
+    }
   }
 
   p {
@@ -29,6 +40,6 @@
   }
 
   .english, .chinese {
-    margin-top: 30px;
+    margin-top: 10px;
   }
 }
