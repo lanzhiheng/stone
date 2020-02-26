@@ -6,19 +6,20 @@
 
 .post-meta {
   color: $assist-color;
+  font-size: 15px;
   margin: 0.8em 0;
 }
 
 .tag-list {
   display: inline;
-  margin-left: 30px;
+  margin-left: 20px;
   vertical-align: 2px;
 
   .tag {
     font-size: 12px;
     border: 1px solid;
     color: $primary-color;
-    padding: 4px 5px;
+    padding: 2px 10px;
   }
 }
 
