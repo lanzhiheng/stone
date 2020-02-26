@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'activeadmin'
 gem 'redcarpet', '~> 2.3.0'
 gem 'friendly_id', '~> 5.2.4'
-gem "aws-sdk-s3"
+gem "aws-sdk-s3", require: false
 
 # Plus integrations with:
 gem 'devise'
@@ -54,6 +54,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rails_real_favicon'
+  gem "capistrano", "~> 3.10", require: false
+  gem 'capistrano-bundler', '~> 1.5', require: false
+  gem 'capistrano-rbenv', require: false
+  gem "capistrano-rails", "~> 1.4", require: false
+  gem 'capistrano3-puma', require: false
 end
 
 group :test do
