@@ -78,4 +78,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     get post_url(post.category.key, post.slug)
     assert_select '#disqus_thread'
   end
+
+  test "post detail page with taglist" do
+    post = posts.first.clone
+    post.tag_list = 'Ruby, JavaScript, Rails'
+    assert post.save
+    get post_url(post.category.key, post.slug)
+    assert_select 'div.tag-list'
+    assert_select 'div.tag-list .tag', 3
+  end
 end

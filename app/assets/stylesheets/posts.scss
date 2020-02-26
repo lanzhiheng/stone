@@ -9,6 +9,19 @@
   margin: 0.8em 0;
 }
 
+.tag-list {
+  display: inline;
+  margin-left: 30px;
+  vertical-align: 2px;
+
+  .tag {
+    font-size: 12px;
+    border: 1px solid;
+    color: $primary-color;
+    padding: 4px 5px;
+  }
+}
+
 .post {
   .post-title {
     font-size: 34px;

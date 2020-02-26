@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_taggable
   extend FriendlyId
   friendly_id :slug, use: :slugged
 

@@ -26,6 +26,7 @@ gem 'activeadmin'
 gem 'redcarpet', '~> 2.3.0'
 gem 'friendly_id', '~> 5.2.4'
 gem "aws-sdk-s3", require: false
+gem 'acts-as-taggable-on', '~> 6.0'
 
 # Plus integrations with:
 gem 'devise'
