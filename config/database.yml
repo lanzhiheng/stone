@@ -78,6 +78,12 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+staging:
+  <<: *default
+  database: staging_production
+  username: stone
+  password:
+
 production:
   <<: *default
   database: stone_production
