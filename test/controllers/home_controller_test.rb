@@ -8,7 +8,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
   test "Check title of home page" do
     get root_url
-    assert_select 'title', 'Stone'
+    assert_select 'title', 'Step By Step'
   end
 
   test "should contain home section with post-list" do
