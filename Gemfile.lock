@@ -128,6 +128,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    coderay (1.1.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     devise (4.7.1)
@@ -208,6 +209,9 @@ GEM
     pg (1.1.4)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
@@ -346,6 +350,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
+  pry
   puma (~> 4.1)
   pundit
   rails (~> 6.0.2, >= 6.0.2.1)
