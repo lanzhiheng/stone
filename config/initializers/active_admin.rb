@@ -33,7 +33,7 @@ ActiveAdmin.setup do |config|
   #   config.default_namespace = false
   #
   # Default:
-  config.default_namespace = ENV['STONE_ADMIN_PATH'] || 'stone'
+  config.default_namespace = Rails.application.credentials.dig(:admin_path) || 'stone'
   #
   # You can customize the settings for each namespace by using
   # a namespace block. For example, to change the site title
