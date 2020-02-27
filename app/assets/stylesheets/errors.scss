@@ -1,0 +1,21 @@
+// Place all the styles related to the errors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import "variables";
+
+.error-info {
+  color: $primary-color;
+  text-align: center;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-top: 180px;
+
+  .error-code {
+    font-size: 80px;
+  }
+
+  .error-message {
+    font-size: 30px;
+  }
+}
