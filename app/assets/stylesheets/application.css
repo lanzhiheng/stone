@@ -12,6 +12,7 @@
  *
  *= require normalize.css/normalize.css
  *= require icon
+ *= require highlight.js/styles/monokai-sublime
 
  *= require global
  *= require main

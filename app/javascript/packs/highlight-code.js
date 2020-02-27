@@ -1,4 +1,3 @@
-import 'highlight.js/styles/monokai-sublime.css'
 import hljs from 'highlight.js/lib/index'
 
 document.addEventListener('turbolinks:load', (event) => {
