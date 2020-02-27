@@ -21,7 +21,7 @@ ActiveAdmin.register Post do
       f.input :excerpt
       f.input :created_at, :as => :datetime_select
       f.input :category_id, :as => :select, :collection => Category.pluck(:name, :id)
-      f.input :tag_list
+      f.input :tag_list, input_html: { value: f.object.tag_list.join(',') }
     end
 
     f.actions
