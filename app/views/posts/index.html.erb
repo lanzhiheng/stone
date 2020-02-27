@@ -1,3 +1,5 @@
+<% content_for :title, "#{params[:category]}" %>
+
 <ul class="post-list">
   <% unless @posts.size.zero? %>
     <% @posts.each do |post| %>

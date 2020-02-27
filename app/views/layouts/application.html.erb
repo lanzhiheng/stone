@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stone</title>
+    <title><%= content_for?(:title) ? yield(:title) : 'Stone' %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= render 'application/favicon' %>
