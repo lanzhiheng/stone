@@ -45,6 +45,9 @@
 
     h1, h2, h3, h4, h5, h6 {
       margin: 0.8em 0 0.2em;
+    }
+
+    h1, h2 {
       position: relative;
       padding-left: 16px;
 
@@ -92,6 +95,23 @@
       width: 100%;
       display: block;
       margin: 20px auto;
+    }
+
+    code {
+      font-size: 13px;
+    }
+
+    p {
+      > code {
+        font-size: 13px;
+        display: inline-block;
+        margin: 0 3px;
+        color: $content-color;
+      }
+    }
+
+    a {
+      text-decoration: underline;
     }
 
     blockquote {
