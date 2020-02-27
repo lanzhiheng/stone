@@ -12,7 +12,7 @@ class Post < ApplicationRecord
 
   def self.markdown
     renderer = Redcarpet::Render::HTML.new(escape_html: true, with_toc_data: true)
-    Redcarpet::Markdown.new(renderer, extensions = {})
+    Redcarpet::Markdown.new(renderer, fenced_code_blocks: true)
   end
 
   def content
