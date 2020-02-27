@@ -87,4 +87,20 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'div.tag-list'
     assert_select 'div.tag-list .tag', 3
   end
+
+  test "post title as the tab title" do
+    post = posts.first
+    get post_url(post.category.key, post.slug)
+    assert_select 'title', post.title
+  end
+
+  test "Check blog posts page title" do
+    get posts_url('blogs')
+    assert_select 'title', 'blogs'
+  end
+
+  test "Check translation posts page title" do
+    get posts_url('translations')
+    assert_select 'title', 'translations'
+  end
 end

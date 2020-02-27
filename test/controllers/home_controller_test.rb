@@ -6,6 +6,11 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "Check title of home page" do
+    get root_url
+    assert_select 'title', 'Stone'
+  end
+
   test "should contain home section with post-list" do
     post = posts.first.clone
     post.slug = 'for-testing'
