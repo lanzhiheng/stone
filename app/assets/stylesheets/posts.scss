@@ -137,6 +137,10 @@
   padding: 0;
   list-style: none;
 
+  .empty {
+    margin: 0;
+  }
+
   // Home page with cover
   .post-wrapper {
     ~ .post-wrapper {
@@ -181,7 +185,7 @@
 
   // Blog page without cover
   .inline-post-wrapper {
-    margin: 10px 0;
+    margin-bottom: 10px;
 
     .title-wrapper {
       a {

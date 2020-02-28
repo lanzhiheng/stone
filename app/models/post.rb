@@ -8,6 +8,8 @@ class Post < ApplicationRecord
   validates :body, presence: true
   validates :slug, presence: true, uniqueness: true
 
+  scope :published, -> { where(draft: false) }
+
   self.per_page = 10
 
   def self.markdown

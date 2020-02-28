@@ -11,7 +11,17 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_select 'title', 'Step By Step'
   end
 
-  test "should contain home section with post-list" do
+  test "home page do not display the draft post" do
+    get root_url
+
+    assert_select 'div.home' do
+      assert_select 'ul.post-list' do
+        assert_select "li.post-wrapper", Post.where(draft: false).size
+      end
+    end
+  end
+
+  test "should contain home section with post list" do
     post = posts.first.clone
     post.slug = 'for-testing'
     post.tag_list = 'Ruby, JavaScript, Rails'
@@ -19,12 +29,14 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
     get root_url
 
+    size = Post.where(draft: false).size
+
     assert_select 'div.home' do
       assert_select 'ul.post-list' do
-        assert_select "li.post-wrapper", posts.size do
-          assert_select "a.post-title", posts.size
-          assert_select "div.post-meta", posts.size
-          assert_select "p.post-excerpts", posts.size
+        assert_select "li.post-wrapper", size do
+          assert_select "a.post-title", size
+          assert_select "div.post-meta", size
+          assert_select "p.post-excerpts", size
           assert_select "div.btn-wrapper" do
             assert_select "a.read-more"
           end

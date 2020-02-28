@@ -21,6 +21,10 @@ class PostTest < ActiveSupport::TestCase
     assert_not article.save
   end
 
+  test "published posts" do
+    assert_equal Post.published.size, 3
+  end
+
   test "can save post with title, body, category and slug" do
     article = Post.new(
       title: 'title1',
@@ -47,5 +51,12 @@ class PostTest < ActiveSupport::TestCase
     article = Post.new(title: 'tagTitle', body: 'tagBody', category: categories.first, slug: 'tag-slug', tag_list: 'Ruby, JavaScript, Life')
     assert article.save
     assert_equal article.tags.size, 3
+  end
+
+  test "default draft post" do
+    assert_equal posts.first.draft, false
+    article = Post.new(title: 'tagTitle', body: 'tagBody', category: categories.first, slug: 'tag-slug', tag_list: 'Ruby, JavaScript, Life')
+    assert article.save
+    assert_equal article.draft, true
   end
 end
