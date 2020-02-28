@@ -6,11 +6,14 @@ ActiveAdmin.register Post do
     id_column
     column :title
     column :slug
-    column :published do |p|
-      !p.draft
+    column :published do |post|
+      !post.draft
     end
+
     actions do |post|
-      link_to 'Preview', post_preview_path(post.category.key, post.slug), target: '_blank'
+      preview = link_to('Preview', post_preview_path(post.category.key, post.slug), target: '_blank', class: 'member_link')
+      publish = link_to(post.draft ? 'Publish' : 'Unpublish', switch_stone_post_path(post.slug), method: :put, class: 'member_link')
+      [preview, publish].join.html_safe
     end
   end
 
@@ -52,13 +55,22 @@ ActiveAdmin.register Post do
     def find_resource
       scoped_collection.friendly.find(params[:id])
     end
+
+    def new
+      @post = Post.new
+      @post.created_at = Time.current
+    end
   end
 
   action_item :preview, only: :show do
     link_to 'Preview', post_preview_path(post.category.key, post.slug), target: '_blank'
   end
 
-  collection_action :import_csv, method: :post do
-    redirect_to collection_path, notice: "CSV imported successfully!"
+
+  member_action :switch, method: :put do
+    @post = Post.friendly.find(params[:id])
+    @post.draft = !@post.draft
+    @post.save
+    redirect_to stone_posts_url
   end
 end

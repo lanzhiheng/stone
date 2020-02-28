@@ -4,22 +4,40 @@
 
 @import "variables";
 
-.post-meta {
+.time-wrapper {
   color: $assist-color;
-  font-size: 15px;
-  margin: 0.8em 0;
+  font-size: 14px;
+
+  time + time {
+    margin-left: 1em;
+  }
+
+  @media (max-width: 768px) {
+    time {
+      display: block;
+    }
+
+    time + time {
+      margin: 0;
+    }
+  }
 }
 
 .tag-list {
-  display: inline;
-  margin-left: 20px;
   vertical-align: 2px;
 
   .tag {
     font-size: 12px;
     border: 1px solid;
+    display: inline-block;
+    margin: 2px 0;
+    border-radius: 2px;
     color: $primary-color;
     padding: 2px 10px;
+  }
+
+  &.new-line {
+    margin: 6px 0;
   }
 }
 
@@ -32,7 +50,7 @@
   ol, ul {
     padding: 0px;
     margin: 8px 0;
-    list-style-position: inside;
+    padding-left: 16px;
 
     li {
       line-height: 1.5;
@@ -143,6 +161,16 @@
 
   // Home page with cover
   .post-wrapper {
+    .post-meta {
+      .time-wrapper, .tag-list {
+        display: inline-block;
+      }
+
+      .time-wrapper {
+        margin-right: 2em;
+      }
+    }
+
     ~ .post-wrapper {
       margin-top: 40px;
     }
