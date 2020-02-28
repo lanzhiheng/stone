@@ -5,7 +5,10 @@
       <li class="post-wrapper">
         <%= link_to post.title, post_url(post.category.key, post.slug), class: 'post-title' %>
         <div class="post-meta">
-          <time><%= post.created_at.strftime('%A, %Y-%m-%d') %></time>
+          <div class="time-wrapper">
+            <time class="created-at"><%= post.created_at.strftime('%A, %Y-%m-%d') %></time>
+          </div>
+
           <% unless post.tags.size.zero? %>
             <div class="tag-list">
               <% post.tags.each do |t| %>
