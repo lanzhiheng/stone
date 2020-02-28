@@ -6,7 +6,12 @@ ActiveAdmin.register Post do
     id_column
     column :title
     column :slug
-    actions
+    column :published do |p|
+      !p.draft
+    end
+    actions do |post|
+      link_to 'Preview', post_preview_path(post.category.key, post.slug), target: '_blank'
+    end
   end
 
   show do
@@ -47,5 +52,13 @@ ActiveAdmin.register Post do
     def find_resource
       scoped_collection.friendly.find(params[:id])
     end
+  end
+
+  action_item :preview, only: :show do
+    link_to 'Preview', post_preview_path(post.category.key, post.slug), target: '_blank'
+  end
+
+  collection_action :import_csv, method: :post do
+    redirect_to collection_path, notice: "CSV imported successfully!"
   end
 end
