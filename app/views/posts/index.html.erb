@@ -11,6 +11,6 @@
     <% end %>
     <%= will_paginate @posts, previous_label: '&larr;', next_label: '&rarr;', class: 'pager' %>
   <% else %>
-    <p>暂无结果</p>
+    <p class="empty">暂无结果</p>
   <% end %>
 </ul>

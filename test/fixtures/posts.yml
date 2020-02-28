@@ -7,6 +7,7 @@ one:
   slug: slug-of-first-post
   created_at: "2020-02-24 00:36:58"
   category_id: 1
+  draft: false
 
 two:
   title: Second Post
@@ -15,6 +16,7 @@ two:
   slug: slug-of-second-post
   created_at: "2020-02-25 00:36:58"
   category_id: 1
+  draft: false
 
 three:
   title: Third Post
@@ -22,4 +24,13 @@ three:
   body: Content of Third Post
   slug: slug-of-third-post
   created_at: "2020-02-26 00:36:58"
+  category_id: 2
+  draft: false
+
+Four:
+  title: Forth Post
+  excerpt: Excerpt of Forth Post
+  body: Content of Forth Post
+  slug: slug-of-forth-post
+  created_at: "2020-02-28 01:36:58"
   category_id: 2

@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-  permit_params :title, :body, :slug, :excerpt, :category_id, :created_at, :tag_list
+  permit_params :title, :body, :slug, :excerpt, :category_id, :created_at, :tag_list, :draft
 
   index do
     selectable_column
@@ -7,6 +7,21 @@ ActiveAdmin.register Post do
     column :title
     column :slug
     actions
+  end
+
+  show do
+    attributes_table do
+      row :title
+      row :slug
+      row :body do |post|
+        post.content
+      end
+      row :tag_list do |post|
+        post.tag_list.join(', ')
+      end
+      row :draft
+    end
+    active_admin_comments
   end
 
   filter :title
@@ -22,6 +37,7 @@ ActiveAdmin.register Post do
       f.input :created_at, :as => :datetime_select
       f.input :category_id, :as => :select, :collection => Category.pluck(:name, :id)
       f.input :tag_list, input_html: { value: f.object.tag_list.join(',') }
+      f.input :draft, :as => :boolean
     end
 
     f.actions

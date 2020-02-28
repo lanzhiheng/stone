@@ -14,7 +14,7 @@
             </div>
           <% end %>
         </div>
-        <p class="post-excerpts"><%= post.excerpt %></p>
+        <p class="post-excerpts"><%= post.excerpt.truncate(200) %></p>
         <div class="btn-wrapper">
           <%= link_to 'Read More', post_url(post.category.key, post.slug), class: 'read-more' %>
         </div>

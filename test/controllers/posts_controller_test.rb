@@ -48,13 +48,23 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "posts list with pagination" do
     (1..11).each do |i|
-      Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: categories.first)
+      Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: categories.first, draft: false)
     end
+
     get posts_url(categories.first.key)
-    assert_select '.pager'
     assert_select '.inline-post-wrapper', 10
+    assert_select '.pager'
     assert_select '.previous_page', '←'
     assert_select '.next_page', '→'
+  end
+
+  test "draft posts not display in list" do
+    (1..11).each do |i|
+      Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: categories.first)
+    end
+
+    get posts_url(categories.first.key)
+    assert_select '.inline-post-wrapper', 2
   end
 
   test "post detail page contain title" do
@@ -70,6 +80,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       end
 
       assert_select 'div.post-content', post.body
+    end
+  end
+
+  test "post detail page can not access if draft" do
+    post = Post.where(draft: true).first
+
+    assert_raises(ActiveRecord::RecordNotFound) do
+      get post_url(post.category.key, post.slug)
     end
   end
 
