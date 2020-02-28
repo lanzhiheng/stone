@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   test "should get translation list with navbar active" do
     get posts_url('translations')
     assert_select('.nav > li > a.active', 'Translation')
@@ -83,11 +85,32 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "post detail page can not access if draft" do
+  test "post detail page can not access draft post" do
     post = Post.where(draft: true).first
 
     assert_raises(ActiveRecord::RecordNotFound) do
       get post_url(post.category.key, post.slug)
+    end
+  end
+
+  test "post preview page can access draft post" do
+    post = Post.where(draft: true).first
+
+    assert_raises(ActionController::RoutingError) do
+      get post_preview_url(post.category.key, post.slug)
+    end
+
+    sign_in admin_users(:one)
+    get post_preview_url(post.category.key, post.slug)
+    assert_select 'article.post' do
+      assert_select 'header.post-header' do
+        assert_select 'h1.post-title', post.title
+        assert_select '.post-meta' do
+          assert_select 'time.dt-published', post.created_at.strftime('%A, %Y-%m-%d')
+        end
+      end
+
+      assert_select 'div.post-content', post.body
     end
   end
 

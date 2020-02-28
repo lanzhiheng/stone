@@ -4,3 +4,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
+one:
+  email: example@126.com
+  encrypted_password: $2a$11$1VyBXg00xWqvkXonnU67XeXidr4xnSmneEI7FbQtIR0HenHtl851K
