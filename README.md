@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The personal blog system power by [Ruby On Rails](https://api.rubyonrails.org/ "Rails")
 
-Things you may want to cover:
+# Test Tool
 
-* Ruby version
+[factory_bot](https://github.com/thoughtbot/factory_bot)
+[rspec-rails](https://github.com/rspec/rspec-rails)
+[factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
