@@ -60,9 +60,10 @@
 
   .post-content {
     line-height: 1.4;
+    margin-top: 1em;
 
     h1, h2, h3, h4, h5, h6 {
-      margin: 0.8em 0 0.2em;
+      margin: 0.4em 0 0.2em;
     }
 
     h1, h2 {
@@ -112,7 +113,7 @@
     img {
       width: 100%;
       display: block;
-      margin: 20px auto;
+      margin: 1em auto;
     }
 
     code {
@@ -247,9 +248,15 @@
 
 
 @media(max-width: 768px) {
- .post {
+  .post-list {
+    .post-title {
+      font-size: 28px;
+    }
+  }
+
+  .post {
    .post-title {
-     font-size: 30px;
+     font-size: 28px;
    }
  }
 }

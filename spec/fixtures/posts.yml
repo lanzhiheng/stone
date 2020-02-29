@@ -1,0 +1,36 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: First Post
+  body: Content of First Post
+  excerpt: Excerpt of First Post
+  slug: slug-of-first-post
+  created_at: "2020-02-24 00:36:58"
+  category_id: 1
+  draft: false
+
+two:
+  title: Second Post
+  excerpt: Excerpt of Second Post
+  body: Content of First Post
+  slug: slug-of-second-post
+  created_at: "2020-02-25 00:36:58"
+  category_id: 1
+  draft: false
+
+three:
+  title: Third Post
+  excerpt: Excerpt of Third Post
+  body: Content of Third Post
+  slug: slug-of-third-post
+  created_at: "2020-02-26 00:36:58"
+  category_id: 2
+  draft: false
+
+Four:
+  title: Forth Post
+  excerpt: Excerpt of Forth Post
+  body: Content of Forth Post
+  slug: slug-of-forth-post
+  created_at: "2020-02-28 01:36:58"
+  category_id: 2
