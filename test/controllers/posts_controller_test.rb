@@ -3,25 +3,6 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  test "should get translation list with navbar active" do
-    get posts_url('translations')
-    assert_select('.nav > li > a.active', 'Translation')
-  end
-
-  test "should get translation detail with navbar active" do
-    get post_url('translations', posts.first.slug)
-    assert_select('.nav > li > a.active', 'Translation')
-  end
-
-  test "should get blog list with navbar active" do
-    get posts_url('blogs')
-    assert_select('.nav > li > a.active', 'Blog')
-  end
-
-  test "should get blog detail with navbar active" do
-    get post_url('blogs', posts.first.slug)
-    assert_select('.nav > li > a.active', 'Blog')
-  end
 
   test "should not access pages without `blogs` or `translations`" do
     assert_raises(ActionController::UrlGenerationError) do
