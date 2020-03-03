@@ -3,53 +3,6 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-
-  test "should not access pages without `blogs` or `translations`" do
-    assert_raises(ActionController::UrlGenerationError) do
-      get post_url('books', posts.first.slug)
-    end
-
-    assert_raises(ActionController::UrlGenerationError) do
-      get posts_url('books')
-    end
-  end
-
-  test "posts translation page contain title" do
-    def test_post_list(num)
-      assert_select 'ul.post-list' do
-        assert_select 'li.inline-post-wrapper', num
-        assert_select 'span.post-meta', num
-      end
-    end
-
-    get posts_url('translations')
-    test_post_list(1)
-
-    get posts_url('blogs')
-    test_post_list(2)
-  end
-
-  test "posts list with pagination" do
-    (1..11).each do |i|
-      Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: categories.first, draft: false)
-    end
-
-    get posts_url(categories.first.key)
-    assert_select '.inline-post-wrapper', 10
-    assert_select '.pager'
-    assert_select '.previous_page', '←'
-    assert_select '.next_page', '→'
-  end
-
-  test "draft posts not display in list" do
-    (1..11).each do |i|
-      Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: categories.first)
-    end
-
-    get posts_url(categories.first.key)
-    assert_select '.inline-post-wrapper', 2
-  end
-
   test "post detail page contain title" do
     post = posts.first
 
