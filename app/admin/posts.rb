@@ -12,7 +12,7 @@ ActiveAdmin.register Post do
 
     actions do |post|
       preview = link_to('Preview', post_preview_path(post.category.key, post.slug), target: '_blank', class: 'member_link')
-      publish = link_to(post.draft ? 'Publish' : 'Unpublish', switch_stone_post_path(post.slug), method: :put, class: 'member_link')
+      publish = link_to(post.draft ? 'Publish' : 'Unpublish', switch_admin_post_path(post.slug), method: :put, class: 'member_link')
       [preview, publish].join.html_safe
     end
   end
@@ -71,6 +71,6 @@ ActiveAdmin.register Post do
     @post = Post.friendly.find(params[:id])
     @post.draft = !@post.draft
     @post.save
-    redirect_to stone_posts_url
+    redirect_to admin_posts_url
   end
 end
