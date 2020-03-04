@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import Push from 'push.js'
 
-$(function() {
+document.addEventListener('turbolinks:load', (event) => {
   $('#ajaxForm').submit(function(e) {
     e.preventDefault()
     var $form = $(this)
