@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import Push from 'push.js'
 
 $(function() {
   $('#ajaxForm').submit(function(e) {
@@ -37,6 +38,14 @@ $(function() {
         "Accept": "application/json"
       }
     }).done(function() {
+      Push.create("Notification", {
+        link: '',
+        body: 'Sent Successfully',
+        onClick: function () {
+          window.focus();
+          this.close();
+        }
+      });
       $btn.removeClass('disabled')
       $btn.html(cached)
       $form.find('input, textarea').val('') // clean up all data
