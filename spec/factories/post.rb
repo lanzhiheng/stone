@@ -4,6 +4,7 @@ FactoryBot.define do
     title { 'post title' }
     body { 'post body' }
     slug { 'post-slug' }
+    excerpt { 'excerpt' }
     category
   end
 end
