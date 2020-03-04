@@ -20,11 +20,11 @@ RSpec.describe HomeController, type: :controller do
 
   it "Don't display the draft post" do
     (1..3).each do |i|
-      create(:post, title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: @blog)
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog)
     end
 
     (4..6).each do |i|
-      create(:post, title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
     end
 
     get :index
@@ -35,7 +35,7 @@ RSpec.describe HomeController, type: :controller do
 
   it "At most 10 items in home page" do
     (1..13).each do |i|
-      create(:post, title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
     end
 
     get :index
@@ -51,7 +51,7 @@ RSpec.describe HomeController, type: :controller do
 
   it "should contain post list" do
     (1..5).each do |i|
-      create(:post, title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: @blog, draft: false, tag_list: ['hello', 'world'])
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false, tag_list: ['hello', 'world'])
     end
 
     get :index
@@ -66,7 +66,6 @@ RSpec.describe HomeController, type: :controller do
   end
 
   after(:context) do
-    Post.destroy_all
     Category.destroy_all
   end
 end

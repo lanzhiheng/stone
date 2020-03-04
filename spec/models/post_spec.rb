@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  fixtures :posts
   before(:context) do
-    create(:category, :translation)
-    create(:category, :blog)
+    @translation = create(:category, :translation)
+    @blog = create(:category, :blog)
   end
 
   context 'create post' do
@@ -60,7 +59,15 @@ RSpec.describe Post, type: :model do
 
   context 'attributes' do
     it "published posts" do
-      expect(Post.published.size).to eq 3
+      (1..5).each do |i|
+        create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
+      end
+      expect(Post.published.size).to eq 5
+
+      (6..10).each do |i|
+        create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog)
+      end
+      expect(Post.published.size).to eq 5
     end
 
     it "the content attribute is the result of the markdown parser" do
