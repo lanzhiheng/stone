@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/about', to: 'about#index', as: 'about'
   get '/contact', to: 'contact#index', as: 'contact'
+  post '/contact-me', to: 'messages#create', as: 'message'
 
   constraints(category: /(translations|blogs)/) do
     get '/:category', to: 'posts#index', as: 'posts'
