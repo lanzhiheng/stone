@@ -10,10 +10,12 @@ ActiveAdmin.register Post do
       !post.draft
     end
 
-    actions do |post|
-      preview = link_to('Preview', post_preview_path(post.category.key, post.slug), target: '_blank', class: 'member_link')
-      publish = link_to(post.draft ? 'Publish' : 'Unpublish', switch_admin_post_path(post.slug), method: :put, class: 'member_link')
-      [preview, publish].join.html_safe
+    actions defaults: false do |post|
+      view = link_to('View', admin_post_path(post), target: '_blank', class: 'view_link member_link')
+      edit = link_to('Edit', edit_admin_post_path(post), target: '_blank', class: 'edit_link member_link')
+      preview = link_to('Preview', post_preview_path(post.category.key, post.slug), target: '_blank', class: 'preview_link member_link')
+      publish = link_to(post.draft ? 'Publish' : 'Unpublish', switch_admin_post_path(post.slug), method: :put, class: 'handle_link member_link')
+      [view, edit, preview, publish].join.html_safe
     end
   end
 
@@ -26,6 +28,13 @@ ActiveAdmin.register Post do
       end
       row :tag_list do |post|
         post.tag_list.join(', ')
+      end
+      row :excerpt
+      row :created_at do |post|
+        post.created_at.strftime("%Y-%m-%d %H:%M")
+      end
+      row :updated_at do |post|
+        post.updated_at.strftime("%Y-%m-%d %H:%M")
       end
       row :draft
     end
