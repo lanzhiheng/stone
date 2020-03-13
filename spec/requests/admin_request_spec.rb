@@ -34,6 +34,27 @@ RSpec.describe "admin posts", type: :request do
     end
   end
 
+  describe "GET /posts/:id/edit" do
+    it "returns http success" do
+      admin_user = AdminUser.first
+      post = create(:post, category: @blog)
+      get admin_post_url(post)
+      expect(response.code).to eq '302'
+      sign_in admin_user
+      get admin_post_url(post)
+      expect(response.code).to eq '200'
+    end
+
+    it "post body form with md_editor id" do
+      admin_user = AdminUser.first
+      post = create(:post, category: @blog, tag_list: 'hello, world')
+      sign_in admin_user
+
+      get edit_admin_post_url(post)
+      expect(response.body).to have_tag('.markdown-wrapper')
+    end
+  end
+
   describe "GET /posts/:id" do
     it "returns http success" do
       admin_user = AdminUser.first

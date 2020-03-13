@@ -11,8 +11,8 @@ ActiveAdmin.register Post do
     end
 
     actions defaults: false do |post|
-      view = link_to('View', admin_post_path(post), target: '_blank', class: 'view_link member_link')
-      edit = link_to('Edit', edit_admin_post_path(post), target: '_blank', class: 'edit_link member_link')
+      view = link_to('View', admin_post_path(post), class: 'view_link member_link')
+      edit = link_to('Edit', edit_admin_post_path(post), class: 'edit_link member_link')
       preview = link_to('Preview', post_preview_path(post.category.key, post.slug), target: '_blank', class: 'preview_link member_link')
       publish = link_to(post.draft ? 'Publish' : 'Unpublish', switch_admin_post_path(post.slug), method: :put, class: 'handle_link member_link')
       [view, edit, preview, publish].join.html_safe
@@ -48,7 +48,7 @@ ActiveAdmin.register Post do
     f.semantic_errors
     f.inputs do
       f.input :title
-      f.input :body
+      f.input :body, :as => :markdown
       f.input :slug
       f.input :excerpt
       f.input :created_at, :as => :datetime_select
