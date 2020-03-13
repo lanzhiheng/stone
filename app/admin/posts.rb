@@ -48,7 +48,7 @@ ActiveAdmin.register Post do
     f.semantic_errors
     f.inputs do
       f.input :title
-      f.input :body
+      f.input :body, :as => :markdown
       f.input :slug
       f.input :excerpt
       f.input :created_at, :as => :datetime_select
