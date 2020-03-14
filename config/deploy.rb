@@ -69,6 +69,7 @@ namespace :deploy do
   end
 
   after :publishing, :restart
+  after :publishing, 'db:pull' # Backup after deploying
 
   desc 'Visit the app'
   task :visit_web do
@@ -82,6 +83,18 @@ namespace :deploy do
           upload! 'config/master.key', "#{shared_path}/config/master.key"
         end
       end
+    end
+  end
+end
+
+# For safety, override the db:push operation from capistrano-db-tasks
+Rake::Task["db:remote:sync"].clear_actions
+
+namespace :db do
+  namespace :remote do
+    desc 'Synchronize your local database using remote database data'
+    task :sync do
+      system "echo 'This operation has been disabled.'"
     end
   end
 end

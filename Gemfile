@@ -65,6 +65,7 @@ group :development do
   gem 'capistrano-rbenv', require: false
   gem "capistrano-rails", "~> 1.4", require: false
   gem 'capistrano3-puma', require: false
+  gem "capistrano-db-tasks", require: false
 end
 
 group :test do
