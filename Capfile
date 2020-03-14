@@ -38,5 +38,10 @@ require 'capistrano/puma'
 install_plugin Capistrano::Puma, load_hooks: false  # Default puma tasks
 install_plugin Capistrano::Puma::Workers, load_hooks: false
 
+require 'capistrano-db-tasks'
+# set :db_dump_dir, "./db"
+set :db_remote_clean, true
+set :skip_data_sync_confirm, true
+
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
