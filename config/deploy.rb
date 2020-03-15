@@ -69,7 +69,6 @@ namespace :deploy do
   end
 
   after :publishing, :restart
-  after :publishing, 'db:pull' # Backup after deploying
 
   desc 'Visit the app'
   task :visit_web do
