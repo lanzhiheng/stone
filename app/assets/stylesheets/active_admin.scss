@@ -10,7 +10,7 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
-@import "easymde/dist/easymde.min.css";
+@import "easymde/src/css/easymde";
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
