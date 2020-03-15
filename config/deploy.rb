@@ -101,4 +101,4 @@ end
 after 'deploy:restart', 'deploy:visit_web'
 
 append :linked_files, 'config/database.yml', 'config/master.key'
-append :linked_dirs, "tmp", "public", ".bundle", "log"
+append :linked_dirs, "tmp", "public", ".bundle", "log", "node_modules"
