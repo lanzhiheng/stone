@@ -10,6 +10,23 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "List Page" do
+    it "title of index Page" do
+      get :index, params: { category: @translation.key }
+      expect(response.body).to have_tag("title", text: @translation.key )
+      expect(response.body).to have_tag("meta", with: {
+                                          name: 'keywords',
+                                          content: DEFAULT_META["keywords"]
+                                        })
+      expect(response.body).to have_tag("meta", with: {
+                                          name: 'author',
+                                          content: DEFAULT_META["author"]
+                                        })
+      expect(response.body).to have_tag("meta", with: {
+                                          name: 'description',
+                                          content: DEFAULT_META["description"]
+                                        })
+    end
+
     it "has active navbar on translation text" do
       get :index, params: { category: 'translations' }
       expect(response.body).to have_tag(".nav > li > a.active", text: "Translation")
@@ -83,6 +100,24 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "Detail Page" do
+    it "title of detail Page" do
+      post = create(:post, category: @translation, draft: false, excerpt: "Good Article", tag_list: "a, b, c, d" )
+      get :show, params: { category: @translation.key, id: post.slug }
+      expect(response.body).to have_tag("title", text: post.title)
+      expect(response.body).to have_tag("meta", with: {
+                                          name: "keywords",
+                                          content: post.tags.join(", ")
+                                        })
+      expect(response.body).to have_tag("meta", with: {
+                                          name: "author",
+                                          content: DEFAULT_META["author"]
+                                        })
+      expect(response.body).to have_tag("meta", with: {
+                                          name: "description",
+                                          content: "Good Article"
+                                        })
+    end
+
     it "has active navbar on translation text" do
       post = create(:post, category: @translation, draft: false)
       get :show, params: { category: @translation.key, id: post.slug }

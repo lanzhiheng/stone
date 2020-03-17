@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : 'Step By Step' %></title>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>" />
+    <meta name="author" content="<%= meta_author %>" />
+    <meta name="keywords" content="<%= meta_keywords %>" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
