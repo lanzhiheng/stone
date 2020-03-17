@@ -1,0 +1,8 @@
+# config/meta.yml
+
+title: "Step By Step"
+description: "Personal blog for Lan with some articles about web development, programming language but also life. "
+image: "avatar.png" # Une image dans votre dossier app/assets/images/
+author: "lanzhiheng"
+keywords: "Programmer, Life, Music, Translation, Ruby, Programming Language"
+# twitter_account: "@lanzhiheng"

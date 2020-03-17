@@ -1,4 +1,6 @@
 <% content_for :title, @post.title %>
+<% content_for :description, @post.excerpt %>
+<% content_for :keywords, @post.tags.join(", ") %>
 
 <article class="post h-entry">
   <header class="post-header">

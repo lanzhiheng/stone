@@ -15,7 +15,19 @@ RSpec.describe HomeController, type: :controller do
 
   it "title of home" do
     get :index
-    expect(response.body).to have_tag("title", text: "Step By Step")
+    expect(response.body).to have_tag("title", text: DEFAULT_META["title"])
+    expect(response.body).to have_tag("meta", with: {
+                                        name: 'keywords',
+                                        content: DEFAULT_META["keywords"]
+                                      })
+    expect(response.body).to have_tag("meta", with: {
+                                        name: 'author',
+                                        content: DEFAULT_META["author"]
+                                      })
+    expect(response.body).to have_tag("meta", with: {
+                                        name: 'description',
+                                        content: DEFAULT_META["description"]
+                                      })
   end
 
   it "Don't display the draft post" do
