@@ -111,7 +111,8 @@
 
     p {
       margin: 10px 0;
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     img {
@@ -129,8 +130,12 @@
         font-size: 13px;
         display: inline-block;
         margin: 0 3px;
-        color: $content-color;
+        color: #2381e6;
       }
+    }
+
+    em {
+      color: #b9b9b9;
     }
 
     a {
