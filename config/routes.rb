@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/lastest', to: 'home#index'
   get '/about', to: 'about#index', as: 'about'
   get '/contact', to: 'contact#index', as: 'contact'
   post '/contact-me', to: 'messages#create', as: 'message'
