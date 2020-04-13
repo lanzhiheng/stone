@@ -8,7 +8,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it "social link" do
-      expect(helper.social).to have_tag("a", count: 4)
+      expect(helper.social).to have_tag("a", count: 5)
     end
   end
 end

@@ -17,6 +17,10 @@ module ApplicationHelper
         class: 'far fa-envelope',
         url: 'mailto:lanzhihengrj@gmail.com'
       },
+      {
+        class: 'fas fa-rss',
+        url: '/lastest.atom'
+      },
     ]
   end
 

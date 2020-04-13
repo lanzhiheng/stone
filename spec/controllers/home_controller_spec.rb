@@ -45,15 +45,15 @@ RSpec.describe HomeController, type: :controller do
     expect(response.body).to have_tag("li.post-wrapper", count: 3)
   end
 
-  it "At most 10 items in home page" do
-    (1..13).each do |i|
+  it "At most 15 items in home page" do
+    (1..20).each do |i|
       create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
     end
 
     get :index
     expect(response.body).to have_tag('div.home')
     expect(response.body).to have_tag('ul.post-list')
-    expect(response.body).to have_tag('li.post-wrapper', count: 10)
+    expect(response.body).to have_tag('li.post-wrapper', count: 15)
   end
 
   it "should get index with lastest navbar active" do

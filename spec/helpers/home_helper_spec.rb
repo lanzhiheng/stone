@@ -7,7 +7,7 @@ RSpec.describe HomeHelper, type: :helper do
       Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
     end
 
-    expect(lastest_posts.size).to eq 10
-    expect(lastest_posts).to eq Post.published.limit(10).order('created_at desc')
+    expect(lastest_posts.size).to eq 15
+    expect(lastest_posts).to eq Post.published.limit(15).order('created_at desc')
   end
 end
