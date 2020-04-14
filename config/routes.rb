@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/lastest', to: 'home#index'
   get '/about', to: 'about#index', as: 'about'
   get '/contact', to: 'contact#index', as: 'contact'
+  get '/tags', to: 'tags#index', as: 'tags'
   post '/contact-me', to: 'messages#create', as: 'message'
 
   constraints(category: /(translations|blogs)/) do
