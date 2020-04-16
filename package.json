@@ -12,6 +12,7 @@
     "minimist": "^1.2.5",
     "normalize.css": "^8.0.1",
     "push.js": "^1.0.12",
+    "select2": "^4.0.13",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
