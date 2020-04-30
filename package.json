@@ -8,7 +8,7 @@
     "@rails/webpacker": "4.2.2",
     "easymde": "^2.9.0",
     "highlight.js": "^9.18.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "minimist": "^1.2.5",
     "normalize.css": "^8.0.1",
     "push.js": "^1.0.12",
