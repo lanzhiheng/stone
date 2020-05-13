@@ -13,7 +13,7 @@
 
 // Suffix of file must be scss not css, so I make a soft link.
 @import "easymde.min.scss";
-
+@import "select2/dist/css/select2.css";
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
@@ -42,6 +42,29 @@
 
       .fa {
         color: #000;
+      }
+    }
+  }
+}
+
+
+#post_tag_list {
+  ~ .select2-container {
+    width: 74% !important;
+
+    .select2-search--inline {
+      margin-top: 5px;
+
+      .select2-search__field {
+        margin-top: 0;
+      }
+    }
+
+    .select2-selection__choice {
+      .select2-selection__choice__remove {
+        height: 5px;
+        line-height: 5px;
+        vertical-align: 1px;
       }
     }
   }

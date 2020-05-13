@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-  permit_params :title, :body, :slug, :excerpt, :category_id, :created_at, :tag_list, :draft
+  permit_params :title, :body, :slug, :excerpt, :category_id, :created_at, :draft, tag_list: []
 
   index do
     selectable_column
@@ -27,7 +27,7 @@ ActiveAdmin.register Post do
         post.content
       end
       row :tag_list do |post|
-        post.tag_list.join(', ')
+        post.tag_list
       end
       row :excerpt
       row :created_at do |post|
@@ -53,7 +53,7 @@ ActiveAdmin.register Post do
       f.input :excerpt
       f.input :created_at, :as => :datetime_select
       f.input :category_id, :as => :select, :collection => Category.pluck(:name, :id)
-      f.input :tag_list, input_html: { value: f.object.tag_list.join(',') }
+      f.input :tag_list, :as => :select, :input_html => { :multiple => true }, :collection => f.object.tags.map(&:name)
       f.input :draft, :as => :boolean
     end
 
@@ -69,12 +69,21 @@ ActiveAdmin.register Post do
       @post = Post.new
       @post.created_at = Time.current
     end
+
+    def update
+      @post = find_resource
+      post = permitted_params[:post]
+      tag_list = post.delete(:tag_list)
+      @post.assign_attributes(post)
+      @post.tag_list = tag_list.reject { |i| i.empty? }.join(',')
+      @post.save
+      render :show
+    end
   end
 
   action_item :preview, only: :show do
     link_to 'Preview', post_preview_path(post.category.key, post.slug), target: '_blank'
   end
-
 
   member_action :switch, method: :put do
     @post = Post.friendly.find(params[:id])
