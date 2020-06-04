@@ -9,21 +9,7 @@ $(document).ready(function() {
     spellChecker: false
   });
 
-  var tagListInput = $('#post_tag_list').select2({
-    tags: true,
-    data: [
-      {
-        id: 'enhancement',
-        text: 'enhancement'
-      },
-      {
-        id: 'bug',
-        text: 'bug'
-      },
-      {
-        id: 'wontfix',
-        text: 'wontfix'
-      }
-    ]
+  $('#post_tag_list').select2({
+    tags: true
   })
 })
