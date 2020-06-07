@@ -8,8 +8,7 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
-@import "active_admin/mixins";
-@import "active_admin/base";
+@import "arctic_admin/base";
 
 // Suffix of file must be scss not css, so I make a soft link.
 @import "easymde.min.scss";
@@ -24,7 +23,7 @@
   overflow: hidden;
 
   .markdown-wrapper {
-    width: 80%;
+    width: 74%;
     float: left;
   }
 
@@ -53,10 +52,14 @@
     width: 74% !important;
 
     .select2-search--inline {
-      margin-top: 5px;
+      margin-top: 3px;
 
       .select2-search__field {
         margin-top: 0;
+      }
+
+      input {
+        height: 26px;
       }
     }
 

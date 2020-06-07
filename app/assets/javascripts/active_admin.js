@@ -1,4 +1,4 @@
-//= require active_admin/base
+//= require arctic_admin/base
 //= require easymde.min.js
 //= require select2/dist/js/select2.js
 //= require_self
