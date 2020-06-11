@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'contact#index', as: 'contact'
   get '/tags', to: 'tags#index', as: 'tags'
   post '/contact-me', to: 'messages#create', as: 'message'
+  put '/upload', to: 'image_uploader#upload'
 
   constraints(category: /(translations|blogs)/) do
     get '/:category', to: 'posts#index', as: 'posts'
