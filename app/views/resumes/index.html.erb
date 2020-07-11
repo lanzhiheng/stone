@@ -1,0 +1,8 @@
+<div class="about">
+  <% Resume.last(2).each do |resume| %>
+    <div class="resume">
+      <h1 class="title"><%= resume.title %></h1>
+      <div class="content"><%= resume.converted_description %></div>
+    </div>
+  <% end %>
+</div>
