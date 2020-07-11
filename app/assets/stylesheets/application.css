@@ -18,7 +18,7 @@
  *= require main
  *= require posts
  *= require contact
- *= require about
+ *= require resume
  *= require errors
  *= require_self
  */
