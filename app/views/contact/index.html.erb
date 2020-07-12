@@ -2,16 +2,16 @@
   <h1 class="title">Contact Me</h1>
   <%= form_with(url: contact_me_path, id: 'ajaxForm') do %>
     <div class="field">
-      <label for="name">Name:</label>
-      <input type="text" name="name" placeholder="Your Name" />
+      <%= label_tag(:name, "Name") %>
+      <%= text_field_tag(:name, nil, placeholder: "Your Name") %>
     </div>
     <div class="field">
-      <label for="email">Email:</label>
-      <input type="text" name="email" placeholder="Your Email" />
+      <%= label_tag(:email, "Email:") %>
+      <%= text_field_tag(:email, nil, placeholder: "Your Email", type: "email") %>
     </div>
     <div class="field">
-      <label for="content">Content:</label>
-      <textarea type="text" name="content" rows="6" placeholder="...."></textarea>
+      <%= label_tag(:content, "Content:") %>
+      <%= text_area_tag(:content, nil, placeholder: "...", rows: 6) %>
     </div>
     <button class="btn" type="submit">SEND</button>
   <% end %>

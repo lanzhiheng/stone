@@ -13,7 +13,11 @@ RSpec.describe ContactController, type: :controller do
       get :index
 
       expect(response.body).to have_tag("div.contact-form")
-      expect(response.body).to have_tag(".field", count: 3)
+      expect(response.body).to have_tag('form', :with => { :action => contact_me_path, :method => 'post' }) do
+        with_tag "input", :with => { :name => "name" }
+        with_tag "input", :with => { :name => "email", :type => "email" }
+        with_tag "textarea", :with => { :name => "content" }
+      end
     end
   end
 end
