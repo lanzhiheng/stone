@@ -1,5 +1,4 @@
 import $ from 'jquery'
-import Push from 'push.js'
 
 document.addEventListener('turbolinks:load', (event) => {
   $('#ajaxForm').submit(function(e) {
@@ -7,11 +6,7 @@ document.addEventListener('turbolinks:load', (event) => {
     var $form = $(this)
     var url = $form.attr("action");
 
-    var $btn = $('.btn')
-    $btn.addClass('disabled')
-    var cached = $btn.html()
-    $btn.html('发送中...')
-
+    /* Checking the content */
     var messages = []
 
     $form.find('.field').each(function() {
@@ -19,12 +14,21 @@ document.addEventListener('turbolinks:load', (event) => {
       var $input = $this.find('input, textarea')
       var value = $input.val()
       if (!value) {
-        var message = $this.find('label').text().slice(0, -1) + '不能为空。'
+        var message = $this.find('label').text().slice(0, -1) + ' can not be blank.'
         messages.push(message)
       }
     })
 
-    if (messages.length) alert(messages[0])
+    if (messages.length) {
+      alert(messages[0])
+      return
+    }
+    /* Checking the content */
+
+    var $btn = $('.btn')
+    $btn.addClass('disabled')
+    var cached = $btn.html()
+    $btn.html('Sending...')
 
     $.ajax({
       method: "POST",
@@ -36,19 +40,19 @@ document.addEventListener('turbolinks:load', (event) => {
       contentType: false,
       headers: {
         "Accept": "application/json"
+      },
+      success: function() {
+        alert('Sent Successfully')
+        window.location.href = '/'
+      },
+      error: function(data) {
+        alert(data.responseJSON.msg)
+      },
+      complete: function(data) {
+        $btn.removeClass('disabled')
+        $btn.html(cached)
+        $form.find('input, textarea').val('') // clean up all data
       }
-    }).done(function() {
-      Push.create("Notification", {
-        link: '',
-        body: 'Sent Successfully',
-        onClick: function () {
-          window.focus();
-          this.close();
-        }
-      });
-      $btn.removeClass('disabled')
-      $btn.html(cached)
-      $form.find('input, textarea').val('') // clean up all data
     })
   })
 })

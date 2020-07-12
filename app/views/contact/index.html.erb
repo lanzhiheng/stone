@@ -1,18 +1,18 @@
 <div class="contact-form">
-  <h1 class="title">联系方式</h1>
-  <form id="ajaxForm" action="/contact-me" method="POST">
+  <h1 class="title">Contact Me</h1>
+  <%= form_with(url: '/contact-me', id: 'ajaxForm') do %>
     <div class="field">
-      <label for="name">姓名:</label>
-      <input type="text" name="name" placeholder="怎么称呼您？" />
+      <label for="name">Name:</label>
+      <input type="text" name="name" placeholder="Your Name" />
     </div>
     <div class="field">
-      <label for="email">邮箱:</label>
-      <input type="text" name="email" placeholder="如何联系您？" />
+      <label for="email">Email:</label>
+      <input type="text" name="email" placeholder="Your Email" />
     </div>
     <div class="field">
-      <label for="content">内容:</label>
-      <textarea type="text" name="content" rows="6" placeholder="有什么要跟我说？"></textarea>
+      <label for="content">Content:</label>
+      <textarea type="text" name="content" rows="6" placeholder="...."></textarea>
     </div>
-    <button class="btn" type="submit">发送</button>
-  </form>
+    <button class="btn" type="submit">SEND</button>
+  <% end %>
 </div>
