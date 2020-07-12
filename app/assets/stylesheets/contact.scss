@@ -27,10 +27,15 @@
     textarea {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ccc;
+      outline: none;
+      border: 2px solid #ccc;
 
       &::placeholder {
         color: #ddd;
+      }
+
+      &:focus {
+        border: 2px solid $primary-color;
       }
     }
   }
