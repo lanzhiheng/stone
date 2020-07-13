@@ -69,6 +69,11 @@ jobs:
           name: Database setup
           command: bin/rails db:schema:load --trace
 
+      - persist_to_workspace:
+          root: /home/circleci/project
+          paths:
+            - vendor/bundle
+
       # Run rspec in parallel
       - run:
           command: |
@@ -81,3 +86,40 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
+  deploy:
+    docker:
+      - image: circleci/ruby:2.6.5-stretch-node
+        BUNDLE_JOBS: 3
+        BUNDLE_RETRY: 3
+        BUNDLE_PATH: vendor/bundle
+    steps:
+      - checkout
+      - run:
+          name: install bundler
+          command: gem install bundler:2.0.1
+      - restore_cache:
+          keys:
+            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - rails-demo-bundle-v2-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "e4:3c:7f:db:5d:35:2d:1e:4f:96:71:5c:1d:59:be:8d"
+      - run:
+          name: Deploy if tests pass and branch is Master
+          command: bundle exec cap production deploy
+
+
+workflows:
+   version: 2
+   build-and-deploy:
+     jobs:
+       - build
+       - deploy:
+           requires:
+             - build # only deploy once build job has completed
+           filters:
+             branches:
+               only: master
