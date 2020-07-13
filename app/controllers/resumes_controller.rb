@@ -1,9 +1,4 @@
-class ResumesController < InheritedResources::Base
-
-  private
-
-    def resume_params
-      params.require(:resume).permit()
-    end
-
+class ResumesController < ApplicationController
+  def index
+  end
 end
