@@ -1,66 +1,30 @@
-sversion: 2.1
+version: 2.1
+
 orbs:
-  ruby: circleci/ruby@0.1.2
+  ruby: circleci/ruby@1.0.5
+  node: circleci/node@3.0.1
 
 jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.5-stretch-node
-        environment: # environment variables for primary container
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          PGHOST: 127.0.0.1
-          PGUSER: stone
-          RAILS_ENV: test
       - image: circleci/postgres:9.5-alpine # database image
         environment: # environment variables for database
           POSTGRES_USER: stone
           POSTGRES_DB: stone_test
           POSTGRES_PASSWORD: ""
-    executor: docker
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: stone
+      PGPASSWORD: ""
+      RAILS_ENV: test
     steps:
       - checkout
-
-      - run:
-          name: install bundler
-          command: gem install bundler:2.0.1
-
-      - run:
-          name: Which bundler?
-          command: bundle -v
-
-      # Restore bundle cache
-      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-      - restore_cache:
-          keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-
-      - run: # Install Ruby dependencies
-          name: Bundle Install
-          command: bundle check --path vendor/bundle || bundle install --deployment
-
-      # Store bundle cache for Ruby dependencies
-      - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-
-      # Only necessary if app uses webpacker or yarn in some other way
-      - restore_cache:
-          keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-      # Store yarn / webpacker cache
-      - save_cache:
-          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -68,48 +32,18 @@ jobs:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
-
-      # - persist_to_workspace:
-      #     root: /home/circleci/project
-      #     paths:
-      #       - vendor/bundle
-
       # Run rspec in parallel
-      - run:
-          command: |
-            mkdir /tmp/test-results
-            TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            bundle exec rspec $TESTFILES --profile 10 --format RspecJunitFormatter --out /tmp/test-results/rspec.xml --format progress
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+      - ruby/rspec-test
 
   deploy:
-    executor: docker
     docker:
       - image: circleci/ruby:2.6.5-stretch-node
-        environment: # environment variables for primary container
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
     steps:
       - checkout
+      - ruby/install-deps
       - run:
-          name: install bundler
-          command: gem install bundler:2.0.1
-      - restore_cache:
-          keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-      - run:
-          name: Bundle Install
-          command: bundle check --path vendor/bundle || bundle install
-      # - run:
-      #     name: Deploy if tests pass and branch is Master
-      #     command: bundle exec cap production deploy
-
+          name: Deploy if tests pass and branch is Master
+          command: bundle exec cap production deploy
 
 workflows:
    version: 2
@@ -119,6 +53,6 @@ workflows:
        - deploy:
            requires:
              - build # only deploy once build job has completed
-           # filters:
-           #   branches:
-           #     only: master
+           filters:
+             branches:
+               only: master
