@@ -19,5 +19,18 @@ RSpec.describe ContactController, type: :controller do
         with_tag "textarea", :with => { :name => "content" }
       end
     end
+
+    it "meta data for contact page" do
+      get :index
+      expect(response.body).to have_tag("title", "Contact Me" )
+      expect(response.body).to have_tag("meta", with: {
+                                          name: 'keywords',
+                                          content: DEFAULT_META["keywords"]
+                                        })
+      expect(response.body).to have_tag("meta", with: {
+                                          name: 'description',
+                                          content: 'Contact the author in this page.'
+                                        })
+    end
   end
 end
