@@ -1,3 +1,6 @@
+<% content_for :title, "About" %>
+<% content_for :description, "Simple description of the author." %>
+
 <div class="about">
   <% Resume.last(2).each do |resume| %>
     <div class="resume">
