@@ -1,9 +1,14 @@
 class ErrorsController < ApplicationController
   def not_found
-    render(:error_with_code, status: 404)
+    error_page_render(404)
   end
 
   def internal_server_error
-    render(:error_with_code, status: 500)
+    error_page_render(500)
+  end
+
+  private
+  def error_page_render(code)
+    render(:error_with_code, formats: :html, status: code)
   end
 end
