@@ -4,6 +4,9 @@
 
 SitemapGenerator::Sitemap.default_host = "https://www.lanzhiheng.com"
 
+SitemapGenerator::Sitemap.create_index = false
+
+# https://github.com/kjvarga/sitemap_generator#sitemaps-with-no-index-file
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
   #
