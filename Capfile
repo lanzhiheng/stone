@@ -33,6 +33,7 @@ require "capistrano/bundler"
 require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 # require "capistrano/passenger"
+require 'capistrano/sitemap_generator'
 
 require 'capistrano/puma'
 install_plugin Capistrano::Puma, load_hooks: false  # Default puma tasks

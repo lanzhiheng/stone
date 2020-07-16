@@ -6,4 +6,7 @@ User-agent: *
 Disallow: /
 <% end %>
 
+User-agent: *
+Disallow: /<%= ActiveAdmin.application.namespace(:admin).route_options[:path] %>/
+
 Sitemap: <%= "#{root_url}sitemap.xml" %>
