@@ -12,7 +12,8 @@
     "minimist": "^1.2.5",
     "normalize.css": "^8.0.1",
     "select2": "^4.0.13",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "lodash": "^4.17.19"
   },
   "version": "0.1.0",
   "devDependencies": {
