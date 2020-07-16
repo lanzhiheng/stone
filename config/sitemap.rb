@@ -33,7 +33,7 @@ SitemapGenerator::Sitemap.create do
 
   add "/"
 
-  Post.find_each do |post|
+  Post.published.find_each do |post|
     add post_path(post.category.key, post.slug), lastmod: post.updated_at
   end
 
