@@ -7,7 +7,7 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 set :app_url, 'https://www.lanzhiheng.com'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
+set :sitemap_roles, :web
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/stone"
 
@@ -98,6 +98,7 @@ namespace :db do
   end
 end
 
+after 'deploy:restart', 'sitemap:refresh'
 after 'deploy:restart', 'deploy:visit_web'
 
 append :linked_files, 'config/database.yml', 'config/master.key'
