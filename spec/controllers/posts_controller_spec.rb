@@ -130,6 +130,12 @@ RSpec.describe PostsController, type: :controller do
       expect(response.body).to have_tag(".nav > li > a.active", text: "Blog")
     end
 
+    it "contain the structed-data" do
+      post = create(:post, category: @blog, draft: false)
+      get :show, params: { category: @blog.key, id: post.slug }
+      expect(response.body).to have_tag("script", with: { type: "application/ld+json" })
+    end
+
     it "should not access without `blogs` or `translations` category" do
       expect {
         get :show, params: { category: 'books' }

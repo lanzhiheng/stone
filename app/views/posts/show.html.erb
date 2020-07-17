@@ -2,6 +2,29 @@
 <% content_for :description, @post.excerpt %>
 <% content_for :keywords, @post.tags.join(", ") %>
 
+<% content_for :structured_data do %>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://google.com/article"
+      },
+      "headline": "<%= @post.title %>",
+      "datePublished": "<%= @post.created_at %>",
+      "dateModified": "<%= @post.updated_at %>",
+      "author": {
+        "@type": "Person",
+        "name": "lanzhiheng"
+      },
+      "description": "<%= @post.excerpt %>",
+      "publisher": {},
+      "image": {}
+    }
+  </script>
+<% end %>
+
 <article class="post h-entry">
   <header class="post-header">
     <h1 class="post-title p-name"><%= @post.title %></h1>
