@@ -47,6 +47,9 @@ gem 'will_paginate', '~> 3.2.1'
 # https://github.com/kjvarga/sitemap_generator
 gem 'sitemap_generator', '~> 6.1.2'
 
+# https://github.com/jumph4x/canonical-rails
+gem 'canonical-rails', github: 'jumph4x/canonical-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -5,12 +5,13 @@
     <meta name="description" content="<%= meta_description %>" />
     <meta name="author" content="<%= meta_author %>" />
     <meta name="keywords" content="<%= meta_keywords %>" />
-    <%= yield :structured_data %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= canonical_tag -%>
     <%= render 'application/favicon' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= yield :structured_data %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
