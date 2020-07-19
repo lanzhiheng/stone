@@ -58,7 +58,11 @@ RSpec.describe Post, type: :model do
   end
 
   context 'attributes' do
-    it "published posts" do
+    after(:each) do
+      Post.destroy_all
+    end
+
+it "published posts" do
       (1..5).each do |i|
         create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
       end
@@ -78,6 +82,15 @@ RSpec.describe Post, type: :model do
     it "taggable" do
       post = create(:post, tag_list: 'Ruby, JavaScript, Life')
       expect(post.tags.size).to eq 3
+    end
+
+    it "retrieve posts by category's key" do
+      (1..5).each do |i|
+        create(:post, title: "title-blog-#{i}", slug: "slug-blog-#{i}", category: @blog)
+        create(:post, title: "title-translation-#{i}", slug: "slug-category-#{i}", category: @translation)
+      end
+      expect(Post.category(@blog.key).size).to eq 5
+      expect(Post.category(@translation.key).size).to eq 5
     end
   end
 
