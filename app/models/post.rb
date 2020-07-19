@@ -10,6 +10,8 @@ class Post < ApplicationRecord
 
   scope :published, -> { where(draft: false) }
 
+  scope :category, -> (key) { joins(:category).where('categories.key = ?', key) }
+
   self.per_page = 10
 
   def self.markdown
