@@ -1,16 +1,24 @@
 class PostsController < ApplicationController
   def preview
-    raise ActionController::RoutingError.new('Page Not Found') unless admin_user_signed_in?
-    @post = Post.friendly.find(params[:id])
-    render 'show'
+    raise ActionController::RoutingError.new("Page Not Found") unless admin_user_signed_in?
+    @post = posts_in_category.friendly.find(params[:id])
+    render :show
   end
 
   def show
-    @post = Post.published.friendly.find(params[:id])
+    @post = posts_in_category.published.friendly.find(params[:id])
   end
 
   def index
-    category = Category.find_by(key: params[:category])
-    @posts = Post.published.where(category: category.id).page(params[:page]).order('created_at DESC')
+    @posts = Post.published.where(category: category.id).page(params[:page]).order("created_at DESC")
+  end
+
+  private
+  def posts_in_category
+    category.posts
+  end
+
+  def category
+    Category.find_by(key: params[:category])
   end
 end
