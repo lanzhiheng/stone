@@ -158,6 +158,14 @@ RSpec.describe PostsController, type: :controller do
       expect_for_detail_page(post)
     end
 
+    it "fetch detail with correct category" do
+      post = create(:post, category: @blog, draft: false)
+
+      assert_raises(ActiveRecord::RecordNotFound) do
+        get :show, params: { category: @translation.key, id: post.slug }
+      end
+    end
+
     it "not display the draft post" do
       post = create(:post, category: @blog, draft: true)
 
@@ -166,16 +174,40 @@ RSpec.describe PostsController, type: :controller do
       end
     end
 
-    it "can preview the draft post if login" do
-      post = create(:post, category: @blog, draft: true)
-      admin_user = AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
-      expect {
-        get :preview, params: { category: @blog.key, id: post.slug }
-      }.to raise_error(ActionController::RoutingError)
+    describe "admin user page" do
+      before(:context) do
+        @draft_post = create(:post, category: @blog, draft: true)
+        @admin_user = AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+      end
 
-      sign_in admin_user
-      get :preview, params: { category: @blog.key, id: post.slug }
-      expect_for_detail_page(post)
+      after(:context) do
+        @draft_post.destroy
+        @admin_user.destroy
+      end
+
+      it "can not preview the draft post if non-login" do
+        expect {
+          get :preview, params: { category: @blog.key, id: @draft_post.slug }
+        }.to raise_error(ActionController::RoutingError)
+      end
+
+      it "can preview the draft post if login" do
+        sign_in @admin_user
+        get :preview, params: { category: @blog.key, id: @draft_post.slug }
+        expect_for_detail_page(@draft_post)
+      end
+
+      it "preview the draft with correct category" do
+        sign_in @admin_user
+        get :preview, params: { category: @blog.key, id: @draft_post.slug }
+      end
+
+      it "can not preview the draft post with wrong category" do
+        sign_in @admin_user
+        assert_raises(ActiveRecord::RecordNotFound) do
+          get :show, params: { category: @translation.key, id: @draft_post.slug }
+        end
+      end
     end
 
     it "will load disqus component" do
