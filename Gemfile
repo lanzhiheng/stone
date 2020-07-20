@@ -30,6 +30,9 @@ gem 'aws-sdk-s3', '~> 1'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'arctic_admin'
 
+# https://github.com/rubocop-hq/rubocop
+gem 'rubocop', require: false
+
 # Plus integrations with:
 gem 'devise'
 gem 'cancancan'
