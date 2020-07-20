@@ -7,6 +7,7 @@ RSpec.describe PostsController, type: :controller do
   before(:context) do
     @translation = create(:category, :translation)
     @blog = create(:category, :blog)
+    @book = create(:category, :book)
   end
 
   describe "List Page" do
@@ -35,13 +36,6 @@ RSpec.describe PostsController, type: :controller do
     it "has active navbar on blog text" do
       get :index, params: { category: 'blogs' }
       expect(response.body).to have_tag(".nav > li > a.active", text: "Blog")
-    end
-
-
-    it "should not access pages without `blogs` or `translations` category" do
-      expect {
-        get :index, params: { category: 'books' }
-      }.to raise_error(ActionController::UrlGenerationError)
     end
 
     it "contain title and meta" do
@@ -134,12 +128,6 @@ RSpec.describe PostsController, type: :controller do
       post = create(:post, category: @blog, draft: false)
       get :show, params: { category: @blog.key, id: post.slug }
       expect(response.body).to have_tag("script", with: { type: "application/ld+json" })
-    end
-
-    it "should not access without `blogs` or `translations` category" do
-      expect {
-        get :show, params: { category: 'books' }
-      }.to raise_error(ActionController::UrlGenerationError)
     end
 
     def expect_for_detail_page(post)

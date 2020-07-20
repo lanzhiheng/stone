@@ -8,6 +8,12 @@ FactoryBot.define do
       key { 'blogs' }
     end
 
+    trait :book do
+      name { '书籍' }
+      key { 'books' }
+    end
+
+
     trait :translation do
       name { '翻译' }
       key { 'translations' }
