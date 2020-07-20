@@ -62,7 +62,7 @@ RSpec.describe Post, type: :model do
       Post.destroy_all
     end
 
-it "published posts" do
+    it "published posts" do
       (1..5).each do |i|
         create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
       end

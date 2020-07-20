@@ -1,5 +1,13 @@
+class CategoryConstraint
+  def matches?(request)
+    category = request.params[:category]
+
+    return true if Category.pluck(:key).include?(category)
+    raise ActionController::RoutingError.new("The category #{category} is nonexistent.")
+  end
+end
+
 Rails.application.routes.draw do
-  resources :resumes
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'home#index'
@@ -11,13 +19,13 @@ Rails.application.routes.draw do
   post '/contact-me', to: 'messages#create', as: 'contact_me'
   put '/upload', to: 'image_uploader#upload'
 
-  constraints(category: /(translations|blogs)/) do
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server_error'
+  get "/robots.:format", to: "pages#robots"
+
+  constraints(CategoryConstraint.new) do
     get '/:category', to: 'posts#index', as: 'posts'
     get '/:category/:id', to: 'posts#show', as: 'post'
     get '/:category/preview/:id', to: 'posts#preview', as: 'post_preview'
   end
-
-  get '/404', to: 'errors#not_found'
-  get '/500', to: 'errors#internal_server_error'
-  get "/robots.:format", to: "pages#robots"
 end
