@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   acts_as_taggable
   extend FriendlyId
@@ -10,7 +12,7 @@ class Post < ApplicationRecord
 
   scope :published, -> { where(draft: false) }
 
-  scope :category, -> (key) { joins(:category).where('categories.key = ?', key) }
+  scope :category, ->(key) { joins(:category).where('categories.key = ?', key) }
 
   self.per_page = 10
 

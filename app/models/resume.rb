@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Resume < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
