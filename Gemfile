@@ -31,7 +31,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'arctic_admin'
 
 # https://github.com/rubocop-hq/rubocop
-gem 'rubocop', require: false
+gem 'rubocop', '~> 0.88.0', require: false
 
 # Plus integrations with:
 gem 'devise'
