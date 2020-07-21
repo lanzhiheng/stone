@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 atom_feed do |feed|
   feed.title(meta_title)
   feed.updated(lastest_posts.first.created_at)
@@ -11,7 +13,7 @@ atom_feed do |feed|
       entry.excerpt(post.excerpt)
       entry.content(post.content, type: 'html')
       entry.tag!('app:edited', Time.now)
-      entry.author("Lan")
+      entry.author('Lan')
     end
   end
 end

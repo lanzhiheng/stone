@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "admin posts", type: :request do
+RSpec.describe 'admin posts', type: :request do
   include Devise::Test::IntegrationHelpers
 
   before(:context) do
@@ -9,8 +11,8 @@ RSpec.describe "admin posts", type: :request do
     @blog = create(:category, :blog)
   end
 
-  describe "GET /posts" do
-    it "returns http success" do
+  describe 'GET /posts' do
+    it 'returns http success' do
       admin_user = AdminUser.first
       get admin_posts_url
       expect(response.code).to eq '302'
@@ -19,9 +21,9 @@ RSpec.describe "admin posts", type: :request do
       expect(response.code).to eq '200'
     end
 
-    it "Just with view, edit, preview, handle link, without delete link" do
+    it 'Just with view, edit, preview, handle link, without delete link' do
       admin_user = AdminUser.first
-      post = create(:post, category: @blog)
+      create(:post, category: @blog)
 
       sign_in admin_user
 
@@ -34,8 +36,8 @@ RSpec.describe "admin posts", type: :request do
     end
   end
 
-  describe "GET /posts/:id/edit" do
-    it "returns http success" do
+  describe 'GET /posts/:id/edit' do
+    it 'returns http success' do
       admin_user = AdminUser.first
       post = create(:post, category: @blog)
       get admin_post_url(post)
@@ -45,7 +47,7 @@ RSpec.describe "admin posts", type: :request do
       expect(response.code).to eq '200'
     end
 
-    it "post body form with md_editor id" do
+    it 'post body form with md_editor id' do
       admin_user = AdminUser.first
       post = create(:post, category: @blog, tag_list: 'hello, world')
       sign_in admin_user
@@ -55,8 +57,8 @@ RSpec.describe "admin posts", type: :request do
     end
   end
 
-  describe "GET /posts/:id" do
-    it "returns http success" do
+  describe 'GET /posts/:id' do
+    it 'returns http success' do
       admin_user = AdminUser.first
       post = create(:post, category: @blog)
       get admin_post_url(post)
@@ -66,7 +68,7 @@ RSpec.describe "admin posts", type: :request do
       expect(response.code).to eq '200'
     end
 
-    it "Show title, body, excerpt, tag list, created_at, updated_at" do
+    it 'Show title, body, excerpt, tag list, created_at, updated_at' do
       admin_user = AdminUser.first
       post = create(:post, category: @blog, tag_list: 'hello, world')
       sign_in admin_user
@@ -75,8 +77,8 @@ RSpec.describe "admin posts", type: :request do
       expect(response.body).to have_tag('.row-title > td', text: post.title)
       expect(response.body).to have_tag('.row-body > td', text: post.body)
       expect(response.body).to have_tag('.row-excerpt > td', text: post.excerpt)
-      expect(response.body).to have_tag('.row-created_at > td', text: post.created_at.strftime("%Y-%m-%d %H:%M"))
-      expect(response.body).to have_tag('.row-updated_at > td', text: post.updated_at.strftime("%Y-%m-%d %H:%M"))
+      expect(response.body).to have_tag('.row-created_at > td', text: post.created_at.strftime('%Y-%m-%d %H:%M'))
+      expect(response.body).to have_tag('.row-updated_at > td', text: post.updated_at.strftime('%Y-%m-%d %H:%M'))
       expect(response.body).to have_tag('.row-tag_list > td', count: 1)
       expect(response.body).to have_tag('.row-draft > td', count: 1)
     end

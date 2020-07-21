@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ErrorsController < ApplicationController
   def not_found
     error_page_render(404)
@@ -8,6 +10,7 @@ class ErrorsController < ApplicationController
   end
 
   private
+
   def error_page_render(code)
     render(:error_with_code, formats: :html, status: code)
   end

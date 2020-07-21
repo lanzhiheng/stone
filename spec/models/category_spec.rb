@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
@@ -8,16 +10,16 @@ RSpec.describe Category, type: :model do
     end
 
     it 'without key' do
-      expect {
+      expect do
         create(:category, key: nil)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
       expect(Category.count).to eq 0
     end
 
     it 'without name' do
-      expect {
+      expect do
         create(:category, name: nil)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
       expect(Category.count).to eq 0
     end
 

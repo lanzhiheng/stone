@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe HomeController, type: :controller do
@@ -8,25 +10,25 @@ RSpec.describe HomeController, type: :controller do
     @blog = create(:category, :blog)
   end
 
-  it "should get index" do
+  it 'should get index' do
     get :index
-    expect(response.code).to eq "200"
+    expect(response.code).to eq '200'
   end
 
-  it "title of home" do
+  it 'title of home' do
     get :index
-    expect(response.body).to have_tag("title", text: DEFAULT_META["title"])
-    expect(response.body).to have_tag("meta", with: {
+    expect(response.body).to have_tag('title', text: DEFAULT_META['title'])
+    expect(response.body).to have_tag('meta', with: {
                                         name: 'keywords',
-                                        content: DEFAULT_META["keywords"]
+                                        content: DEFAULT_META['keywords']
                                       })
-    expect(response.body).to have_tag("meta", with: {
+    expect(response.body).to have_tag('meta', with: {
                                         name: 'author',
-                                        content: DEFAULT_META["author"]
+                                        content: DEFAULT_META['author']
                                       })
-    expect(response.body).to have_tag("meta", with: {
+    expect(response.body).to have_tag('meta', with: {
                                         name: 'description',
-                                        content: DEFAULT_META["description"]
+                                        content: DEFAULT_META['description']
                                       })
   end
 
@@ -40,12 +42,12 @@ RSpec.describe HomeController, type: :controller do
     end
 
     get :index
-    expect(response.body).to have_tag("div.home")
-    expect(response.body).to have_tag("ul.post-list")
-    expect(response.body).to have_tag("li.post-wrapper", count: 3)
+    expect(response.body).to have_tag('div.home')
+    expect(response.body).to have_tag('ul.post-list')
+    expect(response.body).to have_tag('li.post-wrapper', count: 3)
   end
 
-  it "At most 15 items in home page" do
+  it 'At most 15 items in home page' do
     (1..20).each do |i|
       create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
     end
@@ -56,14 +58,14 @@ RSpec.describe HomeController, type: :controller do
     expect(response.body).to have_tag('li.post-wrapper', count: 15)
   end
 
-  it "should get index with lastest navbar active" do
+  it 'should get index with lastest navbar active' do
     get :index
-    expect(response.body).to have_tag(".nav > li > a.active", text: "Lastest")
+    expect(response.body).to have_tag('.nav > li > a.active', text: 'Lastest')
   end
 
-  it "should contain post list" do
+  it 'should contain post list' do
     (1..5).each do |i|
-      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false, tag_list: ['hello', 'world'])
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false, tag_list: %w[hello world])
     end
 
     get :index

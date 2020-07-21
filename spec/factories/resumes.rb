@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :resume do
-    title { "title" }
-    description { "description" }    
+    title { 'title' }
+    description { 'description' }
   end
 end
-
