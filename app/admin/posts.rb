@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Post do
   permit_params :title, :body, :slug, :excerpt, :category_id, :created_at, :draft, tag_list: []
 
@@ -13,8 +15,14 @@ ActiveAdmin.register Post do
     actions defaults: false do |post|
       view = link_to('View', admin_post_path(post), class: 'view_link member_link')
       edit = link_to('Edit', edit_admin_post_path(post), class: 'edit_link member_link')
-      preview = link_to('Preview', post_preview_path(post.category.key, post.slug), target: '_blank', class: 'preview_link member_link')
-      publish = link_to(post.draft ? 'Publish' : 'Unpublish', switch_admin_post_path(post.slug), method: :put, class: 'handle_link member_link')
+      preview = link_to('Preview',
+                        post_preview_path(post.category.key, post.slug),
+                        target: '_blank',
+                        class: 'preview_link member_link')
+      publish = link_to(post.draft ? 'Publish' : 'Unpublish',
+                        switch_admin_post_path(post.slug),
+                        method: :PUT,
+                        class: 'handle_link member_link')
       [view, edit, preview, publish].join.html_safe
     end
   end
@@ -23,18 +31,14 @@ ActiveAdmin.register Post do
     attributes_table do
       row :title
       row :slug
-      row :body do |post|
-        post.content
-      end
-      row :tag_list do |post|
-        post.tag_list
-      end
+      row :body, &:content
+      row :tag_list, &:tag_list
       row :excerpt
       row :created_at do |post|
-        post.created_at.strftime("%Y-%m-%d %H:%M")
+        post.created_at.strftime('%Y-%m-%d %H:%M')
       end
       row :updated_at do |post|
-        post.updated_at.strftime("%Y-%m-%d %H:%M")
+        post.updated_at.strftime('%Y-%m-%d %H:%M')
       end
       row :draft
     end
@@ -52,13 +56,13 @@ ActiveAdmin.register Post do
     f.semantic_errors
     f.inputs do
       f.input :title
-      f.input :body, :as => :markdown
+      f.input :body, as: :markdown
       f.input :slug
       f.input :excerpt
-      f.input :created_at, :as => :datetime_select
-      f.input :category_id, :as => :select, :collection => Category.pluck(:name, :id)
-      f.input :tag_list, :as => :select, :input_html => { :multiple => true }, :collection => most_used_tags.map(&:name)
-      f.input :draft, :as => :boolean
+      f.input :created_at, as: :datetime_select
+      f.input :category_id, as: :select, collection: Category.pluck(:name, :id)
+      f.input :tag_list, as: :select, input_html: { multiple: true }, collection: most_used_tags.map(&:name)
+      f.input :draft, as: :boolean
     end
 
     f.actions
@@ -79,7 +83,7 @@ ActiveAdmin.register Post do
       post = permitted_params[:post]
       tag_list = post.delete(:tag_list)
       @post.assign_attributes(post)
-      @post.tag_list = tag_list.reject { |i| i.empty? }.join(',')
+      @post.tag_list = tag_list.reject(&:empty?).join(',')
       @post.save
       render :show
     end

@@ -34,6 +34,9 @@ jobs:
           command: bin/rails db:schema:load --trace
       # Run rspec in parallel
       - ruby/rspec-test
+      - run:
+          name: Rubocop Checking
+          command: bundle exec rubocop
 
   deploy:
     docker:

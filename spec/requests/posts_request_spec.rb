@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "posts", type: :request do
+RSpec.describe 'posts', type: :request do
   include Devise::Test::IntegrationHelpers
 
   before(:context) do
@@ -9,8 +11,8 @@ RSpec.describe "posts", type: :request do
     @blog = create(:category, :blog)
     @book = create(:category, :book)
 
-    @post1 = Post.create(title: "post1", body: "body", slug: "blog-post-slug", category: @blog, draft: false)
-    @post2 = Post.create(title: "post2", body: "body", slug: "book-post-slug", category: @book, draft: false)
+    @post1 = Post.create(title: 'post1', body: 'body', slug: 'blog-post-slug', category: @blog, draft: false)
+    @post2 = Post.create(title: 'post2', body: 'body', slug: 'book-post-slug', category: @book, draft: false)
   end
 
   it "should access index pages with validated category's key" do
@@ -19,9 +21,9 @@ RSpec.describe "posts", type: :request do
     get posts_path(@book.key)
     expect(response).to have_http_status(200)
 
-    expect {
-      get "/invalid-catetory"
-    }.to raise_error(ActionController::RoutingError)
+    expect do
+      get '/invalid-catetory'
+    end.to raise_error(ActionController::RoutingError)
   end
 
   it "should access detail pages with validated category's key" do
@@ -30,13 +32,13 @@ RSpec.describe "posts", type: :request do
     get post_path(@book.key, @post2.slug)
     expect(response).to have_http_status(200)
 
-    expect {
+    expect do
       get post_path(@translation.key, @post1.slug)
-    }.to raise_error(ActiveRecord::RecordNotFound)
+    end.to raise_error(ActiveRecord::RecordNotFound)
 
-    expect {
-      get post_path("invalid-catetory", @post1.slug)
-    }.to raise_error(ActionController::RoutingError)
+    expect do
+      get post_path('invalid-catetory', @post1.slug)
+    end.to raise_error(ActionController::RoutingError)
   end
 
   it "should access detail pages with validated category's key" do
@@ -47,13 +49,13 @@ RSpec.describe "posts", type: :request do
     get post_preview_path(@book.key, @post2.slug)
     expect(response).to have_http_status(200)
 
-    expect {
+    expect do
       get post_preview_path(@translation.key, @post1.slug)
-    }.to raise_error(ActiveRecord::RecordNotFound)
+    end.to raise_error(ActiveRecord::RecordNotFound)
 
-    expect {
-      get post_preview_path("invalid-category", @post1.slug)
-    }.to raise_error(ActionController::RoutingError)
+    expect do
+      get post_preview_path('invalid-category', @post1.slug)
+    end.to raise_error(ActionController::RoutingError)
   end
 
   after(:context) do
@@ -61,5 +63,4 @@ RSpec.describe "posts", type: :request do
     Category.destroy_all
     AdminUser.destroy_all
   end
-
 end

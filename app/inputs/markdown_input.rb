@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MarkdownInput < Formtastic::Inputs::TextInput
   def to_html
     input_wrapping do

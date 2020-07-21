@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImageUploaderController < ApplicationController
   def upload
     file = permitted_params[:file]
@@ -8,12 +10,13 @@ class ImageUploaderController < ApplicationController
       obj = aws_bucket.object(name)
       obj.put(body: body)
       render json: { url: url_formatter(obj), name: name }
-    rescue
-      render json: { msg: "upload failed" }, status: 422
+    rescue StandardError
+      render json: { msg: 'upload failed' }, status: 422
     end
   end
 
   private
+
   def permitted_params
     params.permit(:file)
   end

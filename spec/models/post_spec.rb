@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
@@ -9,33 +11,33 @@ RSpec.describe Post, type: :model do
   context 'create post' do
     it 'without title' do
       before = Post.count
-      expect {
+      expect do
         create(:post, title: nil)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
       expect(Post.count).to eq before
     end
 
     it 'without category' do
       before = Post.count
-      expect {
+      expect do
         create(:post, category: nil)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
       expect(Post.count).to eq before
     end
 
     it 'without body' do
       before = Post.count
-      expect {
+      expect do
         create(:post, body: nil)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
       expect(Post.count).to eq before
     end
 
     it 'without slug' do
       before = Post.count
-      expect {
+      expect do
         create(:post, slug: nil)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
       expect(Post.count).to eq before
     end
 
@@ -47,13 +49,13 @@ RSpec.describe Post, type: :model do
 
     it 'slug must be uniq' do
       post = create(:post)
-      expect {
+      expect do
         create(
           :post,
           title: "#{post.title}_copy",
           body: "#{post.body}_copy"
         )
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 
@@ -62,7 +64,7 @@ RSpec.describe Post, type: :model do
       Post.destroy_all
     end
 
-    it "published posts" do
+    it 'published posts' do
       (1..5).each do |i|
         create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
       end
@@ -74,12 +76,12 @@ RSpec.describe Post, type: :model do
       expect(Post.published.size).to eq 5
     end
 
-    it "the content attribute is the result of the markdown parser" do
+    it 'the content attribute is the result of the markdown parser' do
       post = create(:post, body: '**Markdown**')
       expect(post.content.strip).to eq '<p><strong>Markdown</strong></p>'
     end
 
-    it "taggable" do
+    it 'taggable' do
       post = create(:post, tag_list: 'Ruby, JavaScript, Life')
       expect(post.tags.size).to eq 3
     end

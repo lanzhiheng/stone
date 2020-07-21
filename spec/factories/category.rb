@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :category do
     key { 'category_key' }
@@ -12,7 +14,6 @@ FactoryBot.define do
       name { '书籍' }
       key { 'books' }
     end
-
 
     trait :translation do
       name { '翻译' }

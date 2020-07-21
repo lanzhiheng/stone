@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe HomeHelper, type: :helper do
-  it "lastest posts" do
+  it 'lastest posts' do
     @blog = create(:category)
     (1..20).each do |i|
       Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
