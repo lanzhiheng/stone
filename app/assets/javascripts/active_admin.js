@@ -1,4 +1,4 @@
-//= require arctic_admin/base
+//= require active_admin/base
 //= require easymde.min.js
 // To avoid CSRF token authenticity issue https://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf
 //= require rails-ujs
