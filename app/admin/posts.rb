@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Post do
-  filter :title_contains
+  filter :title_contains, label: 'Title'
   filter :category, as: :select
   filter :draft_not_true, label: 'Published', as: :select
   remove_filter :title

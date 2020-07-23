@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'activeadmin'
+# https://github.com/paulelliott/fabrication
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'aws-sdk-s3', '~> 1'
 gem 'friendly_id', '~> 5.2.4'

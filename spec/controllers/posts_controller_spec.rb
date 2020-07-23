@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-  include Devise::Test::ControllerHelpers
   render_views
 
   before(:context) do
