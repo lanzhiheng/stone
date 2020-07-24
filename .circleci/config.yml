@@ -4,15 +4,19 @@ orbs:
   ruby: circleci/ruby@1.0.5
   node: circleci/node@3.0.1
 
-jobs:
-  build:
+executors:
+  my-executor:
     docker:
-      - image: circleci/ruby:2.6.5-stretch-node
+      - image: circleci/ruby:2.7.1-node
       - image: circleci/postgres:9.5-alpine # database image
         environment: # environment variables for database
           POSTGRES_USER: stone
           POSTGRES_DB: stone_test
           POSTGRES_PASSWORD: ""
+
+jobs:
+  build:
+    executor: my-executor
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
@@ -39,8 +43,7 @@ jobs:
           command: bundle exec rubocop
 
   deploy:
-    docker:
-      - image: circleci/ruby:2.6.5-stretch-node
+    executor: my-executor
     steps:
       - checkout
       - ruby/install-deps
