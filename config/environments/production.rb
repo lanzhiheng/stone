@@ -74,7 +74,14 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
+
   config.log_formatter = ::Logger::Formatter.new
+
+  # https://github.com/ruby/logger/blob/master/lib/logger.rb#L342
+  # https://github.com/lanzhiheng/stone/issues/77
+  logger = ActiveSupport::Logger.new(Rails.root.join('log/production.log'), 1, 50.megabytes)
+  logger.formatter = config.log_formatter
+  config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
