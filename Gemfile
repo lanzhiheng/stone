@@ -47,7 +47,7 @@ gem 'pundit'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'will_paginate', '~> 3.2.1'
+gem 'will_paginate', '~> 3.3.0'
 
 # https://github.com/kjvarga/sitemap_generator
 gem 'sitemap_generator', '~> 6.1.2'

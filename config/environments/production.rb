@@ -79,7 +79,7 @@ Rails.application.configure do
 
   # https://github.com/ruby/logger/blob/master/lib/logger.rb#L342
   # https://github.com/lanzhiheng/stone/issues/77
-  logger = ActiveSupport::Logger.new(Rails.root.join('log/production.log'), 1, 50.megabytes)
+  logger = ActiveSupport::Logger.new(Rails.root.join('log/production.log'), 0, 10.megabytes)
   logger.formatter = config.log_formatter
   config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
