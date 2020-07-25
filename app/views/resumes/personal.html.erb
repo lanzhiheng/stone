@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= render 'application/favicon' %>
+    <title>Personal Resume</title>
+    <%= stylesheet_link_tag 'personal', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <section class="resume">
+      <aside class="left-part">
+        <section class="personal-info">
+          <h1 class="header-title">Personal Info</h1>
+          <ul class="info-list">
+            <li><i class="fa fa-location-arrow"></i>广州，天河</li>
+            <li><i class="fa fa-phone-square"></i>13751852549</li>
+            <li><i class="fa fa-envelope"></i>lanzhihengrj@gmail.com</li>
+            <li><i class="fab fa-twitter"></i>@lanzhiheng</li>
+            <li><i class="fa fa-id-card"></i>https://ruby-china.org/lanzhiheng</li>
+            <li><i class="fa fa-home"></i>https://www.lanzhiheng.com</li>
+            <li><i class="fab fa-github"></i>https://github.com/lanzhiheng</li>
+          </ul>
+        </section>
+        <section class="skills">
+          <h1 class="header-title">Skills</h1>
+          <ul class="skill-list">
+            <li>Ruby, JavaScript, C, Python, etc.</li>
+            <li>Develop in Linux/Mac</li>
+            <li>MySQL, PostgreSQL, Redis, etc.</li>
+            <li>Capistrano & Ansible</li>
+            <li>Spec/MiniTest for testing</li>
+            <li>React, Vue, JQuery, etc.</li>
+            <li>Docker & K8S</li>
+            <li>Debugging</li>
+            <li>Write blog/documents</li>
+            <li>Collaborate with others</li>
+            <li>Communication</li>
+          </ul>
+        </section>
+
+        <section class="language">
+          <h1 class="header-title">Language(English)</h1>
+          <ul class="section-list">
+            <li><span>Reading:</span><%= range(4) %></li>
+            <li><span>Writing:</span><%= range(3) %></li>
+            <li><span>Listening:</span><%= range(2) %></li>
+            <li><span>Speaking:</span><%= range(2) %></li>
+          </ul>
+        </section>
+      </aside>
+      <aside class="right-part">
+        <section class="info-wrapper">
+          <div class="basic-info">
+            <%= image_tag('avatar.png', class: 'avatar') %>
+            <div class="information">
+              <h1>蓝智恒<span>AKA: Lan</span></h1>
+              <h2>Web开发工程师</h2>
+            </div>
+          </div>
+          <div class="description">
+            <p>
+              <i class="fa fa-mars" aria-hidden="true"></i>全栈工程师，Ruby爱好者。有大概5年的Web开发经验，主要负责公司项目的UI设计还原，页面交互，接口实现，测试覆盖，部署上线等。<strong>业余</strong>跑者，书籍爱好者，编程语言开发者(Bean语言作者)，开源项目贡献者。
+            </p>
+            <p>
+              日常撸猫，写代码，写博客，听音乐，偶尔会翻译一些有价值的技术博客并分享到社区。期望能找一份Ruby相关的工作养家糊口。
+            </p>
+          </div>
+        </section>
+        <section class="experience">
+          <h1 class="header-title">Experience</h1>
+          <div class="exp-part">
+            <div class="content">
+              <h1>乐豆信息科技有限公司</h1>
+              <h2>职位: 前端开发工程师<span class="time">(2016-11 ~ 2020-06)</span></h2>
+              <p>主要负责对客户的网站/小程序进行设计还原，页面交互实现，以及接口对接。期间会用到各种不同的开发框架React/Vue等等。日常工作前端为主，只要有闲时便协助后端同事完成Rails相关的任务。包括：数据模型的定义与实现，基于Grape的接口开发，基于Sidekiq的任务队列，ActionCable实现消息推送等等。后利用业余时间帮助公司官网进行全面的版本升级，其中涉及到数据迁移，服务器的切换，自动化部署流程的更替（尝试过Docker化，后来还是感觉Capistrano流更为简单）等等。</p>
+            </div>
+          </div>
+
+          <div class="exp-part">
+            <div class="content">
+              <h1>擎天柱网络科技有限公司</h1>
+              <h2>职位: 平台开发工程师<span class="time">(2015-07 ~ 2016-09)</span></h2>
+              <p>主要负责公司的游戏管理页面以及游戏接口的开发，偶尔也需要帮助开发活动相关的页面。工作中主要使用Python，如果涉及到页面开发则会用到JQuery。游戏数据规模较大，结构复杂，且入库操作比较频繁，因此会配合非关系型数据库MongoDB来开发相应的接口。另外，还需要配合运维同事完成一些日常的机器维护以及项目部署工作，主要使用Ansible来使一些较为繁杂的流程自动化。</p>
+            </div>
+          </div>
+        </section>
+        <section class="portfolio">
+          <h1 class="header-title">Portfolio</h1>
+          <div class="project">
+            <h1>Stone个人博客站点</h1>
+            <h2>Tech: Ruby, Rails, PostgreSQL, Capistrano, AWS, Nginx</h2>
+            <p>基于Rails开发的个人站点，原本是采用Jekyll，后来还是觉得Rails开发更为合适。项目托管到Github，采用TDD流程开发的项目，并集成CircleCI来完成日常的CI/CD流程。集成AWS的S3服务用于图片等资源的托管。站点走HTTPS通道，站点请求统一走Nginx。</p>
+          </div>
+
+          <div class="project">
+            <h1>Bean编程语言</h1>
+            <h2>Tech: C, GCC, Make, Linux</h2>
+            <p>受Matz启发，去年冬天开始用业余时间来完成这门编程语言的开发，耗时半年，期间参考了大量其他语言的源代码。该语言已在Github开源，这是一门基于原型链的面向对象编程语言，语法类似于JavaScript(ES5)。</p>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </body>
+</html>
