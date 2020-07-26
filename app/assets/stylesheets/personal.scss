@@ -114,6 +114,15 @@ $assist-color: #ABB7B7;
       padding: 0;
 
       li {
+        a {
+          text-decoration: none;
+          color: #000;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+
         + li {
           margin-top: 7px;
         }
