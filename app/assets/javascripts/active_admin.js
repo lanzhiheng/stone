@@ -1,5 +1,5 @@
 //= require active_admin/base
-//= require easymde.min.js
+//= require easymde/dist/easymde.min
 // To avoid CSRF token authenticity issue https://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf
 //= require select2/dist/js/select2.js
 //= require_self

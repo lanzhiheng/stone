@@ -11,9 +11,9 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
-// Suffix of file must be scss not css, so I make a soft link.
-@import "easymde.min.scss";
-@import "select2/dist/css/select2.css";
+// The only rule is that the import must not explicitly include the .css extension, because that’s used to indicate a plain CSS @import. From: https://sass-lang.com/documentation/at-rules/import#importing-css
+@import "easymde/dist/easymde.min";
+@import "select2/dist/css/select2";
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
