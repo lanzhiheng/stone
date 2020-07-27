@@ -37,7 +37,7 @@ gem 'rubocop', '~> 0.88.0', require: false
 
 # Plus integrations with:
 gem 'cancancan'
-gem 'devise'
+gem 'devise', '~> 4.7.2'
 gem 'draper'
 gem 'pundit'
 
