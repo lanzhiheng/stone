@@ -1,0 +1,5 @@
+<li class="inline-post-wrapper">
+  <div class="title-wrapper">
+    <%= link_to post.title, post_path(post.category.key, post.slug) %> » <span class="post-meta"><%= post.created_at.strftime('%Y-%m-%d') %>
+  </div>
+</li>
