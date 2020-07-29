@@ -54,8 +54,9 @@ ActiveAdmin.register Post do
   filter :created_at
 
   form do |f|
-    def most_used_tags
-      ActsAsTaggableOn::Tag.most_used(20)
+    # TODO: Learn how to test it.
+    def collection_of_tags
+      ActsAsTaggableOn::Tag.most_used(20).map(&:name) | object.tag_list
     end
 
     f.semantic_errors
@@ -66,7 +67,7 @@ ActiveAdmin.register Post do
       f.input :excerpt
       f.input :created_at, as: :datetime_select
       f.input :category_id, as: :select, collection: Category.pluck(:name, :id)
-      f.input :tag_list, as: :select, input_html: { multiple: true }, collection: most_used_tags.map(&:name)
+      f.input :tag_list, as: :select, input_html: { multiple: true }, collection: collection_of_tags
       f.input :draft, as: :boolean
     end
 
