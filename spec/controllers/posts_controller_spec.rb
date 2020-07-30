@@ -96,7 +96,7 @@ RSpec.describe PostsController, type: :controller do
   describe 'Detail Page' do
     it 'title of detail Page' do
       post = create(:post, category: @translation, draft: false, excerpt: 'Good Article', tag_list: 'a, b, c, d')
-      get :show, params: { category: @translation.key, id: post.slug }
+      get :show, params: { id: post.slug }
       expect(response.body).to have_tag('title', text: post.title)
       expect(response.body).to have_tag('meta', with: {
                                           name: 'keywords',
@@ -114,19 +114,19 @@ RSpec.describe PostsController, type: :controller do
 
     it 'has active navbar on translation text' do
       post = create(:post, category: @translation, draft: false)
-      get :show, params: { category: @translation.key, id: post.slug }
+      get :show, params: { id: post.slug }
       expect(response.body).to have_tag('.nav > li > a.active', text: 'Translation')
     end
 
     it 'has active navbar on blog text' do
       post = create(:post, category: @blog, draft: false)
-      get :show, params: { category: @blog.key, id: post.slug }
+      get :show, params: { id: post.slug }
       expect(response.body).to have_tag('.nav > li > a.active', text: 'Blog')
     end
 
     it 'contain the structed-data' do
       post = create(:post, category: @blog, draft: false)
-      get :show, params: { category: @blog.key, id: post.slug }
+      get :show, params: { id: post.slug }
       expect(response.body).to have_tag('script', with: { type: 'application/ld+json' })
     end
 
@@ -144,23 +144,15 @@ RSpec.describe PostsController, type: :controller do
 
     it 'content of page' do
       post = create(:post, category: @blog, draft: false)
-      get :show, params: { category: @blog.key, id: post.slug }
+      get :show, params: { id: post.slug }
       expect_for_detail_page(post)
-    end
-
-    it 'fetch detail with correct category' do
-      post = create(:post, category: @blog, draft: false)
-
-      assert_raises(ActiveRecord::RecordNotFound) do
-        get :show, params: { category: @translation.key, id: post.slug }
-      end
     end
 
     it 'not display the draft post' do
       post = create(:post, category: @blog, draft: true)
 
       assert_raises(ActiveRecord::RecordNotFound) do
-        get :show, params: { category: @blog.key, id: post.slug }
+        get :show, params: { id: post.slug }
       end
     end
 

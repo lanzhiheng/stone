@@ -24,9 +24,11 @@ Rails.application.routes.draw do
   get '/500', to: 'errors#internal_server_error'
   get "/robots.:format", to: "pages#robots"
 
+  get '/posts/:id', to: 'posts#show', as: 'post'
+  get '/posts/preview/:id', to: 'posts#preview', as: 'post_preview'
+
   constraints(CategoryConstraint.new) do
     get '/:category', to: 'posts#index', as: 'posts'
-    get '/:category/:id', to: 'posts#show', as: 'post'
-    get '/:category/preview/:id', to: 'posts#preview', as: 'post_preview'
+    get '/:category/:id', to: redirect('/posts/%{id}')
   end
 end

@@ -1,5 +1,5 @@
 <li class="post-wrapper">
-  <%= link_to post.title, post_path(post.category.key, post.slug), class: 'post-title' %>
+  <%= link_to post.title, post_path(post.slug), class: 'post-title' %>
   <div class="post-meta">
     <div class="time-wrapper">
       <time class="created-at"><%= post.created_at.strftime('%A, %Y-%m-%d') %></time>
@@ -15,6 +15,6 @@
   </div>
   <p class="post-excerpts"><%= post.excerpt.truncate(200) %></p>
   <div class="btn-wrapper">
-    <%= link_to 'Read More', post_path(post.category.key, post.slug), class: 'read-more' %>
+    <%= link_to 'Read More', post_path(post.slug), class: 'read-more' %>
   </div>
 </li>

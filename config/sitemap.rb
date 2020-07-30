@@ -34,7 +34,11 @@ SitemapGenerator::Sitemap.create do
   add "/"
 
   Post.published.find_each do |post|
-    add post_path(post.category.key, post.slug), lastmod: post.updated_at
+    add post_path(post.slug), lastmod: post.updated_at
+  end
+
+  Category.find_each do |category|
+    add posts_path(category.key), lastmod: Post.category(category.key).published.last.updated_at
   end
 
   add "/about"
