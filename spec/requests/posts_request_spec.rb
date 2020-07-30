@@ -26,36 +26,41 @@ RSpec.describe 'posts', type: :request do
     end.to raise_error(ActionController::RoutingError)
   end
 
-  it "should access detail pages with validated category's key" do
-    get post_path(@blog.key, @post1.slug)
+  it 'redirect old url to new url with 301 code, new url prefix by posts' do
+    get "/posts/#{@post1.slug}"
     expect(response).to have_http_status(200)
-    get post_path(@book.key, @post2.slug)
+    get "/posts/#{@post2.slug}"
     expect(response).to have_http_status(200)
 
+    get "/#{@blog.key}/#{@post1.slug}"
+    expect(response).to have_http_status(301)
+    get "/#{@blog.key}/#{@post2.slug}"
+    expect(response).to have_http_status(301)
+
     expect do
-      get post_path(@translation.key, @post1.slug)
+      get '/posts/invalid-slug'
     end.to raise_error(ActiveRecord::RecordNotFound)
 
     expect do
-      get post_path('invalid-catetory', @post1.slug)
+      get '/invalid-category/invalid-slug'
     end.to raise_error(ActionController::RoutingError)
   end
 
-  it "should access detail pages with validated category's key" do
+  it 'Admin user can access the preview page' do
+    expect do
+      get post_preview_path(@post1.slug)
+    end.to raise_error(ActionController::RoutingError, 'Page Not Found')
+
     sign_in @admin_user
 
-    get post_preview_path(@blog.key, @post1.slug)
+    get post_preview_path(@post1.slug)
     expect(response).to have_http_status(200)
-    get post_preview_path(@book.key, @post2.slug)
+    get post_preview_path(@post2.slug)
     expect(response).to have_http_status(200)
 
     expect do
-      get post_preview_path(@translation.key, @post1.slug)
+      get post_preview_path('nothing')
     end.to raise_error(ActiveRecord::RecordNotFound)
-
-    expect do
-      get post_preview_path('invalid-category', @post1.slug)
-    end.to raise_error(ActionController::RoutingError)
   end
 
   after(:context) do

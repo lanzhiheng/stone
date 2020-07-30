@@ -31,13 +31,11 @@ module ApplicationHelper
     },
     {
       title: 'Blog',
-      url: '/blogs',
-      prefix: true
+      url: '/blogs'
     },
     {
       title: 'Translation',
-      url: '/translations',
-      prefix: true
+      url: '/translations'
     },
     {
       title: 'About',
@@ -54,7 +52,7 @@ module ApplicationHelper
       NAVBAR.map do |item|
         content_tag(:li) do
           attrs = {}
-          class_name = current_class(item[:url], item[:prefix])
+          class_name = current_class(item[:url])
           attrs[:class] = class_name if class_name.present?
           link_to(item[:title], item[:url], attrs)
         end
@@ -71,11 +69,11 @@ module ApplicationHelper
     end
   end
 
-  def current_class(path, prefix = false)
-    if prefix
-      request.path.index(path)&.zero? ? 'active' : ''
+  def current_class(path)
+    if request.path == path || @post && "/#{@post.category.key}" == path
+      'active'
     else
-      request.path == path ? 'active' : ''
+      ''
     end
   end
 end
