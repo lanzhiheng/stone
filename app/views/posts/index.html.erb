@@ -2,8 +2,7 @@
 
 <ul class="post-list">
   <% unless @posts.size.zero? %>
-    <%# TODO https://guides.rubyonrails.org/caching_with_rails.html#collection-caching, `cached` option not working in this case %>
-    <%= render partial: 'posts/post', collection: @posts %>
+    <%= render partial: 'posts/post', collection: @posts, cached: true %>
     <%= will_paginate @posts, previous_label: '&larr;', next_label: '&rarr;', class: 'pager' %>
   <% else %>
     <p class="empty">Empty.</p>
