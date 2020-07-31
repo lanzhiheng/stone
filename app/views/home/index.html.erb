@@ -1,7 +1,6 @@
 <div class="home">
   <% if lastest_posts.size %>
     <ul class="post-list">
-      <%# TODO need cached %>
       <%= render partial: 'home/post', collection: lastest_posts, cached: true %>
     </ul>
   <% end %>
