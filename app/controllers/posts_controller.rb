@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  def preview
-    raise ActionController::RoutingError, 'Page Not Found' unless admin_user_signed_in?
+  before_action :require_login, only: [:preview]
 
+  def preview
     @post = Post.friendly.find(params[:id])
     render :show
   end
