@@ -21,11 +21,11 @@ ActiveAdmin.register Post do
       view = link_to('View', admin_post_path(post), class: 'view_link member_link')
       edit = link_to('Edit', edit_admin_post_path(post), class: 'edit_link member_link')
       preview = link_to('Preview',
-                        post_preview_path(post.category.key, post.slug),
+                        post_preview_path(post),
                         target: '_blank',
                         class: 'preview_link member_link')
       publish = link_to(post.draft ? 'Publish' : 'Unpublish',
-                        switch_admin_post_path(post.slug),
+                        switch_admin_post_path(post),
                         method: :PUT,
                         class: 'handle_link member_link')
       [view, edit, preview, publish].join.html_safe
@@ -96,7 +96,7 @@ ActiveAdmin.register Post do
   end
 
   action_item :preview, only: :show do
-    link_to 'Preview', post_preview_path(post.category.key, post.slug), target: '_blank'
+    link_to 'Preview', post_preview_path(post.slug), target: '_blank', class: 'preview-link'
   end
 
   member_action :switch, method: :put do

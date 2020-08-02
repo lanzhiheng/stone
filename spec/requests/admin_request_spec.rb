@@ -23,15 +23,21 @@ RSpec.describe 'admin posts', type: :request do
 
     it 'Just with view, edit, preview, handle link, without delete link' do
       admin_user = AdminUser.first
-      create(:post, category: @blog)
+      post = create(:post, category: @blog)
 
       sign_in admin_user
 
       get admin_posts_url
       expect(response.body).to have_tag('.view_link.member_link', count: 1, text: 'View')
       expect(response.body).to have_tag('.edit_link.member_link', count: 1, text: 'Edit')
-      expect(response.body).to have_tag('.preview_link.member_link', count: 1, text: 'Preview')
-      expect(response.body).to have_tag('.handle_link.member_link', count: 1, text: 'Publish')
+      expect(response.body).to have_tag('.preview_link.member_link',
+                                        count: 1,
+                                        text: 'Preview',
+                                        with: { href: "/posts/preview/#{post.slug}" })
+      expect(response.body).to have_tag('.handle_link.member_link',
+                                        count: 1,
+                                        with: { href: switch_admin_post_path(post) },
+                                        text: 'Publish')
       expect(response.body).not_to have_tag('.delete_link.member_link')
     end
   end
@@ -66,6 +72,16 @@ RSpec.describe 'admin posts', type: :request do
       sign_in admin_user
       get admin_post_url(post)
       expect(response.code).to eq '200'
+    end
+
+    it 'Show page with preview button' do
+      admin_user = AdminUser.first
+      post = create(:post, category: @blog, tag_list: 'hello, world')
+      sign_in admin_user
+      get admin_post_url(post)
+      expect(response.body).to have_tag('.action_items .preview-link',
+                                        text: 'Preview',
+                                        href: switch_admin_post_path(post))
     end
 
     it 'Show title, body, excerpt, tag list, created_at, updated_at' do
