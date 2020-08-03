@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.0.5
+  ruby: circleci/ruby@1.1.0
   node: circleci/node@3.0.1
 
 executors:
@@ -47,9 +47,7 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - run:
-          name: Deploy if tests pass and branch is Master
-          command: bundle exec cap production deploy
+      - ruby/rubocop-check
 
 workflows:
    version: 2
