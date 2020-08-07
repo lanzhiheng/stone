@@ -80,8 +80,24 @@ RSpec.describe 'admin posts', type: :request do
       sign_in admin_user
       get admin_post_url(post)
       expect(response.body).to have_tag('.action_items .preview-link',
-                                        text: 'Preview',
-                                        href: switch_admin_post_path(post))
+                                        with: { href: post_preview_path(post) },
+                                        text: 'Preview')
+    end
+
+    it 'Show page with publish & unpublish button' do
+      admin_user = AdminUser.first
+      sign_in admin_user
+      post = create(:post, category: @blog, tag_list: 'hello, world')
+      get admin_post_url(post)
+      expect(response.body).to have_tag('.action_items .publish-link',
+                                        with: { href: switch_admin_post_path(post) },
+                                        text: 'Publish')
+      post.draft = false
+      post.save
+      get admin_post_url(post)
+      expect(response.body).to have_tag('.action_items .publish-link',
+                                        with: { href: switch_admin_post_path(post) },
+                                        text: 'Unpublish')
     end
 
     it 'Show title, body, excerpt, tag list, created_at, updated_at' do

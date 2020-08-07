@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   validates :slug, presence: true, uniqueness: true
 
   scope :published, -> { where(draft: false) }
+  scope :drafted, -> { where(draft: true) }
 
   scope :category, ->(key) { joins(:category).where('categories.key = ?', key) }
 
