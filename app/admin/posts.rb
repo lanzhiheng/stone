@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Post do
+  config.sort_order = 'created_at_desc'
+
   filter :title_contains, label: 'Title'
   filter :category, as: :select
   filter :draft_not_true, label: 'Published', as: :select
@@ -8,11 +10,18 @@ ActiveAdmin.register Post do
 
   permit_params :title, :body, :slug, :excerpt, :category_id, :created_at, :draft, tag_list: []
 
+  scope :all, default: true
+  scope :published, group: :status
+  scope :drafted, group: :status
+
   index do
     selectable_column
     id_column
     column :title
     column :slug
+    column :created_at do |post|
+      post.created_at.strftime('%Y-%m-%d')
+    end
     column :published do |post|
       !post.draft
     end
@@ -96,7 +105,11 @@ ActiveAdmin.register Post do
   end
 
   action_item :preview, only: :show do
-    link_to 'Preview', post_preview_path(post.slug), target: '_blank', class: 'preview-link'
+    [
+      link_to(post.draft? ? 'Publish' : 'Unpublish',
+              switch_admin_post_path(post), method: :PUT, target: '_blank', class: 'publish-link'),
+      link_to('Preview', post_preview_path(post), target: '_blank', class: 'preview-link')
+    ].join.html_safe
   end
 
   member_action :switch, method: :put do
