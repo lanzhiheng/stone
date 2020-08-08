@@ -15,7 +15,6 @@ RSpec.describe Admin::PostsController, type: :controller do
       get :index
       expect(filters_sidebar).to have_css('label[for="q_title_contains"]', text: 'Title')
       expect(filters_sidebar).to have_css('label[for="q_category_id"]', text: 'Category')
-      expect(filters_sidebar).to have_css('label[for="q_draft_not_true"]', text: 'Published')
     end
   end
 end
