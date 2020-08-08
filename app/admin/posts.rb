@@ -5,7 +5,6 @@ ActiveAdmin.register Post do
 
   filter :title_contains, label: 'Title'
   filter :category, as: :select
-  filter :draft_not_true, label: 'Published', as: :select
   remove_filter :title
 
   permit_params :title, :body, :slug, :excerpt, :category_id, :created_at, :draft, tag_list: []
