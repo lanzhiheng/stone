@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
+RSpec.describe Post do
   before(:context) do
     @translation = create(:category, :translation)
     @blog = create(:category, :blog)

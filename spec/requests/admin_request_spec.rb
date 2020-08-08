@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'admin posts', type: :request do
+RSpec.describe 'admin posts' do
   include Devise::Test::IntegrationHelpers
 
   before(:context) do

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Admin::PostsController, type: :controller do
+RSpec.describe Admin::PostsController do
   render_views
 
   let(:page) { Capybara::Node::Simple.new(response.body) }

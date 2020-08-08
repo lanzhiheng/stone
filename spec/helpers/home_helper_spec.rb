@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe HomeHelper, type: :helper do
+RSpec.describe HomeHelper do
   it 'lastest posts' do
     @blog = create(:category)
     (1..20).each do |i|

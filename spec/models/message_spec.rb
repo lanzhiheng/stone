@@ -2,9 +2,11 @@
 
 require 'rails_helper'
 
-RSpec.describe Message, type: :model do
+RSpec.describe Message do
+  let!(:message) { build(:message) }
+
   it 'email must exists' do
-    message = build(:message, email: nil)
+    message.email = nil
     expect do
       message.save!
     end.to raise_error(ActiveRecord::RecordInvalid)
@@ -14,7 +16,7 @@ RSpec.describe Message, type: :model do
   end
 
   it 'name must exists' do
-    message = build(:message, name: nil)
+    message.name = nil
     expect do
       message.save!
     end.to raise_error(ActiveRecord::RecordInvalid)
@@ -23,7 +25,7 @@ RSpec.describe Message, type: :model do
   end
 
   it 'content must exists' do
-    message = build(:message, content: nil)
+    message.content = nil
     expect do
       message.save!
     end.to raise_error(ActiveRecord::RecordInvalid)

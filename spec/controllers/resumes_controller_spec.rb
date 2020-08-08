@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ResumesController, type: :controller do
+RSpec.describe ResumesController do
   render_views
 
   it 'display first two resumes' do

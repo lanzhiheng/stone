@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'posts', type: :request do
+RSpec.describe 'posts' do
   include Devise::Test::IntegrationHelpers
 
   before(:context) do

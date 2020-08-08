@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'errors page', type: :request do
+RSpec.describe 'errors page' do
   def expect_helper(code, text)
     expect(response.body).to have_tag('div.header-content')
     expect(response.body).to have_tag('div.error-info')

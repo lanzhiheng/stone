@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Resume, type: :model do
+RSpec.describe Resume do
   it 'title must exists' do
     resume = build(:resume, title: '')
 
