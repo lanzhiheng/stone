@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ContactController, type: :controller do
+RSpec.describe ContactController do
   render_views
 
   describe 'GET index' do

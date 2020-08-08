@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe MessagesController, type: :controller do
+RSpec.describe MessagesController do
   describe 'post method' do
     it 'create data' do
       post :create, params: { name: 'name', email: 'admin@example.com', content: 'hello world' }

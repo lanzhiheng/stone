@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe PostsController, type: :controller do
+RSpec.describe PostsController do
   render_views
 
   before(:context) do

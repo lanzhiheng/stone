@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ErrorsController, type: :controller do
+RSpec.describe ErrorsController do
   render_views
 
   describe 'GET error pages' do

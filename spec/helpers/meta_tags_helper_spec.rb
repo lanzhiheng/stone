@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe MetaTagsHelper, type: :helper do
+RSpec.describe MetaTagsHelper do
   it 'Can load DEFAULT_META constant' do
     result = YAML.load_file(Rails.root.join('config/meta.yml'))
     expect(DEFAULT_META).to eq(result)
