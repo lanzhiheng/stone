@@ -24,32 +24,9 @@ module ApplicationHelper
     }
   ].freeze
 
-  NAVBAR = [
-    {
-      title: 'Lastest',
-      url: '/'
-    },
-    {
-      title: 'Blog',
-      url: '/blogs'
-    },
-    {
-      title: 'Translation',
-      url: '/translations'
-    },
-    {
-      title: 'About',
-      url: '/about'
-    },
-    {
-      title: 'Contact',
-      url: '/contact'
-    }
-  ].freeze
-
   def navbar
     content_tag(:ul, class: 'nav') do
-      NAVBAR.map do |item|
+      nav_data.map do |item|
         content_tag(:li) do
           attrs = {}
           class_name = current_class(item[:url])
@@ -75,5 +52,29 @@ module ApplicationHelper
     else
       ''
     end
+  end
+
+  private
+
+  def nav_data
+    categories_navbar = Category.all.map do |category|
+      { title: category.name, url: "/#{category.key}" }
+    end
+
+    [
+      {
+        title: 'Lastest',
+        url: '/'
+      },
+      *categories_navbar,
+      {
+        title: 'About',
+        url: '/about'
+      },
+      {
+        title: 'Contact',
+        url: '/contact'
+      }
+    ].freeze
   end
 end
