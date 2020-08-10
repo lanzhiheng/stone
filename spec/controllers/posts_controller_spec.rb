@@ -29,16 +29,6 @@ RSpec.describe PostsController do
                                         })
     end
 
-    it 'has active navbar on translation text' do
-      get :index, params: { category: 'translations' }
-      expect(response.body).to have_tag('.nav > li > a.active', text: 'Translation')
-    end
-
-    it 'has active navbar on blog text' do
-      get :index, params: { category: 'blogs' }
-      expect(response.body).to have_tag('.nav > li > a.active', text: 'Blog')
-    end
-
     it 'contain title and meta' do
       (1..3).each do |i|
         Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
@@ -110,18 +100,6 @@ RSpec.describe PostsController do
                                           name: 'description',
                                           content: 'Good Article'
                                         })
-    end
-
-    it 'has active navbar on translation text' do
-      post = create(:post, category: @translation, draft: false)
-      get :show, params: { id: post.slug }
-      expect(response.body).to have_tag('.nav > li > a.active', text: 'Translation')
-    end
-
-    it 'has active navbar on blog text' do
-      post = create(:post, category: @blog, draft: false)
-      get :show, params: { id: post.slug }
-      expect(response.body).to have_tag('.nav > li > a.active', text: 'Blog')
     end
 
     it 'contain the structed-data' do
