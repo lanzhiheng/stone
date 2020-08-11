@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Category do
-  let!(:category) { build(:category) }
+  let(:category) { build(:category) }
 
   context 'create category' do
     it 'without key' do

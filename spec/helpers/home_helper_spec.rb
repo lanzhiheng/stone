@@ -3,10 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe HomeHelper do
+  let!(:blog) { create(:category, :blog) }
+
   it 'lastest posts' do
-    @blog = create(:category)
     (1..20).each do |i|
-      Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
+      Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: blog, draft: false)
     end
 
     expect(lastest_posts.size).to eq 15

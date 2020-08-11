@@ -3,10 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Post do
-  before(:context) do
-    @translation = create(:category, :translation)
-    @blog = create(:category, :blog)
-  end
+  let!(:translation) { create(:category, :translation) }
+  let!(:blog) { create(:category, :blog) }
 
   context 'create post' do
     it 'without title' do
@@ -66,12 +64,12 @@ RSpec.describe Post do
 
     it 'published posts' do
       (1..5).each do |i|
-        create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
+        create(:post, title: "title-#{i}", slug: "slug-#{i}", category: blog, draft: false)
       end
       expect(Post.published.size).to eq 5
 
       (6..10).each do |i|
-        create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog)
+        create(:post, title: "title-#{i}", slug: "slug-#{i}", category: blog)
       end
       expect(Post.published.size).to eq 5
     end
@@ -88,15 +86,11 @@ RSpec.describe Post do
 
     it "retrieve posts by category's key" do
       (1..5).each do |i|
-        create(:post, title: "title-blog-#{i}", slug: "slug-blog-#{i}", category: @blog)
-        create(:post, title: "title-translation-#{i}", slug: "slug-category-#{i}", category: @translation)
+        create(:post, title: "title-blog-#{i}", slug: "slug-blog-#{i}", category: blog)
+        create(:post, title: "title-translation-#{i}", slug: "slug-category-#{i}", category: translation)
       end
-      expect(Post.category(@blog.key).size).to eq 5
-      expect(Post.category(@translation.key).size).to eq 5
+      expect(Post.category(blog.key).size).to eq 5
+      expect(Post.category(translation.key).size).to eq 5
     end
-  end
-
-  after(:context) do
-    Category.destroy_all
   end
 end

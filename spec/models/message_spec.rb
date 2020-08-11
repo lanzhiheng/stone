@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Message do
-  let!(:message) { build(:message) }
+  let(:message) { build(:message) }
 
   it 'email must exists' do
     message.email = nil

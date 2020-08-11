@@ -5,10 +5,7 @@ require 'rails_helper'
 RSpec.describe HomeController do
   render_views
 
-  before(:context) do
-    @translation = create(:category, :translation)
-    @blog = create(:category, :blog)
-  end
+  let!(:blog) { create(:category, :blog) }
 
   it 'should get index' do
     get :index
@@ -34,11 +31,11 @@ RSpec.describe HomeController do
 
   it "Don't display the draft post" do
     (1..3).each do |i|
-      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog)
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: blog)
     end
 
     (4..6).each do |i|
-      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: blog, draft: false)
     end
 
     get :index
@@ -49,7 +46,7 @@ RSpec.describe HomeController do
 
   it 'At most 15 items in home page' do
     (1..20).each do |i|
-      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false)
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: blog, draft: false)
     end
 
     get :index
@@ -65,7 +62,7 @@ RSpec.describe HomeController do
 
   it 'should contain post list' do
     (1..5).each do |i|
-      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: @blog, draft: false, tag_list: %w[hello world])
+      create(:post, title: "title-#{i}", slug: "slug-#{i}", category: blog, draft: false, tag_list: %w[hello world])
     end
 
     get :index
@@ -77,9 +74,5 @@ RSpec.describe HomeController do
     expect(response.body).to have_tag('p.post-excerpts', count: 5)
     expect(response.body).to have_tag('a.read-more')
     expect(response.body).to have_tag('div.tag-list', count: 5)
-  end
-
-  after(:context) do
-    Category.destroy_all
   end
 end
