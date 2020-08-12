@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/lastest', to: 'home#index'
   get '/about', to: 'resumes#index', as: 'about'
-  get '/personal', to: 'resumes#personal'
+  # get '/personal', to: 'resumes#personal'
   get '/contact', to: 'contact#index', as: 'contact'
   get '/tags', to: 'tags#index', as: 'tags'
   post '/contact-me', to: 'messages#create', as: 'contact_me'
