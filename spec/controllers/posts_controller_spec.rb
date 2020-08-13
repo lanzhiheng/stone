@@ -48,12 +48,12 @@ RSpec.describe PostsController do
     end
 
     it 'posts list with pagination' do
-      (1..11).each do |i|
+      (1..21).each do |i|
         Post.create(title: "title-#{i}", body: "body-#{i}", slug: "slug-#{i}", category: blog, draft: false)
       end
 
       get :index, params: { category: blog.key }
-      expect(response.body).to have_tag('li.inline-post-wrapper', count: 10)
+      expect(response.body).to have_tag('li.inline-post-wrapper', count: 20)
       expect(response.body).to have_tag('.pager', count: 1)
       expect(response.body).to have_tag('.previous_page', text: '←')
       expect(response.body).to have_tag('.next_page', text: '→')
