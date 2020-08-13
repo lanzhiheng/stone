@@ -15,7 +15,7 @@ class Post < ApplicationRecord
 
   scope :category, ->(key) { joins(:category).where('categories.key = ?', key) }
 
-  self.per_page = 10
+  self.per_page = 20
 
   def self.markdown
     renderer = Redcarpet::Render::HTML.new(escape_html: true, with_toc_data: true)
