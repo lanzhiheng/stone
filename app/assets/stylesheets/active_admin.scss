@@ -13,7 +13,7 @@
 
 // The only rule is that the import must not explicitly include the .css extension, because that’s used to indicate a plain CSS @import. From: https://sass-lang.com/documentation/at-rules/import#importing-css
 @import "easymde/dist/easymde.min";
-@import "select2/dist/css/select2";
+@import "select2/src/scss/core.scss";
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
@@ -61,14 +61,6 @@
 
       input {
         height: 26px;
-      }
-    }
-
-    .select2-selection__choice {
-      .select2-selection__choice__remove {
-        height: 5px;
-        line-height: 5px;
-        vertical-align: 1px;
       }
     }
   }

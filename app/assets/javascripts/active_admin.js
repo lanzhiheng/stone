@@ -1,7 +1,6 @@
 //= require active_admin/base
 //= require easymde/dist/easymde.min
-// To avoid CSRF token authenticity issue https://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf
-//= require select2/dist/js/select2.js
+//= require select2/dist/js/select2.full.js
 //= require_self
 
 $(document).ready(function() {
