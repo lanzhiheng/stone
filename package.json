@@ -5,20 +5,20 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "4.2.2",
+    "@rails/webpacker": "5.2.1",
     "easymde": "^2.9.0",
     "elliptic": "^6.5.3",
     "highlight.js": "^9.18.1",
     "jquery": "^3.5.0",
+    "lodash": "^4.17.19",
     "minimist": "^1.2.5",
     "normalize.css": "^8.0.1",
     "select2": "4.1.0-beta.1",
-    "turbolinks": "^5.2.0",
-    "lodash": "^4.17.19"
+    "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
