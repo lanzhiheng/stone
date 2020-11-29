@@ -8,10 +8,12 @@
     "@rails/webpacker": "5.2.1",
     "easymde": "^2.9.0",
     "elliptic": "^6.5.3",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^9.18.2",
+    "http-proxy": "^1.18.1",
     "jquery": "^3.5.0",
     "lodash": "^4.17.19",
     "minimist": "^1.2.5",
+    "node-forge": "^0.10.0",
     "normalize.css": "^8.0.1",
     "select2": "4.1.0-beta.1",
     "turbolinks": "^5.2.0"
