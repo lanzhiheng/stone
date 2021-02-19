@@ -5,7 +5,7 @@ atom_feed do |feed|
   feed.updated(lastest_posts.first.created_at)
 
   @posts.each do |post|
-    detail_url = post_url(post.category.key, post.slug)
+    detail_url = post_url(post)
     schema_date = post.created_at
 
     feed.entry(post, url: detail_url, schema_date: schema_date) do |entry|
