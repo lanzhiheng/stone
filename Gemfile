@@ -30,7 +30,8 @@ gem 'activeadmin'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'aws-sdk-s3', '~> 1'
 gem 'friendly_id', '~> 5.2.4'
-gem 'redcarpet', '~> 2.3.0'
+gem 'nokogiri', '>= 1.11.0'
+gem 'redcarpet', '>= 3.5.1'
 
 # https://github.com/rubocop-hq/rubocop
 gem 'rubocop', '~> 0.88.0', require: false
