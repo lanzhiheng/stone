@@ -80,8 +80,6 @@ group :development do
   gem 'capistrano-rails', '~> 1.4', require: false
   gem 'capistrano-rbenv', require: false
   gem 'rails_real_favicon'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
