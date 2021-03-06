@@ -8,7 +8,7 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 
-server %{207.148.100.169}, roles: %w{db app web}
+server %{47.241.11.117}, roles: %w{db app web}
 set :branch, "master"
 set :rails_env, "production"
 set :app_url, "https://www.lanzhiheng.com"
