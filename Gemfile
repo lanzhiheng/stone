@@ -27,8 +27,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'activeadmin'
 # https://github.com/paulelliott/fabrication
+gem 'activestorage-aliyun'
 gem 'acts-as-taggable-on', '~> 6.0'
-gem 'aws-sdk-s3', '~> 1'
 gem 'friendly_id', '~> 5.2.4'
 gem 'nokogiri', '>= 1.11.0'
 gem 'redcarpet', '>= 3.5.1'
