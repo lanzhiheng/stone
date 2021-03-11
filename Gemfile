@@ -42,6 +42,8 @@ gem 'devise', '~> 4.7.2'
 gem 'draper'
 gem 'pundit'
 
+gem 'addressable'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -74,7 +76,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'capistrano', '~> 3.10', require: false
-  gem 'capistrano3-puma', require: false
+  gem 'capistrano3-puma', '~> 4.0.0', require: false
   gem 'capistrano-bundler', '~> 1.5', require: false
   gem 'capistrano-db-tasks', github: 'lanzhiheng/capistrano-db-tasks', require: false
   gem 'capistrano-rails', '~> 1.4', require: false
