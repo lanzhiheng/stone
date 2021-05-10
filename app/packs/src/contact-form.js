@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-document.addEventListener('turbolinks:load', (event) => {
+document.addEventListener('turbo:load', (event) => {
   $('#ajaxForm').submit(function(e) {
     e.preventDefault()
     var $form = $(this)

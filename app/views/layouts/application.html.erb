@@ -10,9 +10,9 @@
     <%= csp_meta_tag %>
     <%= canonical_tag -%>
     <%= render 'application/favicon' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload', defer: true %>
     <%= yield :structured_data %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload', defer: true %>
   </head>
 
   <body>
