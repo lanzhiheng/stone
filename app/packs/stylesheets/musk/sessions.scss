@@ -1,0 +1,19 @@
+.main-title {
+  @apply text-3xl;
+}
+
+.field {
+  @apply my-2 flex;
+
+  label {
+    @apply w-20 inline-block leading-8;
+  }
+
+  input {
+    @apply py-1 px-2 border-gray-200 border-solid border rounded flex-1;
+  }
+}
+
+.btn {
+  @apply ml-auto mr-0 block px-2 py-1 text-sm text-white border-black bg-black border rounded-sm mt-4;
+}
