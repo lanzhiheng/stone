@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :musk do
+    resources :sessions
+  end
+
   get '/lastest', to: 'home#index'
   get '/about', to: 'resumes#index', as: 'about'
   # get '/personal', to: 'resumes#personal'
