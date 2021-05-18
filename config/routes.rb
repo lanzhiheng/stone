@@ -12,9 +12,20 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # namespace :musk do
+  #   resources :sessions
+  # end
+
   namespace :musk do
-    resources :sessions
+    devise_scope :admin_user do
+      get 'sign_in', to: 'sessions#new'
+      post 'sign_in', to: 'sessions#create'
+      # resources :sessions
+    end
   end
+
+  # devise_for :admin_users, controllers: { sessions: 'musk/sessions' }
+
 
   get '/lastest', to: 'home#index'
   get '/about', to: 'resumes#index', as: 'about'
