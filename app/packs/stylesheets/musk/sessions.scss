@@ -15,5 +15,17 @@
 }
 
 .btn {
-  @apply ml-auto mr-0 block px-2 py-1 text-sm text-white border-black bg-black border rounded-sm mt-4;
+  @apply ml-auto mr-0 block px-2 py-1 text-sm text-white border-black bg-gray-900 border rounded-sm mt-4 cursor-pointer;
+}
+
+.btn:visited {
+  @apply bg-gray-900;
+}
+
+.btn:visited:focus {
+  @apply bg-gray-600;
+}
+
+.btn:active {
+  @apply bg-gray-600;
 }

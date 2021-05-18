@@ -1,16 +1,20 @@
-<div class="container my-14 mx-auto w-1/4 border-black border-solid border-2 rounded px-3 py-5">
-  <h1 class="main-title mb-6 text-center">Stone Entry</h1>
+<div class="container my-14 mx-auto w-1/4 ">
+  <div><%= flash[:error] %></div>
 
-  <%= form_with do |f| %>
-    <div class="field">
-      <%= f.label :email, "Email:" %>
-      <%= f.text_field :email, placeholder: 'The email' %>
-    </div>
-    <div class="field">
-      <%= f.label :password, "Password:" %>
-      <%= f.password_field :password, placeholder: 'The password' %>
-    </div>
+  <div class="border-black border-solid border-2 rounded px-3 py-5">
+    <h1 class="main-title mb-6 text-center">Stone Entry</h1>
 
-    <%= f.submit "Login", class: "btn" %>
-  <% end %>
+    <%= form_with model: @admin_user, url: musk_sign_in_path, data: { remote: false } do |f| %>
+      <div class="field">
+        <%= f.label :email, "Email:" %>
+        <%= f.text_field :email, placeholder: 'The Email' %>
+      </div>
+      <div class="field">
+        <%= f.label :password, "Password:" %>
+        <%= f.password_field :password, placeholder: 'The Password' %>
+      </div>
+
+      <%= f.submit "Login", class: "btn" %>
+    <% end %>
+  </div>
 </div>
