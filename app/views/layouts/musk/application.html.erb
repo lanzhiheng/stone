@@ -13,6 +13,14 @@
 
 
 <% content_for :content do %>
+  <% if flash['error'] %>
+    <div class="alert danger"><%= flash['error'] %></div>
+  <% end %>
+
+  <% if flash['success'] %>
+    <div class="alert success"><%= flash['success'] %></div>
+  <% end %>
+
   <%= yield %>
 <% end %>
 
