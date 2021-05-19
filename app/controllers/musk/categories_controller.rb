@@ -10,9 +10,11 @@ module Musk
       @category = Category.new(category_params)
 
       if @category.save
+        flash[:success] = '创建成功'
         redirect_to musk_category_path(@category), status: 303
       else
-        render :new
+        flash[:error] = @category.errors.full_messages
+        render :new, status: 422
       end
     end
 
@@ -28,11 +30,12 @@ module Musk
     end
 
     def destroy
-      if @category.destroy
-        redirect_to musk_categories_path
-      else
-        render musk_category_path(@category)
-      end
+      @category.destroy
+      flash['success'] = '删除成功'
+      redirect_to musk_categories_path
+    rescue ActiveRecord::InvalidForeignKey => e
+      flash['error'] = e.message
+      redirect_back(fallback_location: musk_categories_path)
     end
 
     private
