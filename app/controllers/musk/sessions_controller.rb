@@ -3,7 +3,9 @@ module Musk
     skip_before_action :authenticate_admin_user!, only: [:new, :create]
     before_action :redirect_back_to_root, only: [:new]
 
-    def new; end
+    def new
+      render :new, layout: 'musk/application_slim'
+    end
 
     def destroy
       sign_out

@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= meta_title %></title>
-    <meta name="description" content="<%= meta_description %>" />
-    <meta name="author" content="<%= meta_author %>" />
-    <meta name="keywords" content="<%= meta_keywords %>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= canonical_tag -%>
-    <%= render 'application/favicon' %>
-    <%= stylesheet_pack_tag 'musk/application', media: 'all', 'data-turbo-track': 'reload', defer: true %>
-    <%= javascript_pack_tag 'musk/application', 'data-turbo-track': 'reload', defer: true %>
-  </head>
-
-  <body>
-    <div class="flex justify-between">
-      <div class="stone-navbar">
-        <%= active_link_to 'Daskboard', musk_root_path, class: 'stone-navbar-item', active: :exact %>
-        <%= active_link_to 'Post', musk_posts_path, class: 'stone-navbar-item' %>
-      </div>
-      <div class="stone-navbar">
-        <%= link_to 'Logout', musk_sign_out_path, class: 'stone-navbar-item', data: { method: 'DELETE' } %>
-      </div>
+<% content_for :header do %>
+  <div class="stone-header">
+    <div class="stone-navbar">
+      <%= active_link_to 'Daskboard', musk_root_path, class: 'stone-navbar-item', active: :exact %>
+      <%= active_link_to 'Post', musk_posts_path, class: 'stone-navbar-item' %>
+      <%= active_link_to 'Category', musk_categories_path, class: 'stone-navbar-item' %>
     </div>
-
-    <div class="container mx-auto px-4">
-      <%= yield %>
+    <div class="stone-navbar">
+      <%= link_to 'Logout', musk_sign_out_path, class: 'stone-navbar-item', data: { method: 'DELETE' } %>
     </div>
-  </body>
-</html>
+  </div>
+<% end %>
+
+
+<% content_for :content do %>
+  <%= yield %>
+<% end %>
+
+<%= render template: "layouts/musk/application_slim" %>
