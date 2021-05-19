@@ -17,9 +17,12 @@ Rails.application.routes.draw do
   # end
 
   namespace :musk do
+    root 'dashboards#index'
+    resources :posts
     devise_scope :admin_user do
       get 'sign_in', to: 'sessions#new'
       post 'sign_in', to: 'sessions#create'
+      delete 'sign_out', to: 'sessions#destroy'
       # resources :sessions
     end
   end

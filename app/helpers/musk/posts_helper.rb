@@ -1,0 +1,2 @@
+module Musk::PostsHelper
+end

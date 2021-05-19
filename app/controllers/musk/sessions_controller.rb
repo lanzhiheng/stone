@@ -5,13 +5,18 @@ module Musk
 
     def new; end
 
+    def destroy
+      sign_out
+      redirect_to musk_sign_in_path
+    end
+
     def create
       @admin_user = AdminUser.find_by(email: params[:email])
 
       if @admin_user && @admin_user.valid_password?(params[:password])
         flash[:success] = '登录成功'
         sign_in(@admin_user)
-        redirect_to admin_root_path
+        redirect_to musk_root_path
       else
         flash[:error] = '登录失败'
         redirect_back(fallback_location: musk_sign_in_path)
