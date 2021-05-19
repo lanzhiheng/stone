@@ -3,3 +3,34 @@
 @import "tailwindcss/utilities";
 
 @import "stylesheets/musk/sessions";
+
+.turbo-progress-bar {
+  height: 100px;
+  background: green;
+}
+
+
+.stone-link {
+  @apply underline text-red-500;
+}
+
+.stone-table {
+  @apply border-collapse border border-gray-800 table-fixed;
+
+  th,
+  td {
+    @apply border border-gray-600 px-3;
+  }
+}
+
+.stone-navbar {
+  @apply p-4 flex;
+
+  .stone-navbar-item {
+    @apply text-gray-600 px-3 py-2 rounded-md text-sm font-medium hover:text-black;
+
+    &.active {
+      @apply text-black;
+    }
+  }
+}

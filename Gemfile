@@ -27,6 +27,7 @@ gem 'redis', '~> 4.0'
 
 # https://github.com/paulelliott/fabrication
 gem 'activestorage-aliyun'
+gem 'active_link_to'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'friendly_id', '~> 5.2.4'
 gem 'nokogiri', '>= 1.11.0'
