@@ -1,0 +1,30 @@
+<div class="top-btn-area">
+  <%= link_to '新建', new_musk_category_path, class: 'btn' %>
+</div>
+
+<div class="table-wrapper">
+  <table class="stone-table">
+    <thead>
+      <tr>
+        <th class="w-1/4">Name</th>
+        <th class="w-1/4">Key</th>
+        <th class="w-1/4">Posts Count</th>
+        <th class="w-1/4">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.key %></td>
+          <td><%= category.posts.size %></td>
+          <td>
+            <%= link_to '查看', musk_category_path(category), class: 'stone-link' %>
+            <%= link_to '修改', edit_musk_category_path(category), class: 'stone-link' %>
+            <%= link_to '删除', musk_category_path(category), class: 'stone-link', data: { method: 'DELETE', confirm: '是否确定要删除?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -5,8 +5,7 @@
 @import "stylesheets/musk/sessions";
 
 .turbo-progress-bar {
-  height: 100px;
-  background: green;
+  height: 10px;
 }
 
 
@@ -15,12 +14,24 @@
 }
 
 .stone-table {
-  @apply border-collapse border border-gray-800 table-fixed;
+  @apply border-collapse border border-gray-600 table-fixed w-full;
 
   th,
   td {
-    @apply border border-gray-600 px-3;
+    @apply border border-gray-100 px-3 py-2;
   }
+
+  th {
+    @apply font-medium;
+  }
+
+  td {
+    @apply text-xs;
+  }
+}
+
+.stone-header {
+  @apply flex justify-between fixed bg-white w-full shadow-sm top-0;
 }
 
 .stone-navbar {
@@ -33,4 +44,24 @@
       @apply text-black;
     }
   }
+}
+
+.btn {
+  @apply inline-block px-2 py-1 text-sm text-white border-black bg-gray-900 border rounded-sm mt-4 cursor-pointer;
+}
+
+.btn:visited {
+  @apply bg-gray-900;
+}
+
+.btn:visited:focus {
+  @apply bg-gray-600;
+}
+
+.btn:active {
+  @apply bg-gray-600;
+}
+
+.top-btn-area {
+  @apply my-5;
 }

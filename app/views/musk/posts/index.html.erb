@@ -13,7 +13,7 @@
         <tr>
           <td><%= post.title %></td>
           <td><%= post.draft %></td>
-          <td><%= post.category.name %></td>
+          <td><%= link_to post.category.name, musk_category_path(post.category), class: 'stone-link' %></td>
           <td>
             <%= link_to '查看', musk_post_path(post), class: 'stone-link'  %>
             <%= link_to '修改', edit_musk_post_path(post), class: 'stone-link' %>

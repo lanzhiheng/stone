@@ -1,0 +1,11 @@
+<%= form_with model: [:musk, @category], scope: :category do |f| %>
+  <div class="field">
+    <%= f.label :key %>
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <%= f.submit '提交', class: 'btn' %>
+<% end %>

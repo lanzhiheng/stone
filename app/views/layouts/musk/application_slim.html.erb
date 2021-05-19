@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>" />
+    <meta name="author" content="<%= meta_author %>" />
+    <meta name="keywords" content="<%= meta_keywords %>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= canonical_tag -%>
+    <%= render 'application/favicon' %>
+    <%= stylesheet_pack_tag 'musk/application', media: 'all', 'data-turbo-track': 'reload', defer: true %>
+    <%= javascript_pack_tag 'musk/application', 'data-turbo-track': 'reload', defer: true %>
+  </head>
+
+  <body>
+    <%= content_for(:header) %>
+
+    <div class="mx-auto px-7 mt-20">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
+  </body>
+</html>
