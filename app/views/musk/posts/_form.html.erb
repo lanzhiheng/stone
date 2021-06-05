@@ -1,0 +1,17 @@
+<%= form_with model: [:musk, @post], scope: :post do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :slug %>
+    <%= f.text_field :slug %>
+  </div>
+  <%= f.submit '提交', class: 'btn' %>
+<% end %>

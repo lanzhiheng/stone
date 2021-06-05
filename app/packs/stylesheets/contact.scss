@@ -12,6 +12,11 @@
   h1 {
     font-weight: normal;
     text-align: center;
+
+    &.success-message {
+      font-size: 14px;
+      color: $primary-color;
+    }
   }
 
   .field {
@@ -21,6 +26,13 @@
       display: block;
       font-size: 20px;
       margin-bottom: 5px;
+    }
+
+    .field_with_errors {
+      input,
+      textarea {
+        border: 2px solid $primary-color;
+      }
     }
 
     input,

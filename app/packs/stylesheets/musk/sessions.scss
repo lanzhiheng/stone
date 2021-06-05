@@ -9,7 +9,12 @@
     @apply w-20 inline-block leading-8;
   }
 
-  input {
-    @apply py-1 px-2 border-gray-200 border-solid border rounded flex-1;
+  input,
+  textarea {
+    @apply py-1 px-2 border-gray-200 border-solid border rounded-sm flex-1;
+  }
+
+  textarea {
+    height: 600px;
   }
 }

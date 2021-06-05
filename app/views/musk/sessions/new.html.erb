@@ -1,7 +1,7 @@
 <div class="container my-14 mx-auto w-1/4 ">
-  <div><%= flash[:error] %></div>
-
   <div class="border-black border-solid border-2 rounded px-3 py-5">
+    <%= render 'musk/shared/alert' %>
+
     <h1 class="main-title mb-6 text-center">Stone Entry</h1>
 
     <%= form_with model: @admin_user, url: musk_sign_in_path, data: { remote: false } do |f| %>

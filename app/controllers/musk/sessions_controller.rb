@@ -21,7 +21,7 @@ module Musk
         redirect_to musk_root_path
       else
         flash[:error] = '登录失败'
-        redirect_back(fallback_location: musk_sign_in_path)
+        render :new, layout: 'musk/application_slim', status: :unprocessable_entity
       end
     end
   end
