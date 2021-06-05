@@ -34,20 +34,29 @@ Rails.application.routes.draw do
   get '/lastest', to: 'home#index'
   get '/about', to: 'resumes#index', as: 'about'
   # get '/personal', to: 'resumes#personal'
-  get '/contact', to: 'contact#index', as: 'contact'
   get '/tags', to: 'tags#index', as: 'tags'
-  post '/contact-me', to: 'messages#create', as: 'contact_me'
+
+  resources :messages, only: [:create, :new]
+  get '/contact', to: 'messages#new'
+
   put '/upload', to: 'image_uploader#upload'
 
   get '/404', to: 'errors#not_found'
   get '/500', to: 'errors#internal_server_error'
   get "/robots.:format", to: "pages#robots"
 
-  get '/posts/:id', to: 'posts#show', as: 'post'
-  get '/posts/preview/:id', to: 'posts#preview', as: 'post_preview'
+  resources :posts do
+    member do
+      get :preview
+    end
+
+    collection do
+      get :fetch_more
+    end
+  end
 
   constraints(CategoryConstraint.new) do
-    get '/:category', to: 'posts#index', as: 'posts'
+    get '/:category', to: 'posts#index'
     get '/:category/:id', to: redirect('/posts/%{id}')
   end
 end

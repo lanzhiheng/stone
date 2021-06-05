@@ -1,18 +1,22 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
+  def new
+    @message = Message.new
+  end
+
   def create
     @message = Message.new(permitted_message)
     if @message.save
-      render json: { message: 'success' }, status: 200
+      render :success, status: :created
     else
-      render json: { message: 'request failed' }, status: 400
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
   def permitted_message
-    params.permit(:name, :email, :content)
+    params.require(:message).permit(:name, :email, :content)
   end
 end

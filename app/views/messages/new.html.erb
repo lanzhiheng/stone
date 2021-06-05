@@ -1,0 +1,23 @@
+<% content_for :title, "Contact Me" %>
+<% content_for :description, "Contact the author in this page." %>
+
+<div class="contact-form">
+  <h1 class="title">Contact Me</h1>
+  <turbo-frame id="message-collector">
+    <%= form_with model: @message, url: messages_path, method: 'POST' do |f| %>
+      <div class="field">
+        <%= f.label(:name, "Name") %>
+        <%= f.text_field(:name, placeholder: "Your Name") %>
+      </div>
+      <div class="field">
+        <%= f.label(:email, "Email:") %>
+        <%= f.text_field(:email, placeholder: "Your Email", type: "email") %>
+      </div>
+      <div class="field">
+        <%= f.label(:content, "Content:") %>
+        <%= f.text_area(:content, placeholder: "...", rows: 6) %>
+      </div>
+      <button class="btn" type="submit">SEND</button>
+    <% end %>
+  </turbo-frame>
+</div>
