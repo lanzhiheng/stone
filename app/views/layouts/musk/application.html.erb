@@ -4,6 +4,7 @@
       <%= active_link_to 'Daskboard', musk_root_path, class: 'stone-navbar-item', active: :exact %>
       <%= active_link_to 'Post', musk_posts_path, class: 'stone-navbar-item' %>
       <%= active_link_to 'Category', musk_categories_path, class: 'stone-navbar-item' %>
+      <%= active_link_to 'Message', musk_messages_path, class: 'stone-navbar-item' %>
     </div>
     <div class="stone-navbar">
       <%= link_to 'Logout', musk_sign_out_path, class: 'stone-navbar-item', data: { method: 'DELETE' } %>
