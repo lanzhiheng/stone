@@ -9,4 +9,4 @@ import "controllers"
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 
-// import 'stylesheets/tailwind_utiltiies.css';
+import 'tailwindcss/dist/utilities.css';
