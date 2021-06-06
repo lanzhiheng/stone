@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       end
     end
     resources :categories
+    resources :messages
     devise_scope :admin_user do
       get 'sign_in', to: 'sessions#new'
       post 'sign_in', to: 'sessions#create'

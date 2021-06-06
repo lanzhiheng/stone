@@ -1,0 +1,28 @@
+<div class="table-wrapper">
+  <table class="stone-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Content</th>
+        <th>Created_at</th>
+        <th>Updated_at</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @messages.each do |message| %>
+        <tr>
+          <td><%= message.name %></td>
+          <td><%= message.email %></td>
+          <td><%= message.content %></td>
+          <td><%= message.created_at %></td>
+          <td><%= message.updated_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="top-btn-area">
+    <%= will_paginate @messages, previous_label: '&larr;', next_label: '&rarr;', class: 'pager' %>
+  </div>
+</div>
