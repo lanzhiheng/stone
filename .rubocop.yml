@@ -22,10 +22,6 @@ Metrics/MethodLength:
 Style/RedundantParentheses:
   Enabled: false
 
-# I can correct It by -a
-Style/FrozenStringLiteralComment:
-  Safe: true
-
 # About ABC http://wiki.c2.com/?AbcMetric
 Metrics/AbcSize:
   Enabled: false

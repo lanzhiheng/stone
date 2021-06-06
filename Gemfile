@@ -38,7 +38,7 @@ gem 'inherited_resources'
 gem 'responders'
 
 # https://github.com/rubocop-hq/rubocop
-gem 'rubocop', '~> 0.88.0', require: false
+gem 'rubocop', '~> 1.16', require: false
 
 # Plus integrations with:
 gem 'cancancan'
