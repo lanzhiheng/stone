@@ -27,7 +27,6 @@ const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 
 require("channels")
-require("src/contact-form.js")
 require("src/highlight-code.js")
 
 

@@ -1,11 +1,10 @@
-<%= form_with model: [:musk, @category], scope: :category do |f| %>
-  <div class="field">
-    <%= f.label :key %>
-    <%= f.text_field :key %>
-  </div>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <%= f.submit '提交', class: 'btn' %>
-<% end %>
+<div data-controller="category-form">
+  <%= simple_form_for [:musk, @category], namespace: 'musk', defaults: { wrapper_html: { class: 'field' } } do |f| %>
+    <%= f.input :key %>
+    <%= f.input :name %>
+
+    <div class="top-btn-area">
+      <%= f.submit class: 'btn' %>
+    </div>
+  <% end %>
+</div>

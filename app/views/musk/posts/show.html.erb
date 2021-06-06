@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <table class="stone-table">
+    <tbody>
+      <% @post.attributes.each do |key, value| %>
+        <tr>
+          <td><%= key %></td>
+          <td><%= value %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

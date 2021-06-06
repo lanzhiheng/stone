@@ -8,8 +8,6 @@ class CategoryConstraint
 end
 
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # namespace :musk do
@@ -28,8 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # devise_for :admin_users, controllers: { sessions: 'musk/sessions' }
-
+  devise_for :admin_users, controllers: { sessions: 'musk/sessions' }
 
   get '/lastest', to: 'home#index'
   get '/about', to: 'resumes#index', as: 'about'

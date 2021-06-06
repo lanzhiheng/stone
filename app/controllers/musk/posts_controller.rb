@@ -1,25 +1,16 @@
+# frozen_string_literal: true
+
 module Musk
   class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :destroy]
-
-    def index
-      @posts = Post.all
-    end
-
-    def new
-      @category = Category.new
-    end
-
-    def edit
-    end
-
-    def update
-    end
-
     private
 
-    def set_post
-      @post = Post.friendly.find(params[:id])
+    def end_of_association_chain
+      Post.friendly
+    end
+
+    def post_params
+      params.require(:post).permit([:title, :body, :slug, :excerpt, :category_id, :created_at, :draft,
+                                    { tag_list: [] }])
     end
   end
 end

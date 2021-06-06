@@ -26,13 +26,16 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 # https://github.com/paulelliott/fabrication
-gem 'activestorage-aliyun'
 gem 'active_link_to'
+gem 'activestorage-aliyun'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'friendly_id', '~> 5.2.4'
 gem 'nokogiri', '>= 1.11.0'
 gem 'redcarpet', '>= 3.5.1'
-gem 'activeadmin'
+gem 'simple_form'
+
+gem 'inherited_resources'
+gem 'responders'
 
 # https://github.com/rubocop-hq/rubocop
 gem 'rubocop', '~> 0.88.0', require: false
