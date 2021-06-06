@@ -1,3 +1,5 @@
+@import "easymde/dist/easymde.min";
+@import "select2/src/scss/core.scss";
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -76,4 +78,12 @@
   &.danger {
     @apply bg-red-100;
   }
+}
+
+.EasyMDEContainer {
+  flex: 1;
+}
+
+.select2 {
+  flex: 1
 }

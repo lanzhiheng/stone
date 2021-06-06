@@ -1,4 +1,6 @@
-require "addressable/uri"
+# frozen_string_literal: true
+
+require 'addressable/uri'
 require 'open-uri'
 require 'rainbow'
 
@@ -12,7 +14,7 @@ namespace :oss do
       old_url = item['url']
       desc = item['description']
       begin
-        io = URI.open(Addressable::URI.encode(old_url))
+        io = URI.parse(old_url).open
         blob = ActiveStorage::Blob.create_and_upload!(io: io, filename: desc)
         new_url = blob.service_url
         conn.execute("UPDATE map_url_table SET new_url = '#{new_url}' WHERE url = '#{old_url}'")

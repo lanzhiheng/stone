@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Musk
   class SessionsController < ApplicationController
-    skip_before_action :authenticate_admin_user!, only: [:new, :create]
+    skip_before_action :authenticate_admin_user!, only: %i[new create]
     before_action :redirect_back_to_root, only: [:new]
 
     def new
@@ -15,12 +17,12 @@ module Musk
     def create
       @admin_user = AdminUser.find_by(email: params[:email])
 
-      if @admin_user && @admin_user.valid_password?(params[:password])
-        flash[:success] = '登录成功'
+      if @admin_user&.valid_password?(params[:password])
+        flash[:notice] = '登录成功'
         sign_in(@admin_user)
         redirect_to musk_root_path
       else
-        flash[:error] = '登录失败'
+        flash[:alert] = '登录失败'
         render :new, layout: 'musk/application_slim', status: :unprocessable_entity
       end
     end

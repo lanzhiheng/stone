@@ -9,32 +9,32 @@ RSpec.describe MetaTagsHelper do
   end
 
   it 'Meta title configurable' do
-    expect(meta_title).to eq(DEFAULT_META.dig('title'))
+    expect(meta_title).to eq(DEFAULT_META['title'])
     content_for(:title, 'Hello')
     expect(meta_title).to eq('Hello')
   end
 
   it 'Meta description configurable' do
-    expect(meta_description).to eq(DEFAULT_META.dig('description'))
+    expect(meta_description).to eq(DEFAULT_META['description'])
     content_for(:description, 'Hello Ruby')
     expect(meta_description).to eq('Hello Ruby')
   end
 
   it 'Meta keywords configurable' do
-    expect(meta_keywords).to eq(DEFAULT_META.dig('keywords'))
+    expect(meta_keywords).to eq(DEFAULT_META['keywords'])
     content_for(:keywords, 'hello, hi, ruby')
     expect(meta_keywords).to eq('hello, hi, ruby')
   end
 
   it 'Meta image not configurable' do
-    expect(meta_image).to eq(DEFAULT_META.dig('image'))
+    expect(meta_image).to eq(DEFAULT_META['image'])
     content_for(:image, 'avatar.jpg')
-    expect(meta_image).to eq(DEFAULT_META.dig('image'))
+    expect(meta_image).to eq(DEFAULT_META['image'])
   end
 
   it 'Meta author not configurable' do
-    expect(meta_author).to eq(DEFAULT_META.dig('author'))
+    expect(meta_author).to eq(DEFAULT_META['author'])
     content_for(:author, 'hello hello')
-    expect(meta_author).to eq(DEFAULT_META.dig('author'))
+    expect(meta_author).to eq(DEFAULT_META['author'])
   end
 end

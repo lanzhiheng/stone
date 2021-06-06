@@ -1,17 +1,17 @@
-<%= form_with model: [:musk, @post], scope: :post do |f| %>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<div data-controller="post-form">
+  <%= simple_form_for [:musk, @post], namespace: 'musk', defaults: { wrapper_html: { class: 'field' } } do |f| %>
+    <% collection_of_tags = ActsAsTaggableOn::Tag.most_used(20).map(&:name) | f.object.tag_list %>
 
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
+    <%= f.input :title %>
+    <%= f.input :body, as: :text, input_html: { class: 'md-editor', data: { 'post-form-target': 'markdownTextArea' } }, required: false %>
+    <%= f.input :slug %>
+    <%= f.input :excerpt, as: :text %>
+    <%= f.input :category_id, as: :select, collection: Category.pluck(:name, :id), input_html: { data: { 'post-form-target': 'categorySelector' } }, include_blank: false %>
+    <%= f.input :tag_list, as: :select, input_html: { data: { 'post-form-target': 'tagListSelector' } , multiple: true }, collection: collection_of_tags, include_blank: false %>
+    <%= f.input :draft, as: :boolean, wrapper_html: { class: '' } %>
 
-  <div class="field">
-    <%= f.label :slug %>
-    <%= f.text_field :slug %>
-  </div>
-  <%= f.submit '提交', class: 'btn' %>
-<% end %>
+    <div class="top-btn-area">
+      <%= f.submit class: 'btn' %>
+    </div>
+  <% end %>
+</div>
