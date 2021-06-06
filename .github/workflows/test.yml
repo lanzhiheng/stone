@@ -1,0 +1,69 @@
+name: Test and Code Quality for stone
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  # Label of the container job
+  test-and-quality:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      PGHOST: localhost
+      PGUSER: administrate
+      REDIS_HOST: localhost
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_USER: administrate
+        # Set health checks to wait until postgres has started
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Install dependencies
+        run: bundle install
+      - name: Setup database
+        run: |
+          bundle exec rake db:create
+          bundle exec rake db:migrate
+      # - name: Yarn Install
+      #   run: yarn install
+      # - name: Compiling
+      #   run: RAILS_ENV=test bundle exec rake webpacker:compile
+      - name: Rspec
+        run: bundle exec rspec
+      - name: Rubocop
+        run: bundle exec rubocop
