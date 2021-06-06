@@ -1,10 +1,10 @@
 <div class="wrapper">
   <table class="stone-table">
     <tbody>
-      <% @post.attributes.each do |key, value| %>
+      <% @post.attributes.keys.each do |key| %>
         <tr>
-          <td><%= key %></td>
-          <td><%= value %></td>
+          <td class="w-1/5"><%= key %></td>
+          <td><%= @post.send(key) %></td>
         </tr>
       <% end %>
     </tbody>

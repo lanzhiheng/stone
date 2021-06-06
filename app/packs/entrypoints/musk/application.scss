@@ -11,6 +11,10 @@
 
 .stone-link {
   @apply underline text-red-500;
+
+  &.stone-link {
+    @apply ml-1;
+  }
 }
 
 .stone-table {
@@ -70,11 +74,11 @@
   @apply rounded-sm text-white py-2 px-4 mb-2;
 
   &.success {
-    @apply bg-green-100;
+    @apply bg-green-300;
   }
 
   &.danger {
-    @apply bg-red-100;
+    @apply bg-red-300;
   }
 }
 
