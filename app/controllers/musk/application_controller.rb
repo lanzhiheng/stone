@@ -23,6 +23,11 @@ module Musk
       end
     end
 
+    def collection
+      get_collection_ivar || set_collection_ivar(end_of_association_chain
+                                                   .order(created_at: :DESC).paginate(page: params[:page]))
+    end
+
     def update
       update! do |_success, failure|
         failure.html { respond_with(*with_chain(resource), status: :unprocessable_entity) }

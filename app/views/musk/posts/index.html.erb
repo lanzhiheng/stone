@@ -8,7 +8,7 @@
       <tr>
         <th class="w-1/4">Title</th>
         <th class="w-1/4">Draft</th>
-        <th class="w-1/4">Views</th>
+        <th class="w-1/4">Category</th>
         <th class="w-1/4">Action</th>
       </tr>
     </thead>
@@ -21,9 +21,16 @@
           <td>
             <%= link_to '查看', musk_post_path(post), class: 'stone-link'  %>
             <%= link_to '修改', edit_musk_post_path(post), class: 'stone-link' %>
+            <%= link_to '预览', preview_post_path(post), class: 'stone-link', target: '_blank' %>
+
+            <%= link_to post.draft ? '上架' : '下架', toggle_musk_post_path(post), class: 'stone-link', data: { method: 'PUT' } %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <div class="top-btn-area">
+    <%= will_paginate @posts, previous_label: '&larr;', next_label: '&rarr;', class: 'pager' %>
+  </div>
 </div>

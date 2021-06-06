@@ -53,8 +53,14 @@ jobs:
         with:
           ruby-version: 2.7.2
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
       - name: Install dependencies
         run: bundle install
+      - name: Assets
+        run: RAILS_ENV=test NODE_ENV=test bundle exec rails webpacker:compile
       - name: Setup database
         run: |
           bundle exec rake db:create
