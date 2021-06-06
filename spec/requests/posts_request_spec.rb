@@ -42,7 +42,7 @@ RSpec.describe 'posts' do
   describe 'Navbar' do
     it 'highlight the navbar in list page' do
       [blog, translation, book].each do |item|
-        get posts_path(item.key)
+        get category_path(item.key)
         expect(response.body).to have_tag('.nav > li > a.active', text: item.name)
       end
     end
@@ -77,18 +77,18 @@ RSpec.describe 'posts' do
 
   it 'Admin user can access the preview page' do
     expect do
-      get post_preview_path(post_from_blog.slug)
+      get preview_post_path(post_from_blog.slug)
     end.to raise_error(ActionController::RoutingError, 'Page Not Found')
 
     sign_in admin_user
 
-    get post_preview_path(post_from_blog.slug)
+    get preview_post_path(post_from_blog.slug)
     expect(response).to have_http_status(200)
-    get post_preview_path(post_from_book.slug)
+    get preview_post_path(post_from_book.slug)
     expect(response).to have_http_status(200)
 
     expect do
-      get post_preview_path('nothing')
+      get preview_post_path('nothing')
     end.to raise_error(ActiveRecord::RecordNotFound)
   end
 end
