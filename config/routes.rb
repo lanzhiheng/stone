@@ -46,14 +46,10 @@ Rails.application.routes.draw do
     member do
       get :preview
     end
-
-    collection do
-      get :fetch_more
-    end
   end
 
   constraints(CategoryConstraint.new) do
-    get '/:category', to: 'posts#index'
+    get '/:category', to: 'posts#index', as: :category
     get '/:category/:id', to: redirect('/posts/%{id}')
   end
 end
