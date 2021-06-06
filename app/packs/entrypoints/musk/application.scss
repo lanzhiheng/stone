@@ -1,9 +1,6 @@
 @import "easymde/dist/easymde.min";
 @import "select2/src/scss/core.scss";
 @import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
 @import "stylesheets/musk/sessions";
 
 .turbo-progress-bar {
@@ -87,3 +84,5 @@
 .select2 {
   flex: 1
 }
+
+@import "tailwindcss/components";

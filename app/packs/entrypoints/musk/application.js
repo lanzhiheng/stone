@@ -8,3 +8,5 @@ import 'select2/dist/js/select2.full.js'
 import "controllers"
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+
+import 'stylesheets/tailwind_utiltiies.css';
