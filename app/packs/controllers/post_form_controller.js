@@ -34,7 +34,8 @@ export default class extends Controller {
 
   markdownInitialization() {
     const element = this.categorySelectortarget
-    this.easyMDE = new EasyMDE({
+    const that = this
+    that.easyMDE = new EasyMDE({
       element: element,
       spellChecker: false,
       uploadImage: true,
@@ -51,7 +52,7 @@ export default class extends Controller {
           success: function(data) {
             const { name, url } = data
             const textToInsert = `![${name}](${url})`
-            easyMDE.codemirror.replaceSelection(textToInsert)
+            that.easyMDE.codemirror.replaceSelection(textToInsert)
           },
           error: function(data) {
             alert(data.responseJSON.msg)
