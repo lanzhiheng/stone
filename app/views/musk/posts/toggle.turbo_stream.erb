@@ -1,0 +1,31 @@
+<turbo-stream action="replace" target=<%= "table_draft_#{post.id}" %>>
+  <template>
+    <td id=<%= "table_draft_#{post.id}" %>><%= post.draft %></td>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target=<%= "toggle_link_#{post.id}" %>>
+  <template>
+    <%= toggle_link(post) %>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target=<%= "toggle_button_#{post.id}" %>>
+  <template>
+    <%= toggle_button(post) %>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="alert-area">
+  <template>
+    <div id="alert-area">
+      <% if flash['alert'] %>
+        <div class="alert danger"><%= flash['alert'] %></div>
+      <% end %>
+
+      <% if flash['notice'] %>
+        <div class="alert success"><%= flash['notice'] %></div>
+      <% end %>
+    </div>
+  </template>
+</turbo-stream>

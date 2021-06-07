@@ -16,14 +16,14 @@
       <% @posts.each do |post| %>
         <tr>
           <td><%= post.title %></td>
-          <td><%= post.draft %></td>
+          <td id=<%= "table_draft_#{post.id}" %>><%= post.draft %></td>
           <td><%= link_to post.category.name, musk_category_path(post.category), class: 'stone-link' %></td>
           <td>
             <%= link_to '查看', musk_post_path(post), class: 'stone-link'  %>
             <%= link_to '修改', edit_musk_post_path(post), class: 'stone-link' %>
             <%= link_to '预览', preview_post_path(post), class: 'stone-link', target: '_blank' %>
 
-            <%= link_to post.draft ? '上架' : '下架', toggle_musk_post_path(post), class: 'stone-link', data: { method: 'PUT' } %>
+            <%= toggle_link(post) %>
           </td>
         </tr>
       <% end %>
