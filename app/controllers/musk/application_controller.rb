@@ -33,5 +33,10 @@ module Musk
         failure.html { respond_with(*with_chain(resource), status: :unprocessable_entity) }
       end
     end
+
+    rescue_from ActiveRecord::DeleteRestrictionError do |e|
+      flash[:alert] = e.message
+      redirect_back(fallback_location: collection_path)
+    end
   end
 end

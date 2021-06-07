@@ -22,6 +22,10 @@ class Post < ApplicationRecord
     Redcarpet::Markdown.new(renderer, fenced_code_blocks: true)
   end
 
+  def online
+    !draft
+  end
+
   def content
     self.class.markdown.render(body).html_safe
   end

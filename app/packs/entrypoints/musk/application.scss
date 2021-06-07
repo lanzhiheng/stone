@@ -81,3 +81,15 @@
     @apply bg-red-300;
   }
 }
+
+.tag {
+  @apply rounded-sm py-1 px-2 text-white;
+
+  &.primary {
+    @apply bg-blue-300;
+  }
+
+  &.danger {
+    @apply bg-red-300;
+  }
+}
