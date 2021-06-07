@@ -1,5 +1,5 @@
 <div data-controller="post-form">
-  <%= simple_form_for [:musk, @post], namespace: 'musk', defaults: { wrapper_html: { class: 'field' } } do |f| %>
+  <%= simple_form_for [:musk, @post], namespace: 'musk' do |f| %>
     <% collection_of_tags = ActsAsTaggableOn::Tag.most_used(20).map(&:name) | f.object.tag_list %>
 
     <%= f.input :title %>

@@ -53,9 +53,15 @@ SimpleForm.setup do |config|
 
     ## Inputs
     # b.use :input, class: 'input', error_class: 'is-invalid', valid_class: 'is-valid'
-    b.use :label_input
-    b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    b.wrapper tag: :div, class: 'input-wrapper' do |component|
+      component.use :label_input
+    end
+    # b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    # b.use :error, wrap_with: { tag: :span, class: :error }
+    b.wrapper tag: :div, class: 'input-separator' do |component|
+      component.use :hint,  wrap_with: { tag: :span, class: :hint }
+      component.use :error, wrap_with: { tag: :span, class: :error }
+    end
 
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
