@@ -5,12 +5,34 @@
 <div class="wrapper">
   <table class="stone-table">
     <tbody>
-      <% @post.attributes.keys.each do |key| %>
         <tr>
-          <td class="w-1/5"><%= key %></td>
-          <td id=<%= "table_#{key}_#{@post.id}" %>><%= @post.send(key) %></td>
+          <td class="w-1/5">Title</td>
+          <td><%= @post.title %></td>
         </tr>
-      <% end %>
+        <tr>
+          <td class="w-1/5">Body</td>
+          <td><%= @post.content %></td>
+        </tr>
+        <tr>
+          <td class="w-1/5">Slug</td>
+          <td><%= @post.slug %></td>
+        </tr>
+        <tr>
+          <td class="w-1/5">Tag List</td>
+          <td><%= @post.tag_list.join(', ') %></td>
+        </tr>
+        <tr>
+          <td class="w-1/5">Online</td>
+          <td id=<%= "table_online_#{@post.id}" %>><%= boolean_tag(@post.online) %></td>
+        </tr>
+        <tr>
+          <td class="w-1/5">Created_at</td>
+          <td><%= @post.created_at %></td>
+        </tr>
+        <tr>
+          <td class="w-1/5">Updated_at</td>
+          <td><%= @post.updated_at %></td>
+        </tr>
     </tbody>
   </table>
 </div>

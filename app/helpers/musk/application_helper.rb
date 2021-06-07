@@ -7,6 +7,12 @@ module Musk
       return success if flash['notice']
     end
 
+    def boolean_tag(value)
+      option_class = value ? 'tag primary' : 'tag danger'
+      text = value ? 'Yes' : 'No'
+      content_tag :span, text, class: option_class
+    end
+
     private
 
     def danger

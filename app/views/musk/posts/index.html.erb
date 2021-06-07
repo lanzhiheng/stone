@@ -7,7 +7,7 @@
     <thead>
       <tr>
         <th class="w-1/4">Title</th>
-        <th class="w-1/4">Draft</th>
+        <th class="w-1/4">Online</th>
         <th class="w-1/4">Category</th>
         <th class="w-1/4">Action</th>
       </tr>
@@ -16,7 +16,9 @@
       <% @posts.each do |post| %>
         <tr>
           <td><%= post.title %></td>
-          <td id=<%= "table_draft_#{post.id}" %>><%= post.draft %></td>
+          <td id=<%= "table_online_#{post.id}" %>>
+            <%= boolean_tag(post.online) %>
+          </td>
           <td><%= link_to post.category.name, musk_category_path(post.category), class: 'stone-link' %></td>
           <td>
             <%= link_to '查看', musk_post_path(post), class: 'stone-link'  %>
