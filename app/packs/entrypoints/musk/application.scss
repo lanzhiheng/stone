@@ -26,7 +26,7 @@
   }
 
   th {
-    @apply font-medium;
+    @apply font-medium text-xs;;
   }
 
   td {
@@ -80,12 +80,4 @@
   &.danger {
     @apply bg-red-300;
   }
-}
-
-.EasyMDEContainer {
-  flex: 1;
-}
-
-.select2 {
-  flex: 1
 }

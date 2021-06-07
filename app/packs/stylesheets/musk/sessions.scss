@@ -2,11 +2,30 @@
   @apply text-3xl;
 }
 
-.field {
+.field_with_errors {
+  .input-wrapper {
+    input,
+    textarea,
+    .EasyMDEContainer .CodeMirror-wrap,
+    .select2 {
+      @apply border-red-500 border-solid border;
+    }
+  }
+}
+
+.input-wrapper {
   @apply my-2 flex text-xs;
 
   label {
     @apply w-20 inline-block leading-8;
+  }
+
+  .EasyMDEContainer {
+    flex: 1;
+  }
+
+  .select2 {
+    flex: 1
   }
 
   input,
@@ -17,4 +36,10 @@
   textarea {
     height: 600px;
   }
+}
+
+.input-separator {
+  font-size: 14px;
+  padding-left: 5rem;
+  @apply text-red-500;
 }

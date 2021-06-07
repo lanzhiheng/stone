@@ -1,5 +1,5 @@
 <div data-controller="category-form">
-  <%= simple_form_for [:musk, @category], namespace: 'musk', defaults: { wrapper_html: { class: 'field' } } do |f| %>
+  <%= simple_form_for [:musk, @category], namespace: 'musk' do |f| %>
     <%= f.input :key %>
     <%= f.input :name %>
 
