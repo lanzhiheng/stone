@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     if @message.save
       render :success, status: :created
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 

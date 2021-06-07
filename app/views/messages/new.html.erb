@@ -4,7 +4,7 @@
 <div class="contact-form">
   <h1 class="title">Contact Me</h1>
   <turbo-frame id="message-collector">
-    <%= form_with model: @message, url: messages_path, method: 'POST' do |f| %>
+    <%= form_with model: @message, method: 'POST' do |f| %>
       <div class="field">
         <%= f.label(:name, "Name") %>
         <%= f.text_field(:name, placeholder: "Your Name") %>
