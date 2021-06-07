@@ -1,15 +1,17 @@
 <div class="my-14 mx-auto w-1/4 ">
   <div class="border-black border-solid border-2 rounded px-3 py-5">
-    <%= render 'musk/shared/alert' %>
+    <div id="alert-area">
+      <%= alert_area %>
+    </div>
 
     <h1 class="main-title mb-6 text-center">Stone Entry</h1>
 
-    <%= form_with model: @admin_user, url: musk_sign_in_path, data: { remote: false } do |f| %>
-      <div class="field">
+    <%= form_with model: @admin_user, url: musk_sign_in_path do |f| %>
+      <div class="input-wrapper">
         <%= f.label :email, "Email:" %>
         <%= f.text_field :email, placeholder: 'The Email' %>
       </div>
-      <div class="field">
+      <div class="input-wrapper">
         <%= f.label :password, "Password:" %>
         <%= f.password_field :password, placeholder: 'The Password' %>
       </div>

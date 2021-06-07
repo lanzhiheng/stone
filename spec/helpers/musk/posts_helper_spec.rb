@@ -2,16 +2,20 @@
 
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the Musk::PostsHelper. For example:
-#
-# describe Musk::PostsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe Musk::PostsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'toggle link' do
+    post = create(:post)
+    expect(post.draft).to eq(true)
+    expect(toggle_link(post)).to have_tag('.stone-link', text: '上架', id: "toggle_link_#{post.id}")
+    post.update(draft: false)
+    expect(toggle_link(post)).to have_tag('.stone-link', text: '下架', id: "toggle_link_#{post.id}")
+  end
+
+  it 'toggle button' do
+    post = create(:post)
+    expect(post.draft).to eq(true)
+    expect(toggle_button(post)).to have_tag('.btn', text: '上架', id: "toggle_button_#{post.id}")
+    post.update(draft: false)
+    expect(toggle_button(post)).to have_tag('.btn', text: '下架', id: "toggle_button_#{post.id}")
+  end
 end

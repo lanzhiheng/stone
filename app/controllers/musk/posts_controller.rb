@@ -6,8 +6,12 @@ module Musk
       original = resource.draft
       resource.update(draft: !original)
       message = original ? '上架成功' : '下架成功'
-      flash[:notice] = "《#{resource.title}》#{message}"
-      redirect_back(fallback_location: collection_path)
+      flash.now[:notice] = "《#{resource.title}》#{message}"
+
+      respond_to do |format|
+        format.turbo_stream { render 'musk/posts/toggle', locals: { post: resource } }
+        format.html { redirect_back(fallback_location: collection_path) }
+      end
     end
 
     private

@@ -1,10 +1,14 @@
+<div class="top-btn-area">
+  <%= toggle_button(@post) %>
+</div>
+
 <div class="wrapper">
   <table class="stone-table">
     <tbody>
       <% @post.attributes.keys.each do |key| %>
         <tr>
           <td class="w-1/5"><%= key %></td>
-          <td><%= @post.send(key) %></td>
+          <td id=<%= "table_#{key}_#{@post.id}" %>><%= @post.send(key) %></td>
         </tr>
       <% end %>
     </tbody>
