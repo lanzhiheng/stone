@@ -1,8 +1,6 @@
-<turbo-stream action="replace" target=<%= "table_online_#{post.id}" %>>
+<turbo-stream action="update" target=<%= "table_online_#{post.id}" %>>
   <template>
-    <td id=<%= "table_online_#{post.id}" %>>
-      <%= boolean_tag(post.online) %>
-    </td>
+    <%= boolean_tag(post.online) %>
   </template>
 </turbo-stream>
 
@@ -18,10 +16,8 @@
   </template>
 </turbo-stream>
 
-<turbo-stream action="replace" target="alert-area">
+<turbo-stream action="update" target="alert-area">
   <template>
-    <div id="alert-area">
-      <%= alert_area %>
-    </div>
+    <%= alert_area %>
   </template>
 </turbo-stream>
