@@ -58,22 +58,18 @@ module ApplicationHelper
 
   def nav_data
     categories_navbar = Category.all.map do |category|
-      { title: category.name, url: "/#{category.key}" }
+      { title: "#{category.name}（#{category.posts.count}）", url: "/#{category.key}" }
     end
 
     [
       {
-        title: 'Lastest',
+        title: '最新',
         url: '/'
       },
       *categories_navbar,
       {
-        title: 'About',
+        title: '关于作者',
         url: '/about'
-      },
-      {
-        title: 'Contact',
-        url: '/contact'
       }
     ].freeze
   end
