@@ -58,7 +58,7 @@ module ApplicationHelper
 
   def nav_data
     categories_navbar = Category.all.map do |category|
-      { title: "#{category.name}（#{category.posts.count}）", url: "/#{category.key}" }
+      { title: "#{category.name}（#{category.posts.published.count}）", url: "/#{category.key}" }
     end
 
     [
