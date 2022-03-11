@@ -57,7 +57,9 @@ module ApplicationHelper
   private
 
   def nav_data
-    categories_navbar = Category.all.map do |category|
+    categories = Category.joins(:posts).group('categories.id').order('COUNT(posts.title) DESC')
+
+    categories_navbar = categories.map do |category|
       { title: "#{category.name}（#{category.posts.published.count}）", url: "/#{category.key}" }
     end
 
