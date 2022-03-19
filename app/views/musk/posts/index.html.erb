@@ -9,6 +9,7 @@
         <th class="w-1/4">Title</th>
         <th class="w-1/4">Online</th>
         <th class="w-1/4">Category</th>
+        <th class="w-1/4">Page Views</th>
         <th class="w-1/4">Action</th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
             <%= boolean_tag(post.online) %>
           </td>
           <td><%= link_to post.category.name, musk_category_path(post.category), class: 'stone-link' %></td>
+          <td><%= post.page_views.count %></td>
           <td>
             <%= link_to '查看', musk_post_path(post), class: 'stone-link'  %>
             <%= link_to '修改', edit_musk_post_path(post), class: 'stone-link' %>
