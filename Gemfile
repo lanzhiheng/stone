@@ -13,7 +13,7 @@ gem 'rails', '~> 6.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.3'
+gem "puma", ">= 4.3.11"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -47,7 +47,7 @@ gem 'devise', '~> 4.7.2'
 gem 'draper'
 gem 'pundit'
 
-gem 'addressable'
+gem "addressable", ">= 2.8.0"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

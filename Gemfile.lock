@@ -96,7 +96,7 @@ GEM
       zeitwerk (~> 2.3)
     acts-as-taggable-on (9.0.1)
       activerecord (>= 6.0, < 7.1)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
@@ -225,7 +225,7 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.13.0)
     public_suffix (4.0.6)
-    puma (4.3.8)
+    puma (4.3.11)
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
@@ -391,7 +391,7 @@ DEPENDENCIES
   active_link_to
   activestorage-aliyun
   acts-as-taggable-on (~> 9.0.0)
-  addressable
+  addressable (>= 2.8.0)
   bootsnap (>= 1.4.2)
   byebug
   cancancan
@@ -416,7 +416,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry
   pry-byebug
-  puma (~> 4.3)
+  puma (>= 4.3.11)
   pundit
   rails (~> 6.1)
   rails_real_favicon
