@@ -6,9 +6,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 6.1'
+gem 'newrelic_rpm'
 gem 'hotwire-rails'
 gem 'newrelic_rpm'
-gem 'rails', '~> 6.0.3.7'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -28,7 +29,7 @@ gem 'redis', '~> 4.0'
 # https://github.com/paulelliott/fabrication
 gem 'active_link_to'
 gem 'activestorage-aliyun'
-gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts-as-taggable-on', '~> 9.0.0'
 gem 'friendly_id', '~> 5.2.4'
 gem 'nokogiri', '>= 1.11.0'
 gem 'redcarpet', '>= 3.5.1'
