@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.published.friendly.find(params[:id])
+    @post.click_by(request.remote_ip)
   end
 
   def index

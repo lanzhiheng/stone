@@ -55,11 +55,6 @@ RSpec.describe HomeController do
     expect(response.body).to have_tag('li.post-wrapper', count: 15)
   end
 
-  it 'should get index with lastest navbar active' do
-    get :index
-    expect(response.body).to have_tag('.nav > li > a.active', text: 'Lastest')
-  end
-
   it 'should contain post list' do
     (1..5).each do |i|
       create(:post, title: "title-#{i}", slug: "slug-#{i}", category: blog, draft: false, tag_list: %w[hello world])

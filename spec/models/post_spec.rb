@@ -6,6 +6,22 @@ RSpec.describe Post do
   let!(:translation) { create(:category, :translation) }
   let!(:blog) { create(:category, :blog) }
 
+  describe 'view the post' do
+    let(:post) { create(:post) }
+
+    it 'view the post by remote_ip' do
+      post.click_by('127.0.0.1')
+      post.click_by('223.5.5.5')
+      expect(post.page_views.count).to eq(2)
+    end
+
+    it 'view the post by remote_ip without duplicate' do
+      post.click_by('223.5.5.5')
+      post.click_by('223.5.5.5')
+      expect(post.page_views.count).to eq(1)
+    end
+  end
+
   context 'create post' do
     it 'without title' do
       before = Post.count
