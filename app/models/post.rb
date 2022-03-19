@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :slug, presence: true, uniqueness: true
+  has_many :page_views, dependent: :destroy
 
   scope :published, -> { where(draft: false) }
   scope :drafted, -> { where(draft: true) }
@@ -20,6 +21,10 @@ class Post < ApplicationRecord
   def self.markdown
     renderer = Redcarpet::Render::HTML.new(escape_html: true, with_toc_data: true)
     Redcarpet::Markdown.new(renderer, fenced_code_blocks: true)
+  end
+
+  def click_by(remote_ip)
+    PageView.create(post: self, remote_ip: remote_ip)
   end
 
   def online

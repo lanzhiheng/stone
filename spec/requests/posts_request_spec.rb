@@ -28,6 +28,13 @@ RSpec.describe 'posts' do
     )
   end
 
+  it 'click the post and increse the page views' do
+    post = create(:post, draft: false)
+    get post_path(post.slug)
+    get post_path(post.slug)
+    expect(post.page_views.count).to eq(1)
+  end
+
   it "should access index pages with validated category's key" do
     get posts_path(blog.key)
     expect(response).to have_http_status(200)
@@ -39,26 +46,10 @@ RSpec.describe 'posts' do
     end.to raise_error(ActionController::RoutingError)
   end
 
-  describe 'Navbar' do
-    it 'highlight the navbar in list page' do
-      [blog, translation, book].each do |item|
-        get category_path(item.key)
-        expect(response.body).to have_tag('.nav > li > a.active', text: item.name)
-      end
-    end
-
-    it 'highlight the navbar in detail page' do
-      [post_from_blog, post_from_book, post_from_translation].each do |post|
-        get post_path(post)
-        expect(response.body).to have_tag('.nav > li > a.active', text: post.category.name)
-      end
-    end
-  end
-
   it 'redirect old url to new url with 301 code, new url prefix by posts' do
-    get "/posts/#{post_from_blog.slug}"
+    get post_path(post_from_blog.slug)
     expect(response).to have_http_status(200)
-    get "/posts/#{post_from_book.slug}"
+    get post_path(post_from_book.slug)
     expect(response).to have_http_status(200)
 
     get "/#{blog.key}/#{post_from_blog.slug}"

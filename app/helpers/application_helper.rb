@@ -47,7 +47,7 @@ module ApplicationHelper
   end
 
   def current_class(path)
-    if request.path == path || @post && "/#{@post.category.key}" == path
+    if request.path == path || (@post && "/#{@post.category.key}" == path)
       'active'
     else
       ''
