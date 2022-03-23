@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Post do
+  describe 'association' do
+    it { should have_many(:comments) }
+  end
+
   let!(:translation) { create(:category, :translation) }
   let!(:blog) { create(:category, :blog) }
 

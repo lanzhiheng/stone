@@ -161,12 +161,6 @@ RSpec.describe PostsController do
       end
     end
 
-    it 'will load disqus component' do
-      post = create(:post, category: blog, draft: false)
-      get :show, params: { category: blog.key, id: post.slug }
-      expect(response.body).to have_tag('#disqus_thread')
-    end
-
     it 'with taglist' do
       post = build(:post, category: blog, draft: false)
       post.tag_list = 'Ruby, JavaScript, Rails'

@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   friendly_id :slug, use: :slugged
 
   belongs_to :category
+  has_many :comments, as: :commentable
   validates :title, presence: true
   validates :body, presence: true
   validates :slug, presence: true, uniqueness: true
