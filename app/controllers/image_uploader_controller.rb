@@ -6,6 +6,7 @@ class ImageUploaderController < ApplicationController
     filename = file.original_filename
 
     blob = ActiveStorage::Blob.create_and_upload!(io: file, filename: filename)
+
     render json: { url: blob.service_url, name: filename }
   end
 
