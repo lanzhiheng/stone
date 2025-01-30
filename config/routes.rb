@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   get '/lastest', to: 'home#index'
   get '/about', to: 'resumes#index', as: 'about'
-  # get '/personal', to: 'resumes#personal'
+  get '/personal', to: 'resumes#personal'
   get '/tags', to: 'tags#index', as: 'tags'
 
   resources :messages, only: [:create, :new]
