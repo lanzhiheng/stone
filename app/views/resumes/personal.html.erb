@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= render 'application/favicon' %>
     <title>Personal Resume</title>
-    <%= stylesheet_link_tag 'personal', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   </head>
   <body>
     <section class="resume">
@@ -53,7 +53,7 @@
       <aside class="right-part">
         <section class="info-wrapper">
           <div class="basic-info">
-            <%= image_tag('avatar.png', class: 'avatar') %>
+            <%= image_pack_tag('avatar.png', class: 'avatar') %>
             <div class="information">
               <h1>蓝智恒<span>AKA: Lan</span></h1>
               <h2>Web开发工程师</h2>
