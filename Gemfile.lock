@@ -163,7 +163,7 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    ffi (1.17.1)
+    ffi (1.16.3)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
     globalid (1.2.1)
@@ -440,6 +440,7 @@ DEPENDENCIES
   devise (~> 4.7.2)
   draper
   factory_bot_rails
+  ffi (< 1.17.0)
   friendly_id (~> 5.2.4)
   hotwire-rails
   inherited_resources

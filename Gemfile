@@ -10,6 +10,7 @@ gem 'hotwire-rails'
 gem 'newrelic_rpm'
 gem 'newrelic_rpm'
 gem 'rails', '~> 6.1'
+gem "ffi", "< 1.17.0"
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
