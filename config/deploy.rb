@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock "~> 3.19.2"
 
 set :application, "stone"
 set :repo_url, "git@github.com:lanzhiheng/stone.git"
@@ -10,6 +10,10 @@ set :app_url, 'https://www.lanzhiheng.com'
 set :sitemap_roles, :web
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/var/www/stone"
+
+# https://github.com/capistrano/capistrano/issues/1884
+
+set :default_env, { 'BASH_ENV' => "/home/lan/.bashrc"}
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -80,6 +84,14 @@ namespace :deploy do
       on roles(:app) do
         unless test("[ -f #{shared_path}/config/master.key ]")
           upload! 'config/master.key', "#{shared_path}/config/master.key"
+        end
+      end
+    end
+
+    before :linked_files, :set_database_configuration do
+      on roles(:app) do
+        unless test("[ -f #{shared_path}/config/database.yml ]")
+          upload! 'config/database.yml', "#{shared_path}/config/database.yml"
         end
       end
     end
