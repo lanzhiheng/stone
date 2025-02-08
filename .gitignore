@@ -33,3 +33,8 @@ yarn-debug.log*
 
 /config/credentials/development.key
 *.sql
+
+# Clacky configuration
+.1024*
+!.1024
+.breakpoints
