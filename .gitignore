@@ -38,3 +38,5 @@ yarn-debug.log*
 .1024*
 !.1024
 .breakpoints
+
+.DS_Store
